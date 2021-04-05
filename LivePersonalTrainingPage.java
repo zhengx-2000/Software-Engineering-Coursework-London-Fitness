@@ -1,4 +1,4 @@
-package Project;
+//package Project;
 //page Live Personal Training
 
 //import javax.annotation.Resources;
@@ -10,9 +10,10 @@ import java.awt.event.ActionListener;
 public class LivePersonalTrainingPage {
     private final JFrame jf = new JFrame("Live Personal Training Page");
 	final int WIDTH = 475;
-	final int HEIGHT = 525;
+	final int HEIGHT = 625;
     
-    public void init() {
+	public LivePersonalTrainingPage(){
+    //public void init() {
         try{
             //设置窗口界面大小
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//import java.awt.*;就可用了
@@ -134,24 +135,27 @@ public class LivePersonalTrainingPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton button = (JButton) e.getSource();
+			
 			String name = button.getName();
 			switch (name) {
-				case "loginBtn":
+				//case "loginBtn":
 					//使用消息对话框
 					//JOptionPane.showMessageDialog(jf, "主界面");
 					//以登录状态去主界面
-					break;
+					//break;
 				case "backBtn":
 					//JOptionPane.showMessageDialog(jf, "主界面");
-					//以游客状态去主界面
+					//返回主界面
+					new Welcome(); 
+					jf.setVisible(false);
 					break;
 				default:
 					break;
 			}
 		}
 	}
-    public static void main(String[] args) {
-        new LivePersonalTrainingPage().init();;
 
+    public static void main(String[] args) {
+        new LivePersonalTrainingPage();
     }
 }

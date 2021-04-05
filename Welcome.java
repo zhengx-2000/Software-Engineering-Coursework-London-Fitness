@@ -5,9 +5,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Welcome extends JFrame implements ActionListener {
+    private JFrame jFrame;
     private JLabel videoLabel, liveLabel, membershipLabel;
     private JButton gallery, videoBtn, liveBtn, membershipBtn;
-    //private JButton test;
+    final int WIDTH = 475;
+	final int HEIGHT = 625;
     private JMenuItem accountItem, membershipItem, helpItem;
 
     public Welcome() {
@@ -15,13 +17,17 @@ public class Welcome extends JFrame implements ActionListener {
 		Font btn = new Font("Georgia", Font.BOLD, 13);
         Border labelBorder = new EmptyBorder(0, 30, 0, 30);
 		//setTitle("Welcome to London Fitness!"); 
-        JFrame jFrame = new JFrame("Welcome to London Fitness!");
-	    jFrame.setSize(475,575);
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int sw = screenSize.width;
+		int sh = screenSize.height;
+        jFrame = new JFrame("Welcome to London Fitness!");
+        jFrame.setBounds((sw - WIDTH) / 2, (sh - HEIGHT) / 2, WIDTH, HEIGHT);
+	    jFrame.setSize(WIDTH, HEIGHT);
         jFrame.setResizable(false);
         jFrame.setLayout(new FlowLayout());
         
-	    
-
+        
 	    //container.setLayout(new BoxLayout());
 
         /*JButton loginBtn = new JButton("Login / My account");
@@ -56,7 +62,7 @@ public class Welcome extends JFrame implements ActionListener {
         gallery = new JButton();
         gallery.setBounds(0, 0, 450, 100);
         gallery.setBorder(new EmptyBorder(0,0,0,0));
-        ImageIcon icon1 = new ImageIcon("cover2.jpg"); 
+        ImageIcon icon1 = new ImageIcon("image/gallery.jpg"); 
         Image temp1 = icon1.getImage().getScaledInstance(gallery.getWidth(), gallery.getHeight(), Image.SCALE_DEFAULT); 
         icon1 = new ImageIcon(temp1);
         gallery.setIcon(icon1);
@@ -79,7 +85,7 @@ public class Welcome extends JFrame implements ActionListener {
         videoBtn = new JButton();
         videoBtn.setBounds(0, 0, 450, 100);
         videoBtn.setBorder(new EmptyBorder(0,0,0,0));
-        ImageIcon icon2 = new ImageIcon("cover2.jpg"); 
+        ImageIcon icon2 = new ImageIcon("image/video.jpg"); 
         Image temp2 = icon2.getImage().getScaledInstance(videoBtn.getWidth(), videoBtn.getHeight(), Image.SCALE_DEFAULT); 
         icon2 = new ImageIcon(temp2);
         videoBtn.setIcon(icon2);
@@ -99,7 +105,7 @@ public class Welcome extends JFrame implements ActionListener {
         liveBtn = new JButton();
         liveBtn.setBounds(0, 0, 450, 100);
         liveBtn.setBorder(new EmptyBorder(0,0,0,0));
-        ImageIcon icon3 = new ImageIcon("cover2.jpg"); 
+        ImageIcon icon3 = new ImageIcon("image/live.jpg"); 
         Image temp3 = icon3.getImage().getScaledInstance(liveBtn.getWidth(), liveBtn.getHeight(), Image.SCALE_DEFAULT); 
         icon3 = new ImageIcon(temp3);
         liveBtn.setIcon(icon3);
@@ -119,7 +125,7 @@ public class Welcome extends JFrame implements ActionListener {
         membershipBtn = new JButton();
         membershipBtn.setBounds(0, 0, 450, 100);
         membershipBtn.setBorder(new EmptyBorder(0,0,0,0));
-        ImageIcon icon4 = new ImageIcon("cover2.jpg"); 
+        ImageIcon icon4 = new ImageIcon("image/membership.jpg"); 
         Image temp4 = icon4.getImage().getScaledInstance(membershipBtn.getWidth(), membershipBtn.getHeight(), Image.SCALE_DEFAULT); 
         icon4 = new ImageIcon(temp4);
         membershipBtn.setIcon(icon4);
@@ -149,19 +155,43 @@ public class Welcome extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == accountItem)
-            System.out.println("myAccount");
+        {
+            //System.out.println("myAccount");
+            jFrame.setVisible(false);
+            new IDPage().init();
+        }
         if(e.getSource() == membershipItem)
-            System.out.println("membershipItem");
+        {
+            //System.out.println("membershipItem");
+            jFrame.setVisible(false);
+            new membershipGUI().init();
+        }
         if(e.getSource() == helpItem)
-            System.out.println("helpItem");
+        {
+            //System.out.println("helpItem");
+            jFrame.setVisible(false);
+            new HelpPage().init();
+        }
         if(e.getSource() == gallery)
             System.out.println("gallery");
         if(e.getSource() == videoBtn)
-            System.out.println("videoBtn");
+        {
+            //System.out.println("videoBtn");
+            jFrame.setVisible(false);
+            new digitalWorkOutVideosPage();
+        }
         if(e.getSource() == liveBtn)
-            System.out.println("liveBtn");
+        {
+            //System.out.println("liveBtn");
+            jFrame.setVisible(false);
+            new LivePersonalTrainingPage();
+        }
         if(e.getSource() == membershipBtn)
-            System.out.println("membershipBtn");
+        {
+            //System.out.println("membershipBtn");
+            jFrame.setVisible(false);
+            new membershipGUI().init();
+        }
     }
 
     /*public class testbtn extends JButton {
