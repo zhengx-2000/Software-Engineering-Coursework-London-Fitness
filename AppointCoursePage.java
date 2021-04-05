@@ -1,7 +1,6 @@
-package Project;
+//package Project;
 
 //page Appoint Course Page
-
 //import javax.annotation.Resources;
 import javax.swing.*;
 import java.awt.*;
@@ -13,9 +12,11 @@ public class AppointCoursePage {
 
 	private final JFrame jf = new JFrame("Appoint Course Page");
 	final int WIDTH = 475;
-	final int HEIGHT = 525;
- 
-	public void init() {
+	final int HEIGHT = 625;
+	
+	public AppointCoursePage(){
+	
+	//public void init() {
 		try {
 			//设置窗口界面大小
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -101,9 +102,12 @@ public class AppointCoursePage {
 			JButton loginBtn = new JButton("submit");
 			loginBtn.setName("submitBtn");//提交选择的教练信息
 			loginBtn.addActionListener(new MyActionListener());
-			JButton homeBtn = new JButton("Back");//返回上一界面
+			
+			//返回上一界面的button
+			JButton homeBtn = new JButton("Back");
 			homeBtn.setName("homeBtn");
 			homeBtn.addActionListener(new MyActionListener());
+			
 			btnBox.add(loginBtn);
 			btnBox.add(Box.createHorizontalStrut(80));
 			btnBox.add(homeBtn);
@@ -123,30 +127,39 @@ public class AppointCoursePage {
 			vBox.add(remarkBox);                        
             vBox.add(Box.createVerticalStrut(30));
 			vBox.add(btnBox);
-            jf.add(vBox);
+            JPanel jp=new JPanel();
+			jp.setBackground(Color.WHITE);
+			jp.add(vBox);
+			jf.add(jp);
 
+			//vBox.setBackground(Color.WHITE);
+			//jf.setBackground(Color.white);
             jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//关闭窗口
 			jf.setVisible(true);//可见
 		} catch (Exception e) {
-			e.printStackTrace();
+				e.printStackTrace();
 		}
 	}
  
 	//自定义监听类
 	private class MyActionListener implements ActionListener {
-		@Override
+		//@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton button = (JButton) e.getSource();
 			String name = button.getName();
 			switch (name) {
+				//提交选择的教练信息
 				case "submitBtn":
 					//使用消息对话框
-					//JOptionPane.showMessageDialog(jf, "主界面");
-					//提交教练信息
+					//JOptionPane.showMessageDialog(jf, "主界面");					
+					new paymentGUI().init(1); 
+					jf.setVisible(false);
 					break;
+				//back回到主界面
 				case "homeBtn":
+					new LivePersonalTrainingPage(); 
 					//JOptionPane.showMessageDialog(jf, "主界面");
-					//以游客状态去主界面
+					jf.setVisible(false);
 					break;
 				default:
 					break;
@@ -155,7 +168,7 @@ public class AppointCoursePage {
 	}
  
 	public static void main(String[] args) {
-		new AppointCoursePage().init();
+		new AppointCoursePage();
 	}
 }
 
@@ -169,7 +182,4 @@ javax.swing.JComboBox<类型>。
 ...
 JComboBox<String> comBox = new JComboBox<String>( );
 
-comBox.addItem("123");
-————————————————
-版权声明：本文为CSDN博主「qq_35191331」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/qq_35191331/article/details/55806624*/ 
+comBox.addItem("123");*/
