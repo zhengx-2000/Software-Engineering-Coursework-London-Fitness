@@ -7,7 +7,7 @@ import java.awt.event.*;
 /**
  * A simple GUI for the welcome page(main page)
  * @author Xiao Zheng
- * @version 1.2
+ * @version 1.2.1
  * @since 4/6/2021
  */
 public class Welcome extends JFrame implements ActionListener {
@@ -84,8 +84,8 @@ public class Welcome extends JFrame implements ActionListener {
         searchBtn = new JButton("Search");
         searchBtn.setFont(btn);
         //searchBtn.setContentAreaFilled(false);
-        searchBtn.setBackground(new Color(242, 215, 146));
-        searchBtn.setForeground(Color.WHITE);
+        searchBtn.setForeground(new Color(242, 215, 146));
+        searchBtn.setBackground(Color.WHITE);
         searchBtn.addActionListener(this);
         searchPanel.setBackground(Color.WHITE);
         searchPanel.add(search);
