@@ -7,11 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
- 
+import javax.swing.border.EmptyBorder;
 public class SignIn {
 	private final JFrame jf = new JFrame("Sign In Page");
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
+	Font btn = new Font("Georgia", Font.BOLD, 13);
 	JTextField uField = new JTextField();
 	JTextField pField = new JTextField();
 	public	int state=0;//state 0=�ο�;1=��¼��ͨ��Ա;2=�¶�VIP;3=����VIP;4=���VIP
@@ -20,6 +21,7 @@ public class SignIn {
 	
 	public void init() {
 		try {
+			jf.getContentPane().setBackground(new Color(250,240,215));
 			//��ȡ���Խ���
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			int sw = screenSize.width;
@@ -29,13 +31,14 @@ public class SignIn {
 			jf.setResizable(false);
 			//���ò���
 			jf.setLayout(new FlowLayout());
+			jf.setBackground(new Color(250,240,215));
 			//�������
 			Box vBox = Box.createVerticalBox();
 			
 			//photo��Ŀ
 			Box photoBox = Box.createHorizontalBox();
 			JLabel photo = new JLabel();
-	        ImageIcon logoIcon = new ImageIcon(new ImageIcon("image/photo.png").getImage().getScaledInstance(110, 100, Image.SCALE_SMOOTH));
+	        ImageIcon logoIcon = new ImageIcon(new ImageIcon("image/boy.png").getImage().getScaledInstance(110, 100, Image.SCALE_SMOOTH));
 	        photo.setIcon(logoIcon);
 			//�ڲ����������������ʹ��ռλ��������ͬ����
 	        photoBox.add(Box.createHorizontalStrut(110));//photo��߿ճ�110�ľ���
@@ -45,8 +48,11 @@ public class SignIn {
 			
 			//ID��Ŀ
 			Box uBox = Box.createHorizontalBox();
-			JLabel uLabel = new JLabel("ID:              ");
+			JLabel uLabel = new JLabel("ID:                ");
+			uLabel.setFont(btn);
 			uField = new JTextField(25);
+			uField.setPreferredSize(new Dimension (25,25));
+			uField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250,240,215)));
 			//�ڲ����������������ʹ��ռλ��������ͬ����
 			uBox.add(uLabel);
 			uBox.add(Box.createHorizontalStrut(20));
@@ -56,6 +62,9 @@ public class SignIn {
 			Box pBox = Box.createHorizontalBox();
 			JLabel pLabel = new JLabel("PassWord:");
 			pField = new JTextField(25);
+			pLabel.setFont(btn);
+			pField.setPreferredSize(new Dimension (25,25));
+			pField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250,240,215)));
 			pBox.add(pLabel);
 			pBox.add(Box.createHorizontalStrut(20));
 			pBox.add(pField);
@@ -64,26 +73,36 @@ public class SignIn {
 			Box btnBox = Box.createHorizontalBox();
 			//����button�ͼ����¼�
 			JButton loginBtn = new JButton("OK");
+			loginBtn.setBackground(new Color(242,215,146));
+			loginBtn.setBorder(new EmptyBorder(5, 17, 5, 17));
 			loginBtn.setName("loginBtn");//��¼״̬����������
 			loginBtn.addActionListener(new MyActionListener());
-			JButton homeBtn = new JButton("Back");//�ο�״̬����������
-			homeBtn.setName("homeBtn");
-			homeBtn.addActionListener(new MyActionListener());
+			// JButton homeBtn = new JButton("Back");//�ο�״̬����������
+			// homeBtn.setName("homeBtn");
+			// homeBtn.setBackground(new Color(255,165,0));
+			// homeBtn.setBorder(new EmptyBorder(5, 17, 5, 17));
+			// homeBtn.addActionListener(new MyActionListener());
+			//btnBox.add(homeBtn);
 			btnBox.add(loginBtn);
-			btnBox.add(Box.createHorizontalStrut(40));
-			btnBox.add(homeBtn);
+			btnBox.add(Box.createHorizontalStrut(0));
+			
  
 			//�˵���Ŀ
 			Box menuBox = Box.createHorizontalBox();
 			//���Ӳ˵���ͼ����¼�
 			JMenuBar jmb=new JMenuBar();;	//����˵���
-			JMenuItem jm1=new JMenuItem("Sign In");	//�����˵�
+			JMenuItem jm1=new JMenuItem("Sign In");	
+			jm1.setFont(btn);
+			jm1.setBackground(new Color(250,240,215));
 			jm1.setBounds(20, 5, 5, 1);
 			jm1.setName("In");
+			jmb.setBorder(BorderFactory.createLineBorder(new Color(242,215,146),0));
 			jm1.addActionListener(new ViewAction());
 			JMenuItem jm2=new JMenuItem("Sign Up");	//�����˵�
 			jm1.setBounds(30, 5, 5, 1);
 			jm2.setName("Up");
+			jm2.setFont(btn);
+			jm2.setBackground(new Color(250,240,215));
 			jm2.addActionListener(new ViewAction());
 			jmb.add(jm1);	//�Ѳ˵����ӵ��˵�����
 			jmb.add(jm2);
