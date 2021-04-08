@@ -18,6 +18,7 @@ public class Welcome extends JFrame implements ActionListener {
     private JTextField search;
     private final int WIDTH = 475;
 	private final int HEIGHT = 625;
+    private final Color BACKGROUND = new Color(242, 215, 146);
 
     /**
      * The constructor of Welcome.java
@@ -84,7 +85,7 @@ public class Welcome extends JFrame implements ActionListener {
         searchBtn = new JButton("Search");
         searchBtn.setFont(btn);
         //searchBtn.setContentAreaFilled(false);
-        searchBtn.setForeground(new Color(242, 215, 146));
+        searchBtn.setForeground(BACKGROUND);
         searchBtn.setBackground(Color.WHITE);
         searchBtn.addActionListener(this);
         searchPanel.setBackground(Color.WHITE);
