@@ -165,6 +165,8 @@ public class SignIn {
 							state=1;//���ø��û�״̬Ϊ��ͨ��¼�ο�
 							//ʹ����Ϣ�Ի���
 							JOptionPane.showMessageDialog(jf,"Login Sucessfully!");
+							membershipGUI member=new membershipGUI();
+							member.saveId(I);
 							jf.setVisible(false);
 							new Welcome();
 							//��ת������

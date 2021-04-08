@@ -6,16 +6,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.InputStream;
+import javax.imageio.ImageIO;
 
  
 public class paymentGUI {
 	private final JFrame paymentPage = new JFrame("Payment Page");
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
-
+	Font myFont1 = new Font("Georgia", Font.BOLD, 15);
+	Font myFont2 = new Font("Georgia", Font.BOLD, 12);
  
 	public void init(int i) {
 		try {
+			paymentPage.getContentPane().setBackground(new Color(250,240,215));
 			//获取登录界面
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			int sw = screenSize.width;
@@ -34,10 +37,14 @@ public class paymentGUI {
 			//标题栏
 			Box reminderBox =Box.createHorizontalBox();
 			JLabel note = new JLabel("Please Choose Payment Method");
+			note.setFont(myFont1);
+
 			reminderBox.add(note);
 			//visa栏目		
 			Box visaBox = Box.createHorizontalBox();
 			JRadioButton selection1 = new JRadioButton("visa");
+			selection1.setBackground(new Color(250,240,215));
+			selection1.setFont(myFont2);
 			visaBox.add(selection1);
 
 			//visa photo栏目
@@ -49,6 +56,8 @@ public class paymentGUI {
 	        //paypal栏目
 	        Box paypalBox = Box.createHorizontalBox();
 			JRadioButton selection2 = new JRadioButton("PayPal");
+			selection2.setBackground(new Color(250,240,215));
+			selection2.setFont(myFont2);
 			paypalBox.add(selection2);
 			
 			//buttongroup
@@ -72,22 +81,28 @@ public class paymentGUI {
 			Box btnBox = Box.createHorizontalBox();
 			//添加button和监听事件
 			JButton pay = new JButton("OK");
+			pay.setBackground(new Color(255,206,95));
+			pay.setForeground(Color.white);
 			pay.setName("payTheBill");//登录状态返回主界面
+			pay.setFont(myFont2);
 			pay.addActionListener(new newWindow());
 			JButton homeBtn = new JButton("Back");//游客状态返回主界面
+			homeBtn.setFont(myFont2);
+			homeBtn.setBackground(new Color(255,206,95));
 			homeBtn.setName("homeBtn");
+			homeBtn.setForeground(Color.white);
 			homeBtn.addActionListener(new newWindow());
 			btnBox.add(pay);
-			btnBox.add(Box.createHorizontalStrut(80));
+			btnBox.add(Box.createHorizontalStrut(60));
 			btnBox.add(homeBtn);
 			
-			vBox.add(Box.createVerticalStrut(15));
+			vBox.add(Box.createVerticalStrut(20));
 			vBox.add(reminderBox);
-			vBox.add(Box.createVerticalStrut(10));
+			vBox.add(Box.createVerticalStrut(30));
 			vBox.add(visaBox);
 			vBox.add(Box.createVerticalStrut(5));
 			vBox.add(visaPhotoBox);
-			vBox.add(Box.createVerticalStrut(20));
+			vBox.add(Box.createVerticalStrut(40));
 			vBox.add(paypalBox);
 			vBox.add(Box.createVerticalStrut(5));
 			vBox.add(paypalPhotoBox);

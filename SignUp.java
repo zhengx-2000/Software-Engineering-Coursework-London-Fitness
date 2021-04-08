@@ -226,7 +226,7 @@ public class SignUp {
 							try {
 								
 								String Phone = phField.getText();//��ȡ�ı���������
-								String Email = pField.getText();//��ȡ�ı���������
+								String Email = emField.getText();//��ȡ�ı���������
 								System.out.print("One customer signs up.");		
 								SignUpLog  t = new SignUpLog();
 								t.write2file(ID+" "+sex+" "+PassWord+" "+Phone+" "+Email+"  "+0+"\n");
