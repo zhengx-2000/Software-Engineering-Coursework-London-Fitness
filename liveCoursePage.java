@@ -1,4 +1,3 @@
-//package zyjGui;
 
 
 
@@ -14,18 +13,21 @@
 
 	public class liveCoursePage extends JFrame implements ActionListener{
 
-		JLabel label1 = new JLabel("Course Name");	//creates label
+		Font btn = new Font("Georgia", Font.BOLD, 25);
+		
+		JLabel label1 = new JLabel("Live Course");	//creates label
 //		JLabel label2 = new JLabel("Test URL");
 //		JLabel label3 = new JLabel("No. of probes");
 //		JLabel label4 = new JLabel("Histogram");
 //		JLabel label5 = new JLabel("X");
 		JButton button1 = new JButton("Good");
+		
 		JButton button2 = new JButton("Back");				//creates button
 //		JTextField textField = new JTextField(23);				//creates textField
 //		JTextField textField1 = new JTextField();
 //		JTextField textField2 = new JTextField();
 //		JTextField textField3 = new JTextField();
-		JTextArea textArea = new JTextArea("Live Window");		//creates textArea
+//		JTextArea textArea = new JTextArea("Live Window");		//creates textArea
 		
 //		JComboBox type=new JComboBox();							//creates comboBox
 //		JComboBox complexity=new JComboBox();
@@ -44,48 +46,46 @@
 			this.setLayout(null);	
 			
 			
-			JPanel panel1 = new JPanel();						
+			JPanel panel1 = new JPanel();	
+			label1.setFont(btn);
 			panel1.add(label1);									//creates a panel to put label1 on
-			panel1.setBounds(100 , 0 , 400 , 200);					//sets the location of the panel
-			
+			panel1.setBounds(75 , 0 , 325 , 100);					//sets the location of the panel
 		
 			
-			
-//			JPanel panel2 = new JPanel();
-////			panel3.add(label3);
-//			type.addItem("Type");    //�������б�������һ��
-//			type.addItem("HIIT");
-//			type.addItem("Yoga");
-//			type.addItem("Run");
-//			panel2.add(type);									//creates a panel to put label3 and comboBox on
-//			panel2.setBounds(50 , 100 , 200 , 100);				//sets the location of the pane3
-//			
-//		
-//			
-//			JPanel panel3 = new JPanel();						
-//			complexity.addItem("Complexity");    //�������б�������һ��
-//			complexity.addItem("Easy");
-//			complexity.addItem("moderate");
-//			complexity.addItem("Difficulty");
-//			panel3.add(complexity);									//creates a panel to put label3 and comboBox on
-//			panel3.setBounds(400 , 100 , 100 , 100);
-		
 			
 			JPanel panel2 = new JPanel();
-//			button.addActionListener(this);						//adds an actionListener to the button
+			button1.addActionListener(this);					//adds an actionListener to the button
 			panel2.add(button1);									//creates a panel to put button on
-			panel2.setBounds(150 , 700 , 100 , 50);				//sets the location of the pane4
+			panel2.setBounds(125 , 525 , 75 , 75);				//sets the location of the pane4
+			
+			
+
+//			ImageIcon icon = new ImageIcon("dianZan.jpg");
+//	        button1.setIcon(icon);
+			
+			
 			
 			JPanel panel3 = new JPanel();
 			button2.addActionListener(this);						//adds an actionListener to the button
 			panel3.add(button2);									//creates a panel to put button on
-			panel3.setBounds(350 , 700 , 100 , 50);	
+			panel3.setBounds(275 , 525 , 75 , 75);	
 			
 			
 			
-			JPanel panel4 = new JPanel();
-			panel4.add(textArea);								//creates a panel to put textArea on
-			panel4.setBounds(0 , 200 , 600 , 500);				//sets the location of the pane5
+//			JPanel panel4 = new JPanel();
+//			panel4.add(textArea);								//creates a panel to put textArea on
+//			panel4.setBounds(0 , 125 , 475 , 400);				//sets the location of the pane5
+//			
+			
+			ImageIcon icon1 = new ImageIcon("image/live123.jpg");
+        	JLabel labelp2 = new JLabel();	//creates label
+        	labelp2.setIcon(icon1);
+        	
+        	JPanel panel4 = new JPanel();
+        	panel4.add(labelp2);									//creates a panel to put button on
+        	panel4.setBounds(37 , 100 , 400 , 400);
+			
+			
 			
 //			JPanel panel6 = new JPanel();
 //			panel6.add(textArea2);								//creates a panel to put textArea on
@@ -115,75 +115,84 @@
 //			this.add(textField3);
 			this.setTitle("Live Course Page");					//sets the title of the frame
 			
-			setLocation(500,100);								//sets the location of the frame
-	        setSize(600, 900);									//sets the size of the frame
+			setLocation(0,0);								//sets the location of the frame
+	        setSize(475, 625);									//sets the size of the frame
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		//sets default close operation
+	        setResizable(false);
 	        setVisible(true);									//sets the visible
 	     
 	        
 		}
 		
 		
-		 public void actionPerformed(ActionEvent e){		//actionPerformed
-	 			
-//			 Integer number;																
-//			 number = (Integer) cmb.getSelectedItem();		//gets the item selected in the comboBox
-//			 String inputAddress;
-//			 inputAddress = textField.getText();			//gets the input address
+		public void actionPerformed(ActionEvent e) {
+			JButton eventSource = (JButton) e.getSource();
+			if (eventSource.equals(button1)) {
+				
+				ImageIcon icon = new ImageIcon("image/dianZan.jpg");
+	        	JLabel labelp1 = new JLabel();	//creates label
+	        	labelp1.setIcon(icon);
+	        	
+	        	JPanel panelp1 = new JPanel();
+	        	panelp1.add(labelp1);									//creates a panel to put button on
+	        	panelp1.setBounds(50 , 525 , 75 , 75);	
+	        	
+
+	        	this.add(panelp1);
+	        	
+	        	setVisible(true);
+				
+				
+			} else if (eventSource.equals(button2)) {
+				
+				this.setVisible(false);
+				 
+				new Welcome();
+				
+				
+			}
+		}
 		
-			 
-		this.setVisible(false);	
-		new Welcome();
-			 
-			 
-			
-			 
-			 
-			 
-			 
-//			 ע�� �ڴ˴� ��Ҫ����֣���welcome ����ͬһ��class����
-//			 ���滻�� ���波�Ե� test123
-			 
-			
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-//			 try {
-////				 
-////				 
-//////				 getPing(inputAddress , number);			//calling method getPing()
-////				
-//				 welcome();							//calling method getHistogram()
-//
-//				
-//			} catch (IOException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			} catch (InterruptedException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
+		
+		
+		
+		
+//		 public void actionPerformed(ActionEvent e){		//actionPerformed
+//	 			
+////			 Integer number;																
+////			 number = (Integer) cmb.getSelectedItem();		//gets the item selected in the comboBox
+////			 String inputAddress;
+////			 inputAddress = textField.getText();			//gets the input address
+//		
+//			 this.setVisible(false);
 //			 
-		 }
-		 
-		//  public void changshiyixia()
-		//  {
-		// 	 System.out.println("hello");
-		//  }
-		
-		
-		
+//			 liveCoursePage test123 = new liveCoursePage();
+//			 
+//			 
+//			 
+////			 ע�� �ڴ˴� ��Ҫ����֣���welcome ����ͬһ��class����
+////			 ���滻�� ���波�Ե� test123
+//			 
+//			
+//			 
+//			 
+////			 try {
+//////				 
+//////				 
+////////				 getPing(inputAddress , number);			//calling method getPing()
+//////				
+////				 welcome();							//calling method getHistogram()
+////
+////				
+////			} catch (IOException e1) {
+////				// TODO Auto-generated catch block
+////				e1.printStackTrace();
+////			} catch (InterruptedException e1) {
+////				// TODO Auto-generated catch block
+////				e1.printStackTrace();
+////			}
+////			 
+//		 }
 			
 			public static void main(String[] args) {
 				new liveCoursePage();								//create a new object

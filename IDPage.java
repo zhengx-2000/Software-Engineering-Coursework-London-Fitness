@@ -12,6 +12,7 @@ public class IDPage {
  
 	public void init() {
 		try {
+			jf.getContentPane().setBackground(new Color(250,240,215));
 			//获取登录界面
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			int sw = screenSize.width;
@@ -62,29 +63,26 @@ public class IDPage {
 			
 			//Physical States栏目
 			Box psBox = Box.createHorizontalBox();
-			JLabel cqLabel = new JLabel("Physical States");
+			JLabel cqLabel = new JLabel("Physical States                                                                    ");
 			psBox.add(cqLabel);
 			psBox.add(Box.createHorizontalStrut(10));
 			//My Appointment栏目
 			Box maBox = Box.createHorizontalBox();
-			JLabel q1Label = new JLabel("My Appointment");
-			maBox.add(q1Label);
-			maBox.add(Box.createHorizontalStrut(10));
-			//Go to Live按钮
-			Box gtlBox = Box.createHorizontalBox();
+			JLabel q1Label = new JLabel("My Appointment                             ");
 			JButton goToLivebtn = new JButton("Go to live course");
 			goToLivebtn.setName("goToLivebtn");
 			goToLivebtn.addActionListener(new MyActionListener());
-			gtlBox.add(goToLivebtn);
-			gtlBox.add(Box.createHorizontalStrut(10));
+			maBox.add(q1Label);
+			maBox.add(goToLivebtn);
+			maBox.add(Box.createHorizontalStrut(10));
 			//Videos Record栏目
 			Box vdBox = Box.createHorizontalBox();
-			JLabel q2Label = new JLabel("Videos Records");
+			JLabel q2Label = new JLabel("Videos Records                                                                    ");
 			vdBox.add(q2Label);
 			vdBox.add(Box.createHorizontalStrut(10));
 			//My Concumption栏目
 			Box mcBox = Box.createHorizontalBox();
-			JLabel q3Label = new JLabel("My Consumption");
+			JLabel q3Label = new JLabel("My Consumption                                                                  ");
 			mcBox.add(q3Label);
 			mcBox.add(Box.createHorizontalStrut(10));
 			//Back Button栏目
@@ -100,10 +98,8 @@ public class IDPage {
 			vBox.add(oqBox);
 			vBox.add(Box.createVerticalStrut(35));
 			vBox.add(psBox);
-			vBox.add(Box.createVerticalStrut(20));
+			vBox.add(Box.createVerticalStrut(35));
 			vBox.add(maBox);
-			vBox.add(Box.createVerticalStrut(10));
-			vBox.add(gtlBox);
 			vBox.add(Box.createVerticalStrut(35));
 			vBox.add(vdBox);
 			vBox.add(Box.createVerticalStrut(35));

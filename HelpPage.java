@@ -12,6 +12,7 @@ public class HelpPage {
  
 	public void init() {
 		try {
+			jf.getContentPane().setBackground(new Color(250,240,215));
 			//跳转帮助界面
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			int sw = screenSize.width;
@@ -28,34 +29,58 @@ public class HelpPage {
 			Box cqBox = Box.createHorizontalBox();
 			JLabel cqLabel = new JLabel("Common Questions");
 			cqBox.add(cqLabel);
-			cqBox.add(Box.createHorizontalStrut(20));
+			cqBox.add(Box.createHorizontalStrut(10));
 			//Q1栏目
 			Box q1Box = Box.createHorizontalBox();
 			JLabel q1Label = new JLabel("Q1：                                       A paragraph of...");
 			q1Box.add(q1Label);
-			q1Box.add(Box.createHorizontalStrut(20));
+			q1Box.add(Box.createHorizontalStrut(10));
+
+			Box a1Box = Box.createHorizontalBox();
+			JLabel a1Label = new JLabel("A1：                                       A paragraph of...");
+			a1Box.add(a1Label);
+			a1Box.add(Box.createHorizontalStrut(10));
+
 			//Q2栏目
 			Box q2Box = Box.createHorizontalBox();
 			JLabel q2Label = new JLabel("Q2：                                       A paragraph of...");
 			q2Box.add(q2Label);
-			q2Box.add(Box.createHorizontalStrut(20));
+			q2Box.add(Box.createHorizontalStrut(10));
+
+			Box a2Box = Box.createHorizontalBox();
+			JLabel a2Label = new JLabel("A2：                                       A paragraph of...");
+			a2Box.add(a2Label);
+			a2Box.add(Box.createHorizontalStrut(10));
+
 			//Q3栏目
 			Box q3Box = Box.createHorizontalBox();
 			JLabel q3Label = new JLabel("Q3：                                       A paragraph of...");
 			q3Box.add(q3Label);
-			q3Box.add(Box.createHorizontalStrut(20));
+			q3Box.add(Box.createHorizontalStrut(10));
+
+			Box a3Box = Box.createHorizontalBox();
+			JLabel a3Label = new JLabel("A3：                                       A paragraph of...");
+			a3Box.add(a3Label);
+			a3Box.add(Box.createHorizontalStrut(10));
+
 			//Other Question栏目
 			Box oqBox = Box.createHorizontalBox();
-			JLabel uLabel = new JLabel("Other Questions:");
-			JTextField uField = new JTextField(15);
+			JLabel oqLabel = new JLabel("Other Questions:    ");
+			JTextArea oqArea = new JTextArea(10,20);
+			JScrollPane scrollPane = new JScrollPane(oqArea);
+			oqArea.setColumns(20); 
+			oqBox.add(oqLabel);
+			oqBox.add(scrollPane);
+			oqBox.add(Box.createHorizontalStrut(60));
+			//Submit栏目
+			Box subBox = Box.createHorizontalBox();
+			JLabel subLabel = new JLabel("                                                     ");
 			JButton submitbtn = new JButton("Submit");
 			submitbtn.setName("submitbtn");
 			submitbtn.addActionListener(new MyActionListener());
-			oqBox.add(uLabel);
-			oqBox.add(Box.createHorizontalStrut(20));
-			oqBox.add(uField);
-			oqBox.add(submitbtn);
-			oqBox.add(Box.createHorizontalStrut(60));
+			subBox.add(subLabel);
+			subBox.add(submitbtn);
+			subBox.add(Box.createHorizontalStrut(60));
 			//Back Button栏目
 			Box btnBox = Box.createHorizontalBox();
 			JButton backbtn = new JButton("Back");
@@ -67,14 +92,22 @@ public class HelpPage {
 			//添加小组件到大组件
 			hBox.add(Box.createVerticalStrut(50));
 			hBox.add(cqBox);
-			hBox.add(Box.createVerticalStrut(50));
+			hBox.add(Box.createVerticalStrut(25));
 			hBox.add(q1Box);
-			hBox.add(Box.createVerticalStrut(50));
+			hBox.add(Box.createVerticalStrut(25));
+			hBox.add(a1Box);
+			hBox.add(Box.createVerticalStrut(25));
 			hBox.add(q2Box);
-			hBox.add(Box.createVerticalStrut(50));
+			hBox.add(Box.createVerticalStrut(25));
+			hBox.add(a2Box);
+			hBox.add(Box.createVerticalStrut(25));
 			hBox.add(q3Box);
-			hBox.add(Box.createVerticalStrut(50));
+			hBox.add(Box.createVerticalStrut(25));
+			hBox.add(a3Box);
+			hBox.add(Box.createVerticalStrut(40));
 			hBox.add(oqBox);
+			hBox.add(Box.createVerticalStrut(10));
+			hBox.add(subBox);
 			hBox.add(Box.createVerticalStrut(50));
 			hBox.add(btnBox);
 
@@ -94,7 +127,7 @@ public class HelpPage {
 			String name = button.getName();
 			switch (name) {
 				case "submitbtn":
-				//
+					JOptionPane.showMessageDialog(jf,"Submit Sucessfully!");
 					break;
 				case "backbtn":
 				{

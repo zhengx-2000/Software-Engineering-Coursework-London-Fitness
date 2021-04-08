@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb3c2a64-d266-4c1c-9b7e-f1a57ba36d1d" name="默认变更列表" comment="" />
+    <list default="true" id="bb3c2a64-d266-4c1c-9b7e-f1a57ba36d1d" name="默认变更列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelpPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/HelpPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IDPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/IDPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digitalWorkOutVideosPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/digitalWorkOutVideosPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liveCoursePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/liveCoursePage.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
