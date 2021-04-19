@@ -4,22 +4,63 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class LivePersonalTrainingPage {
     private final JFrame jf = new JFrame("Live Personal Training Page");
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
-	Color color = new Color(242,215,146);
-	Color backgroundColor = new Color(250,240,215);
-    
+	
+	Font font1 = new Font("Georgia", Font.BOLD, 13);					//character format
+	Color color = new Color(242,215,146);								//character color
+	Color backgroundColor = new Color(250,240,215);						//background color
+    String initialTextContent = "Please choose your aim first... ";		//original word in textArea
+ 
+    JComboBox<String> aimComboBox = new JComboBox<String>();			// creates aim comboBox
+
+	//添加总box
+	Box vBox = Box.createVerticalBox();
+			
+	//search button栏目
+    Box searchBox = Box.createHorizontalBox();
+	JPanel searchPanel = new JPanel();
+	JLabel AimLabel = new JLabel("Aim:  ");
+	JButton searchBtn = new JButton("Search");							//search trainer botton
+
+	//trainer1栏目
+	Box trainerBox1 = Box.createHorizontalBox();
+	JPanel trainerPanel1 = new JPanel();
+	JLabel trainerLabel1 = new JLabel("trainer1:              "+ "\n");       
+	JTextArea trainerTextArea1 = new JTextArea(initialTextContent,6,20);
+	//trainer2栏目
+	Box trainerBox2 = Box.createHorizontalBox();
+	JPanel trainerPanel2 = new JPanel();
+	JLabel trainerLabel2 = new JLabel("trainer2:              "+ "\n");
+    JTextArea trainerTextArea2 = new JTextArea(initialTextContent,6,20);	
+
+	//trainer3栏目
+	Box trainerBox3 = Box.createHorizontalBox();
+	JPanel trainerPanel3 = new JPanel();
+	JLabel trainerLabel3 = new JLabel("trainer3:              "+ "\n");
+	JTextArea trainerTextArea3 = new JTextArea(initialTextContent,6,20);
+	//String aimContent = (String) aimComboBox.getSelectedItem();
+	//Menu跳转教练和预约界面
+	Box menuBox = Box.createHorizontalBox();
+	JMenuBar jmb=new JMenuBar();;				
+	JMenuItem jm1=new JMenuItem("Introduction for Trainer 	 |");
+	JMenuItem jm2=new JMenuItem(" Appoint a Course");
+
+	JButton backBtn = new JButton("Back");								// back to main interface botton
+
 	public LivePersonalTrainingPage(){
-    //public void init() {
         try{
-            //设置窗口界面大小
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//import java.awt.*;就可用了
+
+            //windows
+			//set the size of windows
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			int sw = screenSize.width;
 			int sh = screenSize.height;
-			//设置整个窗口界面居中显示
+			//Sets the entire window interface to be centered
 			jf.setBounds((sw - WIDTH) / 2, (sh - HEIGHT) / 2, WIDTH, HEIGHT);
 			//不可以变size
             //jf.setResizable(false);
@@ -27,144 +68,146 @@ public class LivePersonalTrainingPage {
 			jf.setLayout(new GridLayout());
 			jf.getContentPane().setBackground(backgroundColor);
             
-            //添加组件
-			Box vBox = Box.createVerticalBox();
-			Font font1 = new Font("Georgia", Font.BOLD, 13);
+            
+			//search button栏目
+			//searchPanel声明和背景字体设置
+			searchPanel.setFont(font1);
+            searchPanel.setBackground(backgroundColor);
+			
+			//AimLabel 声明和字体设置
+			AimLabel.setFont(font1);
+			
+			//item of aimComboBox
+            aimComboBox.addItem("aim");    
+            aimComboBox.addItem("Lose weight");
+            aimComboBox.addItem("Shape and Fitness");					
+            
+			//搜索按钮格式 ，添加button和监听事件
+            searchBtn.setName("searchBtn");
+			searchBtn.setFont(font1);
+			searchBtn.setBackground(color);
+			searchBtn.addActionListener(new MyActionListener()); 
 
-            //lose weight 标题
-            Box loseWeightBox = Box.createVerticalBox();
-            JLabel loseWeightLabel = new JLabel("Lose Weight", JLabel.CENTER);
-			loseWeightLabel.setFont(font1);
-			//loseWeightBox.add(Box.createHorizontalStrut(10));
-			loseWeightBox.add(loseWeightLabel);
-			//loseWeightBox.add(Box.createHorizontalStrut(10));
+			//searchPanel平面有aim标题，可选择的comboBox，和搜索按钮
+            searchPanel.add(AimLabel);
+            searchPanel.add(Box.createHorizontalStrut(40));
+            searchPanel.add(aimComboBox);     
+            searchPanel.add(Box.createHorizontalStrut(20));
+			searchPanel.add(searchBtn);
+			searchBox.add(searchPanel);
+			searchBox.add(Box.createHorizontalStrut(50));
+     
+			//trainer1栏目	
+			//trainerPanel1声明和背景字体设置
+			trainerPanel1.setFont(font1);
+            trainerPanel1.setBackground(backgroundColor);
 
-            //trainer1栏目
-			Box trainerBox1 = Box.createHorizontalBox();//
-			JLabel trainerLabel1 = new JLabel("trainer1:              "+ "\n");
+			//trainerLabel1 声明和字体设置
 			trainerLabel1.setFont(font1);
-			JTextField trainerField1 = new JTextField(15);
-			//在布局中添加组件，并使用占位符--保留行/列直间的位置（以下同理）
-			trainerBox1.add(Box.createHorizontalStrut(20));  
-			trainerBox1.add(trainerLabel1);
-			trainerBox1.add(trainerField1);
-			trainerBox1.add(Box.createHorizontalStrut(20));  
 
-            //trainer2栏目
-			Box trainerBox2 = Box.createHorizontalBox();//
-			JLabel trainerLabel2 = new JLabel("trainer2:              "+ "\n");
-			trainerLabel2.setFont(font1);
-			JTextField trainerField2 = new JTextField(15);
-			//在布局中添加组件，并使用占位符（以下同理）
-			trainerBox2.add(Box.createHorizontalStrut(20));  
-			trainerBox2.add(trainerLabel2);
-			trainerBox2.add(trainerField2);
-			trainerBox2.add(Box.createHorizontalStrut(20));
+			//trainerTextArea1背景字体设置
+			trainerTextArea1.setFont(font1);
+            trainerTextArea1.setBackground(backgroundColor);
 
-            //trainer3栏目
-			Box trainerBox3 = Box.createHorizontalBox();//
-			JLabel trainerLabel3 = new JLabel("trainer3:              "+ "\n");
+			//trainerPanel1有trainerLabel1和trainerTextArea1
+			trainerPanel1.add(Box.createVerticalStrut(30));
+			trainerPanel1.add(trainerLabel1);
+			trainerPanel1.add(trainerTextArea1);
+            trainerBox1.add(trainerPanel1);
+			trainerBox1.add(Box.createHorizontalStrut(50));  
+
+			//trainer2栏目
+			//trainerPanel2声明和背景字体设置
+			trainerPanel2.setFont(font1);
+            trainerPanel2.setBackground(backgroundColor);
+
+			//trainerLabel2 声明和字体设置
+			trainerLabel2.setFont(font1);            
+
+			//trainerTextArea2背景字体设置
+			trainerTextArea2.setFont(font1);
+            trainerTextArea2.setBackground(backgroundColor);
+
+			//trainerPanel2有trainerLabel2和trainerTextArea2
+			trainerPanel2.add(Box.createVerticalStrut(30));
+			trainerPanel2.add(trainerLabel2);
+			trainerPanel2.add(trainerTextArea2);
+			trainerBox2.add(trainerPanel2);  		
+			trainerBox2.add(Box.createHorizontalStrut(50));
+
+
+			//trainer3栏目
+			//trainerPanel3声明和背景字体设置
+			trainerPanel3.setFont(font1);
+            trainerPanel3.setBackground(backgroundColor);
+
+			//trainerLabel3 声明和字体设置
 			trainerLabel3.setFont(font1);
-			JTextField trainerField3 = new JTextField(15);
-			//在布局中添加组件，并使用占位符（以下同理）
-			trainerBox3.add(Box.createHorizontalStrut(20));
-			trainerBox3.add(trainerLabel3);
-			trainerBox3.add(trainerField3);
-			trainerBox3.add(Box.createHorizontalStrut(20));
 
-            //Shape and Fitness 标题
-            Box shapeAndFitnessBox = Box.createVerticalBox();
-            JLabel shapeAndFitnessLabel = new JLabel("Shape and Fitness", JLabel.CENTER);
-			shapeAndFitnessLabel.setFont(font1);
-			shapeAndFitnessBox.add(shapeAndFitnessLabel);
-			//shapeAndFitnessBox.add(Box.createHorizontalStrut(20));
-            
-            //trainer4栏目
-			Box trainerBox4 = Box.createHorizontalBox();//
-			JLabel trainerLabel4 = new JLabel("trainer1:              "+ "\n");
-			trainerLabel4.setFont(font1);
-			JTextField trainerField4 = new JTextField(15);
-			//在布局中添加组件，并使用占位符--保留行/列直间的位置（以下同理）
-			trainerBox4.add(Box.createHorizontalStrut(20));
-			trainerBox4.add(trainerLabel4);
-			trainerBox4.add(trainerField4);
-			trainerBox4.add(Box.createHorizontalStrut(20));
-            
-            //trainer5栏目
-			Box trainerBox5 = Box.createHorizontalBox();//
-			JLabel trainerLabel5 = new JLabel("trainer2:              "+ "\n");
-			trainerLabel5.setFont(font1);
-			JTextField trainerField5 = new JTextField(15);
-			//在布局中添加组件，并使用占位符--保留行/列直间的位置（以下同理）
-			trainerBox5.add(Box.createHorizontalStrut(20));
-			trainerBox5.add(trainerLabel5);
-			trainerBox5.add(trainerField5);
-			trainerBox5.add(Box.createHorizontalStrut(20));
-            
-/*          //Introduction for Trainer Appoint a Course 标题
-            Box IntroductionBox = Box.createVerticalBox();
-            JLabel IntroductionLabel = new JLabel("Introduction for Trainer | Appoint a Course", JLabel.CENTER);
-			IntroductionBox.add(IntroductionLabel);
-*/			//IntroductionBox.add(Box.createHorizontalStrut(20));
-
-			Box menuBox = Box.createHorizontalBox();
-			//���Ӳ˵���ͼ����¼�
-			JMenuBar jmb=new JMenuBar();;	//����˵���
-			JMenuItem jm1=new JMenuItem("Introduction for Trainer 	 |");
+			//trainerTextArea3背景字体设置
+            trainerTextArea3.setFont(font1);
+            trainerTextArea3.setBackground(backgroundColor);
+			
+			//trainerPanel1有trainerLabel1和trainerTextArea1
+			trainerPanel3.add(Box.createVerticalStrut(30));
+			trainerPanel3.add(trainerLabel3);
+			trainerPanel3.add(trainerTextArea3);
+            trainerBox3.add(trainerPanel3);
+			trainerBox3.add(Box.createHorizontalStrut(50));
+			
+			//Menu跳转教练和预约界面
 			jm1.setFont(font1);
 			//jm1.setBounds(30, 490, 400, 30);
 			jm1.setName("Trainer");
 			jm1.addActionListener(new ViewAction());
 			jm1.setBackground(backgroundColor);
-			JMenuItem jm2=new JMenuItem(" Appoint a Course");
+			
 			jm2.setFont(font1);
 			jm2.setBackground(backgroundColor);
 			//jm2.setBounds(230, 490, 400, 30);
 			jm2.setName("Appoint");
 			jm2.addActionListener(new ViewAction());
 			//jmb.add(Box.createHorizontalStrut(25));
+			
 			jmb.add(jm1);
 			jmb.add(jm2);
-			menuBox.add(Box.createHorizontalStrut(70));
+			
+			menuBox.add(Box.createHorizontalStrut(50));
 			menuBox.add(jmb);
 			menuBox.add(Box.createHorizontalStrut(20));
 
-            //button栏目
+            //back button栏目
 			Box backBox = Box.createHorizontalBox();
-			//添加button和监听事件
-			JButton backBtn = new JButton("Back");//返回主界面
+			//设背景和字体，添加button和监听事件
 			backBtn.setName("backBtn");
 			backBtn.setFont(font1);
 			backBtn.setBackground(color);
 			backBtn.addActionListener(new MyActionListener());
 			backBox.add(backBtn);
 			backBox.add(Box.createHorizontalStrut(80));
-			//backBox.add(backBtn);
             
             //将组件加入容器
-            vBox.add(Box.createVerticalStrut(10));
-            vBox.add(loseWeightBox);
+            vBox.add(Box.createVerticalStrut(20));
+            vBox.add(searchBox);
+			//vBox.add(searchPanel);			
             vBox.add(Box.createVerticalStrut(20));
 			vBox.add(trainerBox1);
+			//vBox.add(trainerPanel1);
             vBox.add(Box.createVerticalStrut(20));
 			vBox.add(trainerBox2);
+			//vBox.add(trainerPanel2);
             vBox.add(Box.createVerticalStrut(20));
 			vBox.add(trainerBox3);
+			//vBox.add(trainerPanel3);
             vBox.add(Box.createVerticalStrut(20));
-			vBox.add(shapeAndFitnessBox);
-            vBox.add(Box.createVerticalStrut(20));
-			vBox.add(trainerBox4);
-            vBox.add(Box.createVerticalStrut(20));
-			vBox.add(trainerBox5);
-            vBox.add(Box.createVerticalStrut(20));
-			vBox.add(menuBox);                        
-            vBox.add(Box.createVerticalStrut(20));
-            vBox.add(backBtn);
+			vBox.add(menuBox);                    
+            vBox.add(Box.createVerticalStrut(30));
+            vBox.add(backBox);
             jf.add(vBox);
 
             jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//关闭程序
             jf.setVisible(true);//可见
-            //jf.pack();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -174,26 +217,47 @@ public class LivePersonalTrainingPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton button = (JButton) e.getSource();
-			
-			String name = button.getName();
-			switch (name) {
-				//case "loginBtn":
-					//使用消息对话框
-					//JOptionPane.showMessageDialog(jf, "主界面");
-					//以登录状态去主界面
-					//break;
-				case "backBtn":
-					//JOptionPane.showMessageDialog(jf, "主界面");
-					//返回主界面
-					new Welcome(); 
-					jf.setVisible(false);
-					break;
-				default:
-					break;
+            String aimContent = (String) aimComboBox.getSelectedItem();
+			ArrayList<String> trainerInfoList = new ArrayList<String>();
+			ArrayList<Trainer> selectedTrainer = SelectTrainer.select(aimContent);
+            if (button.equals(searchBtn)) {	
+							
+					for(int i=0;i<=selectedTrainer.size();i++){
+						String trainerInfo = selectedTrainer.get(i).getTrainerName() + "\n"+ 
+						selectedTrainer.get(i).getTrainerLicense()+ "\n"+ selectedTrainer.get(i).getTrainerIntro();						
+						trainerInfoList.add(trainerInfo);
+					}
+					trainerTextArea1.setText(trainerInfoList.get(0));
+					trainerTextArea2.setText(trainerInfoList.get(1));
+					//trainerTextArea3.setText("Sam\nGood body\nhave licence in looing weight\n");					
+					trainerTextArea3.setText(trainerInfoList.get(2));	
+				}			
+/*                 if( aimContent=="Lose weight"){
+                    String loseTrainer1 = "Sam\nGood at health diet\nhave licence in looing weight\n";
+					String loseTrainer2 = "Jim\nGood at health diet\nhave licence in looing weight\n";
+					String loseTrainer3 = "Tom\nGood at health diet\nhave licence in looing weight\n";
+                    trainerTextArea1.setText(loseTrainer1);
+					trainerTextArea2.setText(loseTrainer2);
+					trainerTextArea3.setText(loseTrainer3);
+                }else if(aimContent=="Shape and Fitness"){
+					String shapeTrainer1 = "Sam\nGood body\nhave licence in looing weight\n";
+					String shapeTrainer2 = "Jim\nGood body\nhave licence in looing weight\n";
+					String shapeTrainer3 = "Tom\nGood body\nhave licence in looing weight\n";
+                    trainerTextArea1.setText(shapeTrainer1);
+					trainerTextArea2.setText(shapeTrainer2);
+					trainerTextArea3.setText(shapeTrainer3);
+                }*/
+				else if (aimContent == "Type"){
+                    JOptionPane.showMessageDialog(jf,"Must choose a type");
+                }	                
+            	
+				if (button.equals(backBtn)) {				
+				jf.setVisible(false);				 
+				new Welcome();				
 			}
 		}
-	}
-
+    }        
+ 
 	public class ViewAction implements ActionListener {
 		public void actionPerformed(ActionEvent event){
 			JMenuItem jmenu=(JMenuItem)event.getSource();
@@ -209,6 +273,7 @@ public class LivePersonalTrainingPage {
 				}
 		}
 	}
+
     public static void main(String[] args) {
         new LivePersonalTrainingPage();
     }

@@ -12,7 +12,50 @@ public class AppointCoursePage {
 	final int HEIGHT = 625;
 	Color color = new Color(242,215,146);
 	Color backgroundColor = new Color(250,240,215);
+	//设置字体格式
+	Font font1 = new Font("Georgia", Font.BOLD, 13);
 
+	Border boxMaxBorder = new EmptyBorder(50, 10, 30, 10);
+	Box vBox = Box.createVerticalBox();//从左往右
+
+	//trainer栏目 JComboBox
+	Box trainerBox = Box.createHorizontalBox();
+    JLabel trainerLabel = new JLabel("Trainer: ");
+	JComboBox<String> trainer = new JComboBox<String>();
+	
+	//Time栏目
+	Box timeBox = Box.createHorizontalBox();
+	JLabel timeLabel = new JLabel("Time:    ");		
+	JTextField timeField = new JTextField(15);
+    //Aim栏目 JComboBox
+	Box aimBox = Box.createHorizontalBox();
+    JLabel aimLabel = new JLabel("Aim:       ");
+	JComboBox<String> aim = new JComboBox<String>();
+    //Height栏目 JComboBox
+	Box heightBox = Box.createHorizontalBox();
+    JLabel heightLabel = new JLabel("Height:  ");		
+	JComboBox<String> height = new JComboBox<String>();
+	//weight栏目 JComboBox
+	Box weightBox = Box.createHorizontalBox();
+	JLabel weightLabel = new JLabel("Weight:  ");            
+	JComboBox<String> weight = new JComboBox<String>();
+
+	//remark栏目
+	Box remarkBox = Box.createHorizontalBox();
+	JLabel remarkLabel = new JLabel("Remark: ");		
+	JTextField remarkField = new JTextField(30);
+	
+	Box menuBox = Box.createHorizontalBox();
+	JMenuBar jmb=new JMenuBar();;
+	JMenuItem jm1=new JMenuItem("Introduction for Trainer 	 ");
+	JMenuItem jm2=new JMenuItem(" Appoint a Course");
+
+	//button栏目
+	Box btnBox = Box.createHorizontalBox();
+	JButton loginBtn = new JButton("Submit");
+	//返回上一界面的button
+	JButton homeBtn = new JButton("Back");
+	
 	public AppointCoursePage(){
 
 		try {
@@ -30,28 +73,14 @@ public class AppointCoursePage {
 			jf.setLayout(new GridLayout(1,0));
 			jf.getContentPane().setBackground(backgroundColor);
 			//jf.setBackground(color);
-			//设置字体格式
-			Font font1 = new Font("Georgia", Font.BOLD, 13);
-			Border boxMaxBorder = new EmptyBorder(50, 10, 30, 10);
-/*			Border boxComboBoxBorder = new EmptyBorder(0, 0, 20, 0);
-			Border boxTextBorder = new EmptyBorder(0, 20, 20, 20);
-            Border labelBorder = new EmptyBorder(0, 0, 0, 0);
-			//添加最大组件
-			JPanel jp = new JPanel(); 
-			jp.setBackground(color);
-			jp.setLayout(new GridLayout(7,2));
-*/			Box vBox = Box.createVerticalBox();//从左往右
-			vBox.setBorder(boxMaxBorder);
-			//vBox.setBackground(color);		
+			
+
+
+			//总box
+			vBox.setBorder(boxMaxBorder);	
 			
 			//trainer栏目 JComboBox 设置题目和选项的内容、字体
-			Box trainerBox = Box.createHorizontalBox();
-			//trainerBox.setBackground(color);
-			//trainerBox.setBorder(boxComboBoxBorder);
-            JLabel trainerLabel = new JLabel("Trainer: ");
-			//trainerLabel.setBorder(labelBorder);
 			trainerLabel.setFont(font1);
-			JComboBox<String> trainer = new JComboBox<String>();
 			//trainer.setBorder(labelBorder);
 			trainer.setFont(font1);
             trainer.addItem("Please choose...");
@@ -64,14 +93,9 @@ public class AppointCoursePage {
 			trainerBox.add(trainer);
 			trainerBox.add(Box.createVerticalStrut(10));
 			
+
 			//Time栏目
-			Box timeBox = Box.createHorizontalBox();
-			//timeBox.setBackground(color);
-			//timeBox.setBorder(boxTextBorder);
-			JLabel timeLabel = new JLabel("Time:    ");
-			//timeLabel.setBorder(labelBorder);
 			timeLabel.setFont(font1);
-			JTextField timeField = new JTextField(15);
 			//timeField.setBorder(labelBorder);
 			timeField.setFont(font1);
 			timeBox.add(Box.createHorizontalStrut(80));
@@ -80,14 +104,9 @@ public class AppointCoursePage {
 			timeBox.add(timeField);
 			timeBox.add(Box.createHorizontalStrut(80));
 			
-            //Aim栏目 JComboBox
-			Box aimBox = Box.createHorizontalBox();
-			//aimBox.setBackground(color);
-			//aimBox.setBorder(boxComboBoxBorder);
-            JLabel aimLabel = new JLabel("Aim:       ");
-			//aimLabel.setBorder(labelBorder);
+
+			//Aim栏目 JComboBox
 			aimLabel.setFont(font1);
-			JComboBox<String> aim = new JComboBox<String>();
             //aim.setBorder(labelBorder);
 			aim.setFont(font1);
 			aim.addItem("Please choose...");
@@ -100,14 +119,9 @@ public class AppointCoursePage {
 			aimBox.add(aim);
 			aimBox.add(Box.createVerticalStrut(10));
 			
-            //Height栏目 JComboBox
-			Box heightBox = Box.createHorizontalBox();
-			//heightBox.setBackground(color);
-			//heightBox.setBorder(boxComboBoxBorder);
-            JLabel heightLabel = new JLabel("Height:  ");
-			//heightLabel.setBorder(labelBorder);
+
+			//Height栏目 JComboBox
 			heightLabel.setFont(font1);
-			JComboBox<String> height = new JComboBox<String>();
             //height.setBorder(labelBorder);
 			height.setFont(font1);
 			height.addItem("Please choose...");
@@ -120,14 +134,9 @@ public class AppointCoursePage {
 			heightBox.add(height);
 			heightBox.add(Box.createVerticalStrut(10));
 
-            //weight栏目 JComboBox
-            Box weightBox = Box.createHorizontalBox();
-			//weightBox.setBackground(color);
-			//weightBox.setBorder(boxComboBoxBorder);
-            JLabel weightLabel = new JLabel("Weight:  ");
-			//weightLabel.setBorder(labelBorder);
-            weightLabel.setFont(font1);
-			JComboBox<String> weight = new JComboBox<String>();
+
+			//weight栏目 JComboBox
+			weightLabel.setFont(font1);
             weight.setFont(font1);
 			//weight.setBorder(labelBorder);
 			weight.addItem("Please choose...");
@@ -141,13 +150,7 @@ public class AppointCoursePage {
 			weightBox.add(Box.createVerticalStrut(10));
 
 			//remark栏目
-			Box remarkBox = Box.createHorizontalBox();
-			//remarkBox.setBorder(boxTextBorder);
-			//remarkBox.setBackground(color);
-			JLabel remarkLabel = new JLabel("Remark: ");
-			//remarkLabel.setBorder(labelBorder);
 			remarkLabel.setFont(font1);
-			JTextField remarkField = new JTextField(30);
 			//remarkField.setBorder(labelBorder);
 			remarkField.setFont(font1);
 			remarkBox.add(Box.createHorizontalStrut(70));
@@ -159,16 +162,13 @@ public class AppointCoursePage {
 			remarkBox.add(Box.createHorizontalStrut(70));
 
 
-			Box menuBox = Box.createHorizontalBox();
-			//���Ӳ˵���ͼ����¼�
-			JMenuBar jmb=new JMenuBar();;	//����˵���
-			JMenuItem jm1=new JMenuItem("Introduction for Trainer 	 ");
+
 			jm1.setFont(font1);
 			//jm1.setBounds(30, 490, 400, 30);
 			jm1.setName("Trainer");
 			jm1.addActionListener(new ViewAction());
 			jm1.setBackground(backgroundColor);
-			JMenuItem jm2=new JMenuItem(" Appoint a Course");
+
 			jm2.setFont(font1);
 			//jm2.setBounds(230, 490, 400, 30);
 			jm2.setName("Appoint");
@@ -181,18 +181,15 @@ public class AppointCoursePage {
 			menuBox.add(jmb);
 			menuBox.add(Box.createHorizontalStrut(20));
 
-            //button栏目
-			Box btnBox = Box.createHorizontalBox();
-			//btnBox.setBackground(color);
+			//button栏目
 			//提交预约信息，转到支付界面。添加button和监听事件
-			JButton loginBtn = new JButton("Submit");
 			loginBtn.setBackground(color);
 			loginBtn.setFont(font1);
 			loginBtn.setName("submitBtn");//提交选择的教练信息
 			loginBtn.addActionListener(new MyActionListener());
 			
+
 			//返回上一界面的button
-			JButton homeBtn = new JButton("Back");
 			homeBtn.setBackground(color);
 			homeBtn.setFont(font1);
 			homeBtn.setName("homeBtn");

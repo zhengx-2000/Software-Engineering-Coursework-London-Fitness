@@ -3,10 +3,12 @@
 //存储各种预约信息，用户id，教练名字，训练目标，训练时间
 public class Appointment {
 
-    private static int userID, trainingTime; 
-	private static String userid, trainerName, trainingAim;
+    private static int userID;
+	private static int trainingTime; 
+	private static String userid;
+	private static String trainerName;
+	private static String trainingAim;
 
-	
 	//private Calendar cal = Calendar.getInstance();
 	//private java.text.SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 	//private String cdate = sdf.format(cal.getTime());
@@ -55,11 +57,11 @@ public class Appointment {
     /**
 	 * Set ID number of user
 	 * @param userID ID number of user
-	 */
+	
 	public void setUserID(String userID) {
 		Appointment.userID = Integer.parseInt(userID.substring(userID.indexOf(':') + 1));
 		userid = userID;
-	}
+	} */
 
     /**
 	 * Set Training Time of user
