@@ -167,6 +167,8 @@ public class SignIn {
 							JOptionPane.showMessageDialog(jf,"Login Sucessfully!");
 							membershipGUI member=new membershipGUI();
 							member.saveId(I);
+							panDuan duan=new panDuan();
+							duan.getId(I);
 							jf.setVisible(false);
 							new Welcome();
 							//��ת������
