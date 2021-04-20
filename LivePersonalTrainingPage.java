@@ -7,11 +7,13 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class LivePersonalTrainingPage {
-    private final JFrame jf = new JFrame("Live Personal Training Page");
+    private static final int LEFT = 0;
+	private final JFrame jf = new JFrame("Live Personal Training Page");
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
 	
 	Font font1 = new Font("Georgia", Font.BOLD, 13);					//character format
+	Font font2 = new Font("Georgia", Font.BOLD+ Font.ITALIC, 15);		//character format
 	Color color = new Color(242,215,146);								//character color
 	Color backgroundColor = new Color(250,240,215);						//background color
     String initialTextContent = "Please choose your aim first... ";		//original word in textArea
@@ -29,20 +31,20 @@ public class LivePersonalTrainingPage {
 
 	//trainer1栏目
 	Box trainerBox1 = Box.createHorizontalBox();
-	JPanel trainerPanel1 = new JPanel();
-	JLabel trainerLabel1 = new JLabel("trainer1:              "+ "\n");       
-	JTextArea trainerTextArea1 = new JTextArea(initialTextContent,6,20);
+	JPanel trainerPanel1 = new JPanel(new FlowLayout(LEFT,20,20));
+	JLabel trainerLabel1 = new JLabel("Trainer1:    "+ "\n");       
+	JTextArea trainerTextArea1 = new JTextArea(initialTextContent,6,30);
 	//trainer2栏目
 	Box trainerBox2 = Box.createHorizontalBox();
-	JPanel trainerPanel2 = new JPanel();
-	JLabel trainerLabel2 = new JLabel("trainer2:              "+ "\n");
-    JTextArea trainerTextArea2 = new JTextArea(initialTextContent,6,20);	
+	JPanel trainerPanel2 = new JPanel(new FlowLayout(LEFT,20,20));
+	JLabel trainerLabel2 = new JLabel("Trainer2:    "+ "\n");
+    JTextArea trainerTextArea2 = new JTextArea(initialTextContent,6,30);	
 
 	//trainer3栏目
 	Box trainerBox3 = Box.createHorizontalBox();
-	JPanel trainerPanel3 = new JPanel();
-	JLabel trainerLabel3 = new JLabel("trainer3:              "+ "\n");
-	JTextArea trainerTextArea3 = new JTextArea(initialTextContent,6,20);
+	JPanel trainerPanel3 = new JPanel(new FlowLayout(LEFT,20,20));
+	JLabel trainerLabel3 = new JLabel("Trainer3:    "+ "\n");
+	JTextArea trainerTextArea3 = new JTextArea(initialTextContent,6,30);
 	//String aimContent = (String) aimComboBox.getSelectedItem();
 	//Menu跳转教练和预约界面
 	Box menuBox = Box.createHorizontalBox();
@@ -103,15 +105,17 @@ public class LivePersonalTrainingPage {
             trainerPanel1.setBackground(backgroundColor);
 
 			//trainerLabel1 声明和字体设置
-			trainerLabel1.setFont(font1);
+			trainerLabel1.setFont(font2);
 
 			//trainerTextArea1背景字体设置
 			trainerTextArea1.setFont(font1);
             trainerTextArea1.setBackground(backgroundColor);
 
 			//trainerPanel1有trainerLabel1和trainerTextArea1
-			trainerPanel1.add(Box.createVerticalStrut(30));
+			//trainerPanel1.add(Box.createVerticalStrut(30));
+			//trainerPanel1.add(Box.createHorizontalStrut(30));
 			trainerPanel1.add(trainerLabel1);
+			//trainerPanel1.add(Box.createHorizontalStrut(30));
 			trainerPanel1.add(trainerTextArea1);
             trainerBox1.add(trainerPanel1);
 			trainerBox1.add(Box.createHorizontalStrut(50));  
@@ -122,15 +126,17 @@ public class LivePersonalTrainingPage {
             trainerPanel2.setBackground(backgroundColor);
 
 			//trainerLabel2 声明和字体设置
-			trainerLabel2.setFont(font1);            
+			trainerLabel2.setFont(font2);            
 
 			//trainerTextArea2背景字体设置
 			trainerTextArea2.setFont(font1);
             trainerTextArea2.setBackground(backgroundColor);
 
 			//trainerPanel2有trainerLabel2和trainerTextArea2
-			trainerPanel2.add(Box.createVerticalStrut(30));
+			//trainerPanel2.add(Box.createVerticalStrut(30));
+			//trainerPanel1.add(Box.createHorizontalStrut(30));
 			trainerPanel2.add(trainerLabel2);
+			//trainerPanel1.add(Box.createHorizontalStrut(30));
 			trainerPanel2.add(trainerTextArea2);
 			trainerBox2.add(trainerPanel2);  		
 			trainerBox2.add(Box.createHorizontalStrut(50));
@@ -142,15 +148,17 @@ public class LivePersonalTrainingPage {
             trainerPanel3.setBackground(backgroundColor);
 
 			//trainerLabel3 声明和字体设置
-			trainerLabel3.setFont(font1);
+			trainerLabel3.setFont(font2);
 
 			//trainerTextArea3背景字体设置
             trainerTextArea3.setFont(font1);
             trainerTextArea3.setBackground(backgroundColor);
 			
 			//trainerPanel1有trainerLabel1和trainerTextArea1
-			trainerPanel3.add(Box.createVerticalStrut(30));
+			//trainerPanel3.add(Box.createVerticalStrut(30));
+			//trainerPanel1.add(Box.createHorizontalStrut(30));
 			trainerPanel3.add(trainerLabel3);
+			//trainerPanel1.add(Box.createHorizontalStrut(30));
 			trainerPanel3.add(trainerTextArea3);
             trainerBox3.add(trainerPanel3);
 			trainerBox3.add(Box.createHorizontalStrut(50));
@@ -217,11 +225,23 @@ public class LivePersonalTrainingPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton button = (JButton) e.getSource();
-            String aimContent = (String) aimComboBox.getSelectedItem();
+            String aimContent = (String) aimComboBox.getSelectedItem();//选择的类型名字
+			String fileName = "trainer.txt";
 			ArrayList<String> trainerInfoList = new ArrayList<String>();
-			ArrayList<Trainer> selectedTrainer = SelectTrainer.select(aimContent);
-            if (button.equals(searchBtn)) {	
-							
+
+            if (button.equals(searchBtn)) {
+				//先用file名字获取所有的trainer信息，存在trainerList中。再select对应aimType的教练信息存入trainerSelectList
+				ArrayList<Entity_Trainer> trainerSelectList = new Control_SelectTrainer(aimContent, new Control_ReadFromFile(fileName).getTrainerList()).getTrainerSelectList();
+					for(Entity_Trainer i : trainerSelectList) {
+						String trainerInfo =i.getTrainerName() + "\n"+ 
+						i.getTrainerLicense()+ "\n"+ i.getTrainerIntro();						
+						trainerInfoList.add(trainerInfo);
+					}
+				trainerTextArea1.setText(trainerInfoList.get(0));
+				trainerTextArea2.setText(trainerInfoList.get(1));				
+				trainerTextArea3.setText(trainerInfoList.get(2));	//只显示三个人的信息
+			}
+/*							
 					for(int i=0;i<=selectedTrainer.size();i++){
 						String trainerInfo = selectedTrainer.get(i).getTrainerName() + "\n"+ 
 						selectedTrainer.get(i).getTrainerLicense()+ "\n"+ selectedTrainer.get(i).getTrainerIntro();						
@@ -232,7 +252,7 @@ public class LivePersonalTrainingPage {
 					//trainerTextArea3.setText("Sam\nGood body\nhave licence in looing weight\n");					
 					trainerTextArea3.setText(trainerInfoList.get(2));	
 				}			
-/*                 if( aimContent=="Lose weight"){
+                 if( aimContent=="Lose weight"){
                     String loseTrainer1 = "Sam\nGood at health diet\nhave licence in looing weight\n";
 					String loseTrainer2 = "Jim\nGood at health diet\nhave licence in looing weight\n";
 					String loseTrainer3 = "Tom\nGood at health diet\nhave licence in looing weight\n";
@@ -247,7 +267,7 @@ public class LivePersonalTrainingPage {
 					trainerTextArea2.setText(shapeTrainer2);
 					trainerTextArea3.setText(shapeTrainer3);
                 }*/
-				else if (aimContent == "Type"){
+				else if (aimContent == "aim" && button.equals(searchBtn)){
                     JOptionPane.showMessageDialog(jf,"Must choose a type");
                 }	                
             	
