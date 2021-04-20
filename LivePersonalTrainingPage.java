@@ -230,17 +230,19 @@ public class LivePersonalTrainingPage {
 			ArrayList<String> trainerInfoList = new ArrayList<String>();
 
             if (button.equals(searchBtn)) {
-				//先用file名字获取所有的trainer信息，存在trainerList中。再select对应aimType的教练信息存入trainerSelectList
-				ArrayList<Entity_Trainer> trainerSelectList = new Control_SelectTrainer(aimContent, new Control_ReadFromFile(fileName).getTrainerList()).getTrainerSelectList();
-					for(Entity_Trainer i : trainerSelectList) {
-						String trainerInfo =i.getTrainerName() + "\n"+ 
-						i.getTrainerLicense()+ "\n"+ i.getTrainerIntro();						
-						trainerInfoList.add(trainerInfo);
-					}
-				trainerTextArea1.setText(trainerInfoList.get(0));
-				trainerTextArea2.setText(trainerInfoList.get(1));				
-				trainerTextArea3.setText(trainerInfoList.get(2));	//只显示三个人的信息
-			}
+				if (aimContent!="aim"){
+					//先用file名字获取所有的trainer信息，存在trainerList中。再select对应aimType的教练信息存入trainerSelectList
+					ArrayList<Entity_Trainer> trainerSelectList = new Control_SelectTrainer(aimContent, new Control_ReadFromFile(fileName).getTrainerList()).getTrainerSelectList();
+						for(Entity_Trainer i : trainerSelectList) {
+							String trainerInfo =i.getTrainerName() + "\n"+ 
+							i.getTrainerLicense()+ "\n"+ i.getTrainerIntro();						
+							trainerInfoList.add(trainerInfo);
+						}
+					trainerTextArea1.setText(trainerInfoList.get(0));
+					trainerTextArea2.setText(trainerInfoList.get(1));				
+					trainerTextArea3.setText(trainerInfoList.get(2));	//只显示三个人的信息
+				}
+			
 /*							
 					for(int i=0;i<=selectedTrainer.size();i++){
 						String trainerInfo = selectedTrainer.get(i).getTrainerName() + "\n"+ 
@@ -267,10 +269,13 @@ public class LivePersonalTrainingPage {
 					trainerTextArea2.setText(shapeTrainer2);
 					trainerTextArea3.setText(shapeTrainer3);
                 }*/
-				else if (aimContent == "aim" && button.equals(searchBtn)){
+				else{
                     JOptionPane.showMessageDialog(jf,"Must choose a type");
+					trainerTextArea1.setText(initialTextContent);
+					trainerTextArea2.setText(initialTextContent);				
+					trainerTextArea3.setText(initialTextContent);	
                 }	                
-            	
+            }	
 				if (button.equals(backBtn)) {				
 				jf.setVisible(false);				 
 				new Welcome();				
