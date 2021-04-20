@@ -169,6 +169,8 @@ public class SignIn {
 							member.saveId(I);
 							panDuan duan=new panDuan();
 							duan.getId(I);
+							AppointCoursePage live=new AppointCoursePage();
+							live.getUserID(I);
 							jf.setVisible(false);
 							new Welcome();
 							//��ת������

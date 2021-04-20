@@ -31,6 +31,29 @@
       <option name="presentableId" value="Default" />
       <updated>1617727061221</updated>
     </task>
+    <task id="LOCAL-00001" summary="SignInUpdate">
+      <created>1618843391867</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618843391867</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SignInUpdate" />
+    <option name="LAST_COMMIT_MESSAGE" value="SignInUpdate" />
   </component>
 </project>
