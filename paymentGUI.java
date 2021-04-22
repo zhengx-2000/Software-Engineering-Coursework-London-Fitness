@@ -128,6 +128,7 @@ public class paymentGUI {
 				break;
 				case "homeBtn":
 					System.out.print("llllll");
+					new Welcome();
 					//JOptionPane.showMessageDialog(jf, "主界面");
 					//以游客状态去主界面
 				break;

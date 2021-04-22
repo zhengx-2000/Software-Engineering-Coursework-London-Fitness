@@ -12,14 +12,40 @@ public class membershipMatch {
             //String oldLines = reader.readLine();
             
             switch(membershipType){
-                case 2:{
-                    PrintWriter pw=null;
-                    BufferedReader reader = new BufferedReader(new FileReader("SignUpLog4.txt"));
+                case 1:{
+                    PrintWriter pw1=null;
+                    BufferedReader reader = new BufferedReader(new FileReader("SignUpLog.txt"));
                     String line = reader.readLine();
-                    //String oldLines = reader.readLine();
-                    //System.out.println(line);
                     System.out.println("id: "+userID+" ,type: "+membershipType);
-                    pw = new PrintWriter(new FileWriter("SignUpLog4.txt"),true);
+                    pw1 = new PrintWriter(new FileWriter("SignUpLog.txt"),true);
+		                while (line != null) {
+			                String[] dataParts = line.split(" "); // since your delimiter is " "
+			                id = dataParts[0];
+			                if(id.equals(userID)) {
+                                StringBuffer bufNewLine = new StringBuffer(line);
+                                bufNewLine.delete(line.length()-1,line.length());
+                                bufNewLine.append("1");
+                                pw1.println(bufNewLine);
+                                pw1.flush();
+                                line = reader.readLine();
+                                System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
+				            }
+                            else{
+                                pw1.println(line);
+                                pw1.flush();
+			                    line = reader.readLine();
+                                }
+			                }
+                        reader.close();
+                        pw1.close();
+                        break;
+                    }
+                case 2:{
+                    PrintWriter pw2=null;
+                    BufferedReader reader = new BufferedReader(new FileReader("SignUpLog.txt"));
+                    String line = reader.readLine();
+                    System.out.println("id: "+userID+" ,type: "+membershipType);
+                    pw2 = new PrintWriter(new FileWriter("SignUpLog.txt"),true);
 		                while (line != null) {
 			                String[] dataParts = line.split(" "); // since your delimiter is " "
 			                id = dataParts[0];
@@ -27,38 +53,78 @@ public class membershipMatch {
                                 StringBuffer bufNewLine = new StringBuffer(line);
                                 bufNewLine.delete(line.length()-1,line.length());
                                 bufNewLine.append("2");
-                                pw.println(bufNewLine);
-                                pw.flush();
+                                pw2.println(bufNewLine);
+                                pw2.flush();
                                 line = reader.readLine();
-                                //oldLines = reader.readLine();
                                 System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
 				            }
                             else{
-                                //StringBuffer bufOldLines = new StringBuffer(oldLines);
-                                    //read next line
-                                //PrintWriter pw2=null;
-                                //pw2 = new PrintWriter(new FileWriter("SignUpLog2.txt"),true);
-                                //pw2.println(bufOldLines);
-                                //pw2.flush();
-                                //pw2.close();
-                                pw.println(line);
-                                pw.flush();
+                                pw2.println(line);
+                                pw2.flush();
 			                    line = reader.readLine();
-                                //oldLines = reader.readLine();
                                 }
 
 			                }
                         reader.close();
-                        pw.close();
+                        pw2.close();
                         break;
                     }
                     case 3:{
-                        System.out.println("type: "+membershipType);
+                        PrintWriter pw3=null;
+                        BufferedReader reader = new BufferedReader(new FileReader("SignUpLog.txt"));
+                        String line = reader.readLine();
+                        System.out.println("id: "+userID+" ,type: "+membershipType);
+                        pw3 = new PrintWriter(new FileWriter("SignUpLog.txt"),true);
+		                    while (line != null) {
+			                    String[] dataParts = line.split(" "); // since your delimiter is " "
+			                    id = dataParts[0];
+			                    if(id.equals(userID)) {
+                                    StringBuffer bufNewLine = new StringBuffer(line);
+                                    bufNewLine.delete(line.length()-1,line.length());
+                                    bufNewLine.append("3");
+                                    pw3.println(bufNewLine);
+                                    pw3.flush();
+                                    line = reader.readLine();
+                                    System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
+				            }
+                                else{
+                                    pw3.println(line);
+                                    pw3.flush();
+			                        line = reader.readLine();
+                                }
+
+			                }
+                            reader.close();
+                            pw3.close();
                         break;
                     }
                     case 4:{
-                        System.out.println("type: "+membershipType);
-                        break;
+                        PrintWriter pw4=null;
+                        BufferedReader reader = new BufferedReader(new FileReader("SignUpLog.txt"));
+                        String line = reader.readLine();
+                        System.out.println("id: "+userID+" ,type: "+membershipType);
+                        pw4 = new PrintWriter(new FileWriter("SignUpLog.txt"),true);
+		                    while (line != null) {
+			                    String[] dataParts = line.split(" "); // since your delimiter is " "
+			                    id = dataParts[0];
+			                    if(id.equals(userID)) {
+                                    StringBuffer bufNewLine = new StringBuffer(line);
+                                    bufNewLine.delete(line.length()-1,line.length());
+                                    bufNewLine.append("4");
+                                    pw4.println(bufNewLine);
+                                    pw4.flush();
+                                    line = reader.readLine();
+                                    System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
+				                }
+                                else{
+                                    pw4.println(line);
+                                    pw4.flush();
+			                        line = reader.readLine();
+                                    }
+			                    }
+                            reader.close();
+                            pw4.close();
+                            break;
                     }
                 }
                 
