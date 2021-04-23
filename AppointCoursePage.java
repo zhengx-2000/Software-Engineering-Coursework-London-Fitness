@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 public class AppointCoursePage {
 
+	private String id;
 	private final JFrame jf = new JFrame("Appoint Course Page");
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
@@ -238,6 +239,10 @@ public class AppointCoursePage {
 		} catch (Exception e) {
 				e.printStackTrace();
 		}
+	}
+
+	public void getUserID(String id) {
+		this.id = id;
 	}
 
 	//自定义监听类
