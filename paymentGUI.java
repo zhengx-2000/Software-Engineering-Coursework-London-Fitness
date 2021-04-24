@@ -1,13 +1,9 @@
 
 //import javax.annotation.Resources;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.InputStream;
-import javax.imageio.ImageIO;
-
  
 public class paymentGUI {
 	private final JFrame paymentPage = new JFrame("Payment Page");
@@ -128,6 +124,7 @@ public class paymentGUI {
 				break;
 				case "homeBtn":
 					System.out.print("llllll");
+					paymentPage.setVisible(false);
 					new Welcome();
 					//JOptionPane.showMessageDialog(jf, "主界面");
 					//以游客状态去主界面

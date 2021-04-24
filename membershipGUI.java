@@ -1,12 +1,7 @@
-
-//import javax.annotation.Resources;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.InputStream;
-import javax.imageio.ImageIO;
 
 public class membershipGUI {
 	private final JFrame MembershipPage = new JFrame("Membership Page");

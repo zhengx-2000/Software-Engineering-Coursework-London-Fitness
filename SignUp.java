@@ -1,5 +1,3 @@
-//import javax.annotation.Resources;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

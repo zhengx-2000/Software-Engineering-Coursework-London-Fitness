@@ -19,6 +19,7 @@ public class Welcome extends JFrame implements ActionListener {
     private final int WIDTH = 475;
 	private final int HEIGHT = 625;
     private final Color BACKGROUND = new Color(242, 215, 146);
+    private final Color BACKGROUND1 = new Color(250, 240, 215);
 
     /**
      * The constructor of Welcome.java
@@ -35,7 +36,7 @@ public class Welcome extends JFrame implements ActionListener {
         jFrame.setBounds((sw - WIDTH) / 2, (sh - HEIGHT) / 2, WIDTH, HEIGHT);
 	    jFrame.setSize(WIDTH, HEIGHT);
         jFrame.setResizable(false);
-        jFrame.getContentPane().setBackground(Color.WHITE);
+        jFrame.getContentPane().setBackground(BACKGROUND1);
         jFrame.setLayout(new FlowLayout());
         
         Box menuBox = Box.createHorizontalBox();
@@ -43,18 +44,18 @@ public class Welcome extends JFrame implements ActionListener {
         accountItem = new JMenuItem("My Account");
         accountItem.setName("myAccount");
         accountItem.setFont(btn);
-        accountItem.setBackground(Color.WHITE);
+        accountItem.setBackground(BACKGROUND1);
         accountItem.addActionListener(this);
         membershipItem = new JMenuItem("Membership");
         membershipItem.setName("membership");
         membershipItem.setFont(btn);
-        membershipItem.setBackground(Color.WHITE);
+        membershipItem.setBackground(BACKGROUND1);
         membershipItem.addActionListener(this);
         helpItem = new JMenuItem("Help");
         helpItem.setName("help");
         helpItem.setFont(btn);
         helpItem.setHorizontalAlignment(SwingConstants.RIGHT);
-        helpItem.setBackground(Color.WHITE);
+        helpItem.setBackground(BACKGROUND1);
         helpItem.addActionListener(this);
         menuBar.add(accountItem);
         menuBar.add(membershipItem);
@@ -75,7 +76,7 @@ public class Welcome extends JFrame implements ActionListener {
         gallery.setContentAreaFilled(false);
         gallery.setBorderPainted(false);
         gallery.addActionListener(this);
-        galleryPanel.setBackground(Color.WHITE);
+        galleryPanel.setBackground(BACKGROUND1);
         galleryPanel.add(gallery);
 
         JPanel searchPanel = new JPanel();
@@ -88,7 +89,7 @@ public class Welcome extends JFrame implements ActionListener {
         searchBtn.setForeground(BACKGROUND);
         searchBtn.setBackground(Color.WHITE);
         searchBtn.addActionListener(this);
-        searchPanel.setBackground(Color.WHITE);
+        searchPanel.setBackground(BACKGROUND1);
         searchPanel.add(search);
         searchPanel.add(searchBtn);
 
@@ -111,7 +112,7 @@ public class Welcome extends JFrame implements ActionListener {
         videoBtn.setContentAreaFilled(false);
         videoBtn.setBorderPainted(false);
         videoBtn.addActionListener(this);
-        videoPanel.setBackground(Color.WHITE);
+        videoPanel.setBackground(BACKGROUND1);
         videoPanel.add(videoBtn);
 
         Box liveBox = Box.createHorizontalBox();
@@ -133,7 +134,7 @@ public class Welcome extends JFrame implements ActionListener {
         liveBtn.setContentAreaFilled(false);
         liveBtn.setBorderPainted(false);
         liveBtn.addActionListener(this);
-        livePanel.setBackground(Color.WHITE);
+        livePanel.setBackground(BACKGROUND1);
         livePanel.add(liveBtn);
 
         Box membershipBox = Box.createHorizontalBox();
@@ -155,7 +156,7 @@ public class Welcome extends JFrame implements ActionListener {
         membershipBtn.setContentAreaFilled(false);
         membershipBtn.setBorderPainted(false);
         membershipBtn.addActionListener(this);
-        membershipPanel.setBackground(Color.WHITE);
+        membershipPanel.setBackground(BACKGROUND1);
         membershipPanel.add(membershipBtn);
 
         vBox.add(menuBox);
@@ -186,7 +187,7 @@ public class Welcome extends JFrame implements ActionListener {
         if(e.getSource() == accountItem) {
             //System.out.println("myAccount");
             jFrame.setVisible(false);
-            new IDPage().init();
+            new IDPage().Identity();
         }
 
         if(e.getSource() == membershipItem) {
@@ -198,7 +199,7 @@ public class Welcome extends JFrame implements ActionListener {
         if(e.getSource() == helpItem) {
             //System.out.println("helpItem");
             jFrame.setVisible(false);
-            new HelpPage().init();
+            new HelpPage().Help();
         }
 
         if(e.getSource() == gallery) {

@@ -1,13 +1,7 @@
-//package zyjGui;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 
@@ -30,8 +24,8 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 	// JTextArea textArea3 = new JTextArea("Video Name:");
 
 
-	JComboBox type = new JComboBox(); // creates comboBox
-	JComboBox complexity = new JComboBox();
+	JComboBox<String> type = new JComboBox<String>(); // creates comboBox
+	JComboBox<String> complexity = new JComboBox<String>();
 	// ArrayList<String> middleOutput = new ArrayList<String>(); //creates a
 	// container to put strings in
 	// ArrayList<Integer> RTT = new ArrayList<Integer>(); //creates a container for
@@ -242,7 +236,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					process.start();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -256,7 +249,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					process.start();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -270,7 +262,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					process.start();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -284,7 +275,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					process.start();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -295,8 +285,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		digitalWorkOutVideosPage dv = new digitalWorkOutVideosPage(); // create a new object
-		//dv.getContentPane().setBackground(new Color(250,240,215));
+		new digitalWorkOutVideosPage(); // create a new object
 	}
-
 }
