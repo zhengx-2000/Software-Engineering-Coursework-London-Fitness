@@ -3,6 +3,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class AppointCoursePage {
 
@@ -34,11 +35,11 @@ public class AppointCoursePage {
     //Height栏目 JComboBox
 	Box heightBox = Box.createHorizontalBox();
     JLabel heightLabel = new JLabel("Height:  ");		
-	JComboBox<String> height = new JComboBox<String>();
+	JComboBox<String> heightComboBox = new JComboBox<String>();
 	//weight栏目 JComboBox
 	Box weightBox = Box.createHorizontalBox();
 	JLabel weightLabel = new JLabel("Weight:  ");            
-	JComboBox<String> weight = new JComboBox<String>();
+	JComboBox<String> weightComboBox = new JComboBox<String>();
 
 	//remark栏目
 	Box remarkBox = Box.createHorizontalBox();
@@ -52,7 +53,8 @@ public class AppointCoursePage {
 
 	//button栏目
 	Box btnBox = Box.createHorizontalBox();
-	JButton loginBtn = new JButton("Submit");
+	JButton submitBtn = new JButton("Submit");
+
 	//返回上一界面的button
 	JButton homeBtn = new JButton("Back");
 	
@@ -73,8 +75,6 @@ public class AppointCoursePage {
 			jf.setLayout(new GridLayout(1,0));
 			jf.getContentPane().setBackground(backgroundColor);
 			//jf.setBackground(color);
-			
-
 
 			//总box
 			vBox.setBorder(boxMaxBorder);	
@@ -86,13 +86,13 @@ public class AppointCoursePage {
             trainer.addItem("Please choose...");
             trainer.addItem("trainer1");
             trainer.addItem("trainer2");
+			trainer.addItem("trainer3");
 			//在布局中添加组件，并使用占位符（以下同理）
 			trainerBox.add(Box.createVerticalStrut(10));
 			trainerBox.add(trainerLabel);
 			trainerBox.add(Box.createHorizontalStrut(20));
 			trainerBox.add(trainer);
 			trainerBox.add(Box.createVerticalStrut(10));
-			
 
 			//Time栏目
 			timeLabel.setFont(font1);
@@ -103,7 +103,6 @@ public class AppointCoursePage {
 			timeBox.add(Box.createHorizontalStrut(20));
 			timeBox.add(timeField);
 			timeBox.add(Box.createHorizontalStrut(80));
-			
 
 			//Aim栏目 JComboBox
 			aimLabel.setFont(font1);
@@ -119,34 +118,41 @@ public class AppointCoursePage {
 			aimBox.add(aim);
 			aimBox.add(Box.createVerticalStrut(10));
 			
-
 			//Height栏目 JComboBox
 			heightLabel.setFont(font1);
             //height.setBorder(labelBorder);
-			height.setFont(font1);
-			height.addItem("Please choose...");
-            height.addItem("1.5 M");
-            height.addItem("1.6 M");
+			heightComboBox.setFont(font1);
+			heightComboBox.addItem("Please choose...");
+            heightComboBox.addItem("<1.5 M");
+            heightComboBox.addItem("1.5-1.6M");
+			heightComboBox.addItem("1.6-1.7M");
+			heightComboBox.addItem("1.7-1.8M");
+			heightComboBox.addItem("1.8-1.9M");
+			heightComboBox.addItem(">1.9M");
 			//在布局中添加组件，并使用占位符（以下同理）
 			heightBox.add(Box.createVerticalStrut(10));
 			heightBox.add(heightLabel);
 			heightBox.add(Box.createHorizontalStrut(20));
-			heightBox.add(height);
+			heightBox.add(heightComboBox);
 			heightBox.add(Box.createVerticalStrut(10));
-
 
 			//weight栏目 JComboBox
 			weightLabel.setFont(font1);
-            weight.setFont(font1);
+            weightComboBox.setFont(font1);
 			//weight.setBorder(labelBorder);
-			weight.addItem("Please choose...");
-            weight.addItem("50kg-60kg");
-            weight.addItem("60kg-70kg");
+			weightComboBox.addItem("Please choose...");
+			weightComboBox.addItem("<40kg");
+			weightComboBox.addItem("40kg-50kg");
+            weightComboBox.addItem("50kg-60kg");
+            weightComboBox.addItem("60kg-70kg");
+			weightComboBox.addItem("70kg-80kg");
+			weightComboBox.addItem("80kg-90kg");
+			weightComboBox.addItem(">90kg");
             //在布局中添加组件，并使用占位符（以下同理）
 			weightBox.add(Box.createVerticalStrut(10));
             weightBox.add(weightLabel);
             weightBox.add(Box.createHorizontalStrut(20));
-            weightBox.add(weight);
+            weightBox.add(weightComboBox);
 			weightBox.add(Box.createVerticalStrut(10));
 
 			//remark栏目
@@ -160,9 +166,8 @@ public class AppointCoursePage {
 			remarkBox.add(remarkField);
 			//remarkBox.add(Box.createVerticalStrut(10));
 			remarkBox.add(Box.createHorizontalStrut(70));
-
-
-
+			
+			//Menu跳转教练和预约界面
 			jm1.setFont(font1);
 			//jm1.setBounds(30, 490, 400, 30);
 			jm1.setName("Trainer");
@@ -183,18 +188,17 @@ public class AppointCoursePage {
 
 			//button栏目
 			//提交预约信息，转到支付界面。添加button和监听事件
-			loginBtn.setBackground(color);
-			loginBtn.setFont(font1);
-			loginBtn.setName("submitBtn");//提交选择的教练信息
-			loginBtn.addActionListener(new MyActionListener());
+			submitBtn.setBackground(color);
+			submitBtn.setFont(font1);
+			submitBtn.setName("submitBtn");//提交选择的教练信息
+			submitBtn.addActionListener(new MyActionListener());
 			
-
 			//返回上一界面的button
 			homeBtn.setBackground(color);
 			homeBtn.setFont(font1);
 			homeBtn.setName("homeBtn");
 			homeBtn.addActionListener(new MyActionListener());
-			btnBox.add(loginBtn);
+			btnBox.add(submitBtn);
 			btnBox.add(Box.createHorizontalStrut(80));
 			btnBox.add(homeBtn);
             
@@ -216,23 +220,7 @@ public class AppointCoursePage {
             vBox.add(Box.createVerticalStrut(30));
 			vBox.add(btnBox);
 			jf.add(vBox);
-			
-	/*		jp.add(Box.createHorizontalStrut(30));
-			jp.add(trainerBox);
-			jp.add(Box.createVerticalStrut(30));
-			jp.add(timeBox);
-			jp.add(Box.createVerticalStrut(32));
-			jp.add(aimBox);
-			jp.add(Box.createVerticalStrut(30));
-			jp.add(heightBox);
-			jp.add(Box.createVerticalStrut(30));
-			jp.add(weightBox);
-			jp.add(Box.createVerticalStrut(30));
-			jp.add(remarkBox);                        
-			jp.add(Box.createVerticalStrut(30));
-			jp.add(btnBox);
-			jf.add(jp);
-    */        
+			   
 			jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//关闭窗口
 			jf.setVisible(true);//可见
 		} catch (Exception e) {
@@ -249,25 +237,43 @@ public class AppointCoursePage {
 		//@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton button = (JButton) e.getSource();
-			String name = button.getName();
-			switch (name) {
-				//提交选择的教练信息和预约信息，转到支付界面
-				case "submitBtn":
-					//使用消息对话框
-					//JOptionPane.showMessageDialog(jf, "主界面");					
+			//String name = button.getName();
+			//String fileName = "appoinrment.txt";
+			String userId = "yyy";
+			String trainerName = (String) trainer.getSelectedItem();//选择的类型名字
+			String trainingTime = (String) timeField.getText();//选择的时间
+			String aimContent = (String) aim.getSelectedItem();//选择的目标
+			String height = (String) heightComboBox.getSelectedItem();//选择的身高
+			String weight = (String) weightComboBox.getSelectedItem();//选择的体重
+			String remark = (String) remarkField.getText();//评论
+
+			ArrayList<String> AppointmentList = new ArrayList<String>();;	
+	//userId trainingTime trainerName trainingAim height weight remark
+	//yyy sss trainer1 lose weight 1.7-1.8M 80kg-90kg xxxx 
+			if (button.equals(submitBtn)) {
+				if (userId!=""&&remark!=""&&trainingTime!=""&&trainerName!="Please choose..."&&height!="Please choose..."&&weight!="Please choose..."){
+					System.out.println(userId+trainerName+aimContent+height+weight+remark);
+					AppointmentList.add(userId);
+					AppointmentList.add(trainingTime);
+					AppointmentList.add(trainerName);
+					AppointmentList.add(aimContent);
+					AppointmentList.add(height);
+					AppointmentList.add(weight);
+					AppointmentList.add(remark);
+					new Control_WriteIntoFile(AppointmentList);
 					new paymentGUI().init(1); 
 					jf.setVisible(false);
-					break;
-				//back回到主界面
-				case "homeBtn":
-					new LivePersonalTrainingPage();
-					//使用消息对话框
-					//JOptionPane.showMessageDialog(jf, "主界面");
-					jf.setVisible(false);
-					break;
-				default:
-					break;
+				}
+				else{
+					JOptionPane.showMessageDialog(jf,"Must fill all the infomation");
+				}
 			}
+
+			if (button.equals(homeBtn)) {				
+				jf.setVisible(false);				 
+				new LivePersonalTrainingPage();				
+			}
+
 		}
 	}
  
@@ -290,15 +296,3 @@ public class AppointCoursePage {
 		new AppointCoursePage();
 	}
 }
-
-/*JComboBox是javax.swing.JComboBox。在SE7中声明为泛型。
-
-javax.swing.JComboBox<类型>。
-因此需要在实例化它时指明传入指定参数类型,不然就报类型不安全的warning了。
-
-
-代码改成下面的就能正常运行了
-...
-JComboBox<String> comBox = new JComboBox<String>( );
-
-comBox.addItem("123");*/
