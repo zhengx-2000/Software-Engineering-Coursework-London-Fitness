@@ -34,17 +34,3 @@ public class Control_WriteIntoFile {
 	     
     }
 }
-		/*String content[]= {"aaa","bbb","ccc"};        //定义字符串数组
-		File file=new File("word.txt");               //创建文件对象
-		 
-		FileWriter fw = new FileWriter(file,true);    //创建FileWriter类对象
-        BufferedWriter bufw=new BufferedWriter(fw);   //创建BufferedWriter对象
- 
-        for(int i=0;i<content.length;i++) {           //循环遍历数组
-
-        	bufw.write(content[i]);                   //将字符串数组中的元素写入到文件中
-            bufw.newLine();                           //换行
-        }
-        bufw.close();                                 //关闭BufferedWriter流
-        fw.close();  
-        */   

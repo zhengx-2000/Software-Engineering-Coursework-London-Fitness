@@ -6,34 +6,20 @@ public class liveCoursePage extends JFrame implements ActionListener {
 
 	Font btn = new Font("Georgia", Font.BOLD, 25);
 
+	final int WIDTH = 475;
+	final int HEIGHT = 625;
+
 	JLabel label1 = new JLabel("Live Course"); // creates label
-	// JLabel label2 = new JLabel("Test URL");
-	// JLabel label3 = new JLabel("No. of probes");
-	// JLabel label4 = new JLabel("Histogram");
-	// JLabel label5 = new JLabel("X");
 	JButton button1 = new JButton("Good");
-
 	JButton button2 = new JButton("Back"); // creates button
-	// JTextField textField = new JTextField(23); //creates textField
-	// JTextField textField1 = new JTextField();
-	// JTextField textField2 = new JTextField();
-	// JTextField textField3 = new JTextField();
-	// JTextArea textArea = new JTextArea("Live Window"); //creates textArea
-
-	// JComboBox type=new JComboBox(); //creates comboBox
-	// JComboBox complexity=new JComboBox();
-	// ArrayList<String> middleOutput = new ArrayList<String>(); //creates a
-	// container to put strings in
-	// ArrayList<Integer> RTT = new ArrayList<Integer>(); //creates a container for
-	// integers
-
-	/**
-	 * This method defines many panels and adds all the components to the framework.
-	 * 
-	 * @return Nothing.
-	 */
-
+	
 	liveCoursePage() { // constructor
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int sw = screenSize.width;
+		int sh = screenSize.height;
+		this.setBounds((sw - WIDTH) / 2, (sh - HEIGHT) / 2, WIDTH, HEIGHT);
+		
+		this.getContentPane().setBackground(new Color(250,240,215));
 		this.setLayout(null);
 
 		JPanel panel1 = new JPanel();
@@ -98,8 +84,7 @@ public class liveCoursePage extends JFrame implements ActionListener {
 		// this.add(textField3);
 		this.setTitle("Live Course Page"); // sets the title of the frame
 
-		setLocation(0, 0); // sets the location of the frame
-		setSize(475, 625); // sets the size of the frame
+		setSize(WIDTH, HEIGHT); // sets the size of the frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // sets default close operation
 		setResizable(false);
 		setVisible(true); // sets the visible

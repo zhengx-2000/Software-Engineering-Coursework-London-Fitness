@@ -11,7 +11,7 @@ public class UniqueID {
 	
 	public int Check(){
 		try{
-			BufferedReader reader = new BufferedReader(new FileReader("SignUpLog.txt"));
+			BufferedReader reader = new BufferedReader(new FileReader("./file/SignUpLog.txt"));
 			String line = reader.readLine();
 			while (line != null) {
 				String[] dataParts = line.split(" "); // since your delimiter is "|"

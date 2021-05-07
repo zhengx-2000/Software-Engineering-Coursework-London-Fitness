@@ -34,7 +34,7 @@ public void Identity(){
 		 *  Including ID, gender, password, cell phone, email, VIP status
 		 *  Store the matching information in the corresponding String
 		 */
-		BufferedReader reader = new BufferedReader(new FileReader("SignUpLog.txt"));
+		BufferedReader reader = new BufferedReader(new FileReader("./file/SignUpLog.txt"));
 		String line = reader.readLine();
 		//To read a line of personal information, separated by space into different parts
 		String[] dataParts = line.split(" ");

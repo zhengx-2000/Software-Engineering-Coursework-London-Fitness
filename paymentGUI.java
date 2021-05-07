@@ -1,9 +1,13 @@
 
 //import javax.annotation.Resources;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
+
  
 public class paymentGUI {
 	private final JFrame paymentPage = new JFrame("Payment Page");
@@ -82,15 +86,15 @@ public class paymentGUI {
 			pay.setName("payTheBill");//登录状态返回主界面
 			pay.setFont(myFont2);
 			pay.addActionListener(new newWindow());
-			JButton homeBtn = new JButton("Back");//游客状态返回主界面
-			homeBtn.setFont(myFont2);
-			homeBtn.setBackground(new Color(255,206,95));
-			homeBtn.setName("homeBtn");
-			homeBtn.setForeground(Color.white);
-			homeBtn.addActionListener(new newWindow());
+			JButton backButn = new JButton("Back");//游客状态返回主界面
+			backButn.setFont(myFont2);
+			backButn.setBackground(new Color(255,206,95));
+			backButn.setName("backButn");
+			backButn.setForeground(Color.white);
+			backButn.addActionListener(new newWindow());
 			btnBox.add(pay);
 			btnBox.add(Box.createHorizontalStrut(60));
-			btnBox.add(homeBtn);
+			btnBox.add(backButn);
 			
 			vBox.add(Box.createVerticalStrut(20));
 			vBox.add(reminderBox);
@@ -115,6 +119,7 @@ public class paymentGUI {
  
 	//自定义监听类
 	private class newWindow implements ActionListener {
+		backToCertainPage location = new backToCertainPage();
 		public void actionPerformed(ActionEvent e) {
 			JButton button = (JButton) e.getSource();
 			String name = button.getName();
@@ -122,12 +127,8 @@ public class paymentGUI {
 				case "payTheBill":
 					JOptionPane.showMessageDialog(paymentPage,"Payment Sucessfully!");
 				break;
-				case "homeBtn":
-					System.out.print("llllll");
-					paymentPage.setVisible(false);
-					new Welcome();
-					//JOptionPane.showMessageDialog(jf, "主界面");
-					//以游客状态去主界面
+				case "backButn":
+					location.backPage(3);
 				break;
 				default:
 					break;

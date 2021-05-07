@@ -159,18 +159,14 @@ public class SignIn {
 					String I=uField.getText();
 					String P=pField.getText();
 					IDcheck ch=new IDcheck(I,P);
+					SaveID  t = new SaveID();
+					t.write2file(I);
 					try {
 						int a=ch.Check();
 						if(a!=0) {
 							state=1;//���ø��û�״̬Ϊ��ͨ��¼�ο�
 							//ʹ����Ϣ�Ի���
 							JOptionPane.showMessageDialog(jf,"Login Sucessfully!");
-							membershipGUI member=new membershipGUI();
-							member.saveId(I);
-							panDuan duan=new panDuan();
-							duan.getId(I);
-							AppointCoursePage live=new AppointCoursePage();
-							live.getUserID(I);
 							jf.setVisible(false);
 							new Welcome();
 							//��ת������
@@ -193,6 +189,7 @@ public class SignIn {
 	}
  
 	public static void main(String[] args) {
+		
 		new SignIn().init();
 	}
 }

@@ -227,7 +227,7 @@ public class SignUp {
 								String Email = emField.getText();//��ȡ�ı���������
 								System.out.print("One customer signs up.");		
 								SignUpLog  t = new SignUpLog();
-								t.write2file(ID+" "+sex+" "+PassWord+" "+Phone+" "+Email+"  "+0+"\n");
+								t.write2file(ID+" "+sex+" "+PassWord+" "+Phone+" "+Email+" "+0+"\n");
 								JOptionPane.showMessageDialog(jf, "Sign Up Successfully!");
 							} catch (Exception e1) {
 								e1.printStackTrace();
