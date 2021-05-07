@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.io.IOException;
 public class Control_WriteIntoFile {
 
-    String fileName = "appointment.txt";
+    String fileName = "./file/appointment.txt";
     public Control_WriteIntoFile (ArrayList<String> appointmentList){
         
         try {
