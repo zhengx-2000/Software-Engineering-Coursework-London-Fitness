@@ -1,7 +1,7 @@
+
 //page Live Personal Training
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -17,12 +17,27 @@ public class LivePersonalTrainingPage {
 	Color color = new Color(242,215,146);								//character color
 	Color backgroundColor = new Color(250,240,215);						//background color
     String initialTextContent = "Please choose your aim first... ";		//original word in textArea
- 
-    JComboBox<String> aimComboBox = new JComboBox<String>();			// creates aim comboBox
+	
+	//Image image = new ImageIcon("Img/ackground.jpg").getImage();// 这是背景图片 .png .jpg .gif 等格式的图片都可以
+	//image.setImage(image.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT));//这里设置图片大小，目前是20*20
+	//Image iconBoy = (new ImageIcon("image/trainer_boy.jpg")).getImage();					//man trainer picture
+	//iconBoy.setImage(iconBoy.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT));
+	//private ImageIcon iconBoy = new ImageIcon("image/trainer_girl.jpg");
+	//Image img =	iconBoy.getImage();
+	//img = img.getScaledInstance(20,20,Image.SCALE_DEFAULT);
+	//iconBoy.setImage(img);
 
-	//添加总box
-	Box vBox = Box.createVerticalBox();
-			
+	//iconBoy.setImage(iconBoy.getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT));
+
+	//ImageIcon iconGirl = new ImageIcon("image/trainer_girl.jpg");		//girl trainer picture
+    
+
+	Box vBox = Box.createVerticalBox();									//添加总box
+	//Box trainerBox = Box.createHorizontalBox();							//添加总tainerbox
+	//Box trainerWordBox = Box.createVerticalBox();						//添加教练信息的部分
+	//Box trainerPhotoBox = Box.createVerticalBox();						//添加教练照片部分
+	
+	JComboBox<String> aimComboBox = new JComboBox<String>();			//creates aim comboBox		
 	//search button栏目
     Box searchBox = Box.createHorizontalBox();
 	JPanel searchPanel = new JPanel();
@@ -34,21 +49,25 @@ public class LivePersonalTrainingPage {
 	JPanel trainerPanel1 = new JPanel(new FlowLayout(LEFT,20,20));
 	JLabel trainerLabel1 = new JLabel("Trainer1:    "+ "\n");       
 	JTextArea trainerTextArea1 = new JTextArea(initialTextContent,6,30);
+	//JLabel photoTrainerLabel1 = new JLabel(); 							// creates label for trainer photo
+	Box trainerPhotoBox1 = Box.createVerticalBox();						//添加教练照片部分
+	
 	//trainer2栏目
 	Box trainerBox2 = Box.createHorizontalBox();
 	JPanel trainerPanel2 = new JPanel(new FlowLayout(LEFT,20,20));
 	JLabel trainerLabel2 = new JLabel("Trainer2:    "+ "\n");
     JTextArea trainerTextArea2 = new JTextArea(initialTextContent,6,30);	
-
+	
 	//trainer3栏目
 	Box trainerBox3 = Box.createHorizontalBox();
 	JPanel trainerPanel3 = new JPanel(new FlowLayout(LEFT,20,20));
 	JLabel trainerLabel3 = new JLabel("Trainer3:    "+ "\n");
 	JTextArea trainerTextArea3 = new JTextArea(initialTextContent,6,30);
 	//String aimContent = (String) aimComboBox.getSelectedItem();
+	
 	//Menu跳转教练和预约界面
 	Box menuBox = Box.createHorizontalBox();
-	JMenuBar jmb=new JMenuBar();;				
+	JMenuBar jmb=new JMenuBar();				
 	JMenuItem jm1=new JMenuItem("Introduction for Trainer 	 |");
 	JMenuItem jm2=new JMenuItem(" Appoint a Course");
 
@@ -56,7 +75,6 @@ public class LivePersonalTrainingPage {
 
 	public LivePersonalTrainingPage(){
         try{
-
             //windows
 			//set the size of windows
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -69,27 +87,22 @@ public class LivePersonalTrainingPage {
             //修改为FlowLayout布局，否则窗口中的组件会根据窗口大小变化尺寸
 			jf.setLayout(new GridLayout());
 			jf.getContentPane().setBackground(backgroundColor);
-            
-            
+                       
 			//search button栏目
 			//searchPanel声明和背景字体设置
 			searchPanel.setFont(font1);
-            searchPanel.setBackground(backgroundColor);
-			
+            searchPanel.setBackground(backgroundColor);			
 			//AimLabel 声明和字体设置
-			AimLabel.setFont(font1);
-			
+			AimLabel.setFont(font1);			
 			//item of aimComboBox
             aimComboBox.addItem("aim");    
             aimComboBox.addItem("Lose weight");
-            aimComboBox.addItem("Shape and Fitness");					
-            
+            aimComboBox.addItem("Shape and Fitness");					            
 			//搜索按钮格式 ，添加button和监听事件
             searchBtn.setName("searchBtn");
 			searchBtn.setFont(font1);
 			searchBtn.setBackground(color);
 			searchBtn.addActionListener(new MyActionListener()); 
-
 			//searchPanel平面有aim标题，可选择的comboBox，和搜索按钮
             searchPanel.add(AimLabel);
             searchPanel.add(Box.createHorizontalStrut(40));
@@ -103,21 +116,24 @@ public class LivePersonalTrainingPage {
 			//trainerPanel1声明和背景字体设置
 			trainerPanel1.setFont(font1);
             trainerPanel1.setBackground(backgroundColor);
-
 			//trainerLabel1 声明和字体设置
 			trainerLabel1.setFont(font2);
-
 			//trainerTextArea1背景字体设置
 			trainerTextArea1.setFont(font1);
             trainerTextArea1.setBackground(backgroundColor);
-
 			//trainerPanel1有trainerLabel1和trainerTextArea1
 			//trainerPanel1.add(Box.createVerticalStrut(30));
 			//trainerPanel1.add(Box.createHorizontalStrut(30));
 			trainerPanel1.add(trainerLabel1);
 			//trainerPanel1.add(Box.createHorizontalStrut(30));
 			trainerPanel1.add(trainerTextArea1);
+			//设置教练照片
+			//photoTrainerLabel1.setIcon(iconBoy);
+			//photoTrainerLabel1.setVisible(true);
+			//photoTrainerLabel1.setBounds(50, 50, 30, 30);
+			//trainerPhotoBox1.add(photoTrainerLabel1);
             trainerBox1.add(trainerPanel1);
+			//trainerBox1.add(trainerPhotoBox1);
 			trainerBox1.add(Box.createHorizontalStrut(50));  
 
 			//trainer2栏目
@@ -140,7 +156,6 @@ public class LivePersonalTrainingPage {
 			trainerPanel2.add(trainerTextArea2);
 			trainerBox2.add(trainerPanel2);  		
 			trainerBox2.add(Box.createHorizontalStrut(50));
-
 
 			//trainer3栏目
 			//trainerPanel3声明和背景字体设置
@@ -168,18 +183,15 @@ public class LivePersonalTrainingPage {
 			//jm1.setBounds(30, 490, 400, 30);
 			jm1.setName("Trainer");
 			jm1.addActionListener(new ViewAction());
-			jm1.setBackground(backgroundColor);
-			
+			jm1.setBackground(backgroundColor);			
 			jm2.setFont(font1);
 			jm2.setBackground(backgroundColor);
 			//jm2.setBounds(230, 490, 400, 30);
 			jm2.setName("Appoint");
 			jm2.addActionListener(new ViewAction());
-			//jmb.add(Box.createHorizontalStrut(25));
-			
+			//jmb.add(Box.createHorizontalStrut(25));			
 			jmb.add(jm1);
-			jmb.add(jm2);
-			
+			jmb.add(jm2);			
 			menuBox.add(Box.createHorizontalStrut(50));
 			menuBox.add(jmb);
 			menuBox.add(Box.createHorizontalStrut(20));
@@ -193,8 +205,47 @@ public class LivePersonalTrainingPage {
 			backBtn.addActionListener(new MyActionListener());
 			backBox.add(backBtn);
 			backBox.add(Box.createHorizontalStrut(80));
-            
-            //将组件加入容器
+        /*
+			ImageIcon icon1 = new ImageIcon("image/boy.jpg");
+			JLabel photoTrainerLabel1 = new JLabel(); // creates label
+			photoTrainerLabel1.setIcon(icon1);	
+			trainerPhotoBox.add(photoTrainerLabel1); // creates a panel to put button on			
+			photoTrainerLabel1.setVisible(true);
+			ImageIcon icon2 = new ImageIcon("image/boy.jpg");
+			JLabel photoTrainerLabel2 = new JLabel(); // creates label
+			photoTrainerLabel2.setIcon(icon2);	
+			trainerPhotoBox.add(photoTrainerLabel2); // creates a panel to put button on			
+			photoTrainerLabel2.setVisible(true);
+			ImageIcon icon3 = new ImageIcon("image/girl.jpg");
+			JLabel photoTrainerLabel3 = new JLabel(); // creates label
+			photoTrainerLabel3.setIcon(icon3);	
+			trainerPhotoBox.add(photoTrainerLabel3); // creates a panel to put button on			
+			photoTrainerLabel3.setVisible(true);
+		*/	
+
+		/*	trainerWordBox.add(Box.createVerticalStrut(20));
+			trainerWordBox.add(trainerBox1);
+			trainerWordBox.add(Box.createVerticalStrut(20));
+			trainerWordBox.add(trainerBox2);
+			trainerWordBox.add(Box.createVerticalStrut(20));
+			trainerWordBox.add(trainerBox3);
+			trainerBox.add(trainerWordBox);
+			trainerBox.add(trainerPhotoBox);
+            vBox.add(Box.createVerticalStrut(20));
+		
+			//将组件加到总box中
+            vBox.add(searchBox);
+			//Box trainerWordBox = Box.createVerticalBox();//添加教练信息的部分
+			//Box trainerPhotoBox = Box.createVerticalBox();//添加教练照片部分
+			//Box trainerBox = Box.createHorizontalBox();//添加总tainerbox
+			//vBox.add(trainerBox);
+			vBox.add(Box.createVerticalStrut(20));
+			vBox.add(menuBox);                    
+            vBox.add(Box.createVerticalStrut(30));
+            vBox.add(backBox);
+            jf.add(vBox);		
+		*/
+           //将组件加入容器
             vBox.add(Box.createVerticalStrut(20));
             vBox.add(searchBox);
 			//vBox.add(searchPanel);			
@@ -207,6 +258,7 @@ public class LivePersonalTrainingPage {
             vBox.add(Box.createVerticalStrut(20));
 			vBox.add(trainerBox3);
 			//vBox.add(trainerPanel3);
+			//photoBox
             vBox.add(Box.createVerticalStrut(20));
 			vBox.add(menuBox);                    
             vBox.add(Box.createVerticalStrut(30));
@@ -238,6 +290,24 @@ public class LivePersonalTrainingPage {
 							i.getTrainerLicense()+ "\n"+ i.getTrainerIntro();						
 							trainerInfoList.add(trainerInfo);
 						}
+
+					/*
+					ImageIcon icon1 = new ImageIcon("boy.jpg");
+					JLabel photoTrainerLabel1 = new JLabel(); // creates label
+					photoTrainerLabel1.setIcon(icon1);	
+					trainerPhotoBox.add(photoTrainerLabel1); // creates a panel to put button on			
+					photoTrainerLabel1.setVisible(true);
+					ImageIcon icon2 = new ImageIcon("boy.jpg");
+					JLabel photoTrainerLabel2 = new JLabel(); // creates label
+					photoTrainerLabel2.setIcon(icon2);	
+					trainerPhotoBox.add(photoTrainerLabel2); // creates a panel to put button on			
+					photoTrainerLabel2.setVisible(true);
+					ImageIcon icon3 = new ImageIcon("girl.jpg");
+					JLabel photoTrainerLabel3 = new JLabel(); // creates label
+					photoTrainerLabel3.setIcon(icon3);	
+					trainerPhotoBox.add(photoTrainerLabel3); // creates a panel to put button on			
+					photoTrainerLabel3.setVisible(true);
+					*/
 					trainerTextArea1.setText(trainerInfoList.get(0));
 					trainerTextArea2.setText(trainerInfoList.get(1));				
 					trainerTextArea3.setText(trainerInfoList.get(2));	//只显示三个人的信息
