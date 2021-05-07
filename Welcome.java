@@ -12,8 +12,8 @@ import java.awt.event.*;
  */
 public class Welcome extends JFrame implements ActionListener {
     private JFrame jFrame;
-    private JLabel videoLabel, liveLabel, membershipLabel;
     private JButton gallery, searchBtn, videoBtn, liveBtn, membershipBtn;
+    private JRadioButton courseBtn, trainerBtn;
     private JMenuItem accountItem, membershipItem, helpItem;
     private JTextField search;
     private final int WIDTH = 475;
@@ -27,7 +27,6 @@ public class Welcome extends JFrame implements ActionListener {
     public Welcome() {
         //Font f = new Font("Times New Roman", Font.ITALIC+Font.BOLD, 30);
 		Font btn = new Font("Georgia", Font.BOLD, 13);
-        Border labelBorder = new EmptyBorder(0, 30, 0, 30);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int sw = screenSize.width;
@@ -67,7 +66,7 @@ public class Welcome extends JFrame implements ActionListener {
 
         JPanel galleryPanel = new JPanel();
         gallery = new JButton();
-        gallery.setBounds(0, 0, 450, 200);
+        gallery.setBounds(0, 0, 382, 170);
         gallery.setBorder(new EmptyBorder(0,0,0,0));
         ImageIcon icon1 = new ImageIcon("image/gallery.jpg"); 
         Image temp1 = icon1.getImage().getScaledInstance(gallery.getWidth(), gallery.getHeight(), Image.SCALE_DEFAULT); 
@@ -85,7 +84,6 @@ public class Welcome extends JFrame implements ActionListener {
         search.setFont(btn);
         searchBtn = new JButton("Search");
         searchBtn.setFont(btn);
-        //searchBtn.setContentAreaFilled(false);
         searchBtn.setForeground(BACKGROUND);
         searchBtn.setBackground(Color.WHITE);
         searchBtn.addActionListener(this);
@@ -93,17 +91,20 @@ public class Welcome extends JFrame implements ActionListener {
         searchPanel.add(search);
         searchPanel.add(searchBtn);
 
-        Box videoBox = Box.createHorizontalBox();
-        videoLabel = new JLabel("Digital Workout Video");
-        videoLabel.setFont(btn);
-        videoLabel.setBorder(labelBorder);
-        videoBox.add(videoLabel);
-        videoBox.add(Box.createHorizontalGlue());
+        Box itemBox = Box.createHorizontalBox();
+        courseBtn = new JRadioButton("Course");
+        courseBtn.setBackground(BACKGROUND1);
+        trainerBtn = new JRadioButton("Trainer");
+        trainerBtn.setBackground(BACKGROUND1);
+        ButtonGroup group = new ButtonGroup();
+        group.add(courseBtn);
+        group.add(trainerBtn);
+        itemBox.add(courseBtn);
+        itemBox.add(trainerBtn);
 
         JPanel videoPanel = new JPanel();
         videoBtn = new JButton();
-        //videoBtn.setBounds(0, 0, 450, 85);
-        videoBtn.setBounds(0, 0, 450, 70);
+        videoBtn.setBounds(0, 0, 430, 70);
         videoBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
         ImageIcon icon2 = new ImageIcon("image/video.jpg"); 
         Image temp2 = icon2.getImage().getScaledInstance(videoBtn.getWidth(), videoBtn.getHeight(), Image.SCALE_DEFAULT); 
@@ -113,19 +114,12 @@ public class Welcome extends JFrame implements ActionListener {
         videoBtn.setBorderPainted(false);
         videoBtn.addActionListener(this);
         videoPanel.setBackground(BACKGROUND1);
+        videoPanel.setBorder(BorderFactory.createTitledBorder("Digital Workout Video"));
         videoPanel.add(videoBtn);
-
-        Box liveBox = Box.createHorizontalBox();
-        liveLabel = new JLabel("Live Personal Training");
-        liveLabel.setFont(btn);
-        liveLabel.setBorder(labelBorder);
-        liveBox.add(liveLabel);
-        liveBox.add(Box.createHorizontalGlue());
 
         JPanel livePanel = new JPanel();
         liveBtn = new JButton();
-        //liveBtn.setBounds(0, 0, 450, 85);
-        liveBtn.setBounds(0, 0, 450, 70);
+        liveBtn.setBounds(0, 0, 430, 70);
         liveBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
         ImageIcon icon3 = new ImageIcon("image/live.jpg"); 
         Image temp3 = icon3.getImage().getScaledInstance(liveBtn.getWidth(), liveBtn.getHeight(), Image.SCALE_DEFAULT); 
@@ -135,19 +129,12 @@ public class Welcome extends JFrame implements ActionListener {
         liveBtn.setBorderPainted(false);
         liveBtn.addActionListener(this);
         livePanel.setBackground(BACKGROUND1);
+        livePanel.setBorder(BorderFactory.createTitledBorder("Live Personal Training"));
         livePanel.add(liveBtn);
-
-        Box membershipBox = Box.createHorizontalBox();
-        membershipLabel = new JLabel("Membership Management");
-        membershipLabel.setFont(btn);
-        membershipLabel.setBorder(labelBorder);
-        membershipBox.add(membershipLabel);
-        membershipBox.add(Box.createHorizontalGlue());
 
         JPanel membershipPanel = new JPanel();
         membershipBtn = new JButton();
-        //membershipBtn.setBounds(0, 0, 450, 85);
-        membershipBtn.setBounds(0, 0, 450, 70);
+        membershipBtn.setBounds(0, 0, 430, 70);
         membershipBtn.setBorder(new EmptyBorder(0, 0, 0, 0));
         ImageIcon icon4 = new ImageIcon("image/membership.jpg"); 
         Image temp4 = icon4.getImage().getScaledInstance(membershipBtn.getWidth(), membershipBtn.getHeight(), Image.SCALE_DEFAULT); 
@@ -157,20 +144,15 @@ public class Welcome extends JFrame implements ActionListener {
         membershipBtn.setBorderPainted(false);
         membershipBtn.addActionListener(this);
         membershipPanel.setBackground(BACKGROUND1);
+        membershipPanel.setBorder(BorderFactory.createTitledBorder("Membership Management"));
         membershipPanel.add(membershipBtn);
 
         vBox.add(menuBox);
         vBox.add(galleryPanel);
-        vBox.add(Box.createVerticalStrut(5));
         vBox.add(searchPanel);
-        vBox.add(Box.createVerticalStrut(5));
-        vBox.add(videoBox);
+        vBox.add(itemBox);
         vBox.add(videoPanel);
-        vBox.add(Box.createVerticalStrut(5));
-        vBox.add(liveBox);
         vBox.add(livePanel);
-        vBox.add(Box.createVerticalStrut(5));
-        vBox.add(membershipBox);
         vBox.add(membershipPanel);
 
         jFrame.add(vBox);
@@ -185,19 +167,16 @@ public class Welcome extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == accountItem) {
-            //System.out.println("myAccount");
             jFrame.setVisible(false);
             new IDPage().Identity();
         }
 
         if(e.getSource() == membershipItem) {
-            //System.out.println("membershipItem");
             jFrame.setVisible(false);
             new membershipGUI().init();
         }
 
         if(e.getSource() == helpItem) {
-            //System.out.println("helpItem");
             jFrame.setVisible(false);
             new HelpPage().Help();
         }
@@ -208,28 +187,28 @@ public class Welcome extends JFrame implements ActionListener {
 
         if(e.getSource() == searchBtn) {
             String text = search.getText();
-            if(text.equals("")) {
+            if(text.equals("") || (!courseBtn.isSelected() && !trainerBtn.isSelected())) {
                 System.out.println("No enter!");
             }
             else {
-                System.out.println(text);
+                if(courseBtn.isSelected())
+                    System.out.println("cousebtn " + text);
+                if(trainerBtn.isSelected())
+                    System.out.println("trainbtn " + text);
             }
         }
 
         if(e.getSource() == videoBtn) {
-            //System.out.println("videoBtn");
             jFrame.setVisible(false);
             new digitalWorkOutVideosPage();
         }
 
         if(e.getSource() == liveBtn) {
-            //System.out.println("liveBtn");
             jFrame.setVisible(false);
             new LivePersonalTrainingPage();
         }
 
         if(e.getSource() == membershipBtn) {
-            //System.out.println("membershipBtn");
             jFrame.setVisible(false);
             new membershipGUI().init();
         }
