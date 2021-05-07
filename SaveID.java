@@ -18,7 +18,7 @@ public class SaveID {
 		try {
 			file = new File("./file/ID.txt"); //�½��ļ�����
 			//���ļ�ϵͳ�е�ĳ���ļ��л�ȡ�ֽ�
-			os = new FileOutputStream(file, true);//true��append��Ϊ��������������ԭ�ļ�ĩ��׷�ӡ�
+			os = new FileOutputStream(file, false);//true��append��Ϊ��������������ԭ�ļ�ĩ��׷�ӡ�
 			//���ֽ���ת�����ַ���
 			osw = new OutputStreamWriter(os);
 			//�ѽ��յ����ַ������뻺��������߶�д�ٶȡ�
