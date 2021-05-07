@@ -13,7 +13,7 @@ import java.awt.event.*;
 public class Welcome extends JFrame implements ActionListener {
     private JFrame jFrame;
     private JButton gallery, searchBtn, videoBtn, liveBtn, membershipBtn;
-    private JRadioButton courseBtn, trainerBtn;
+    //private JRadioButton courseBtn, trainerBtn;
     private JMenuItem accountItem, membershipItem, helpItem;
     private JTextField search;
     private final int WIDTH = 475;
@@ -66,7 +66,7 @@ public class Welcome extends JFrame implements ActionListener {
 
         JPanel galleryPanel = new JPanel();
         gallery = new JButton();
-        gallery.setBounds(0, 0, 382, 170);
+        gallery.setBounds(0, 0, 450, 200);
         gallery.setBorder(new EmptyBorder(0,0,0,0));
         ImageIcon icon1 = new ImageIcon("image/gallery.jpg"); 
         Image temp1 = icon1.getImage().getScaledInstance(gallery.getWidth(), gallery.getHeight(), Image.SCALE_DEFAULT); 
@@ -78,7 +78,7 @@ public class Welcome extends JFrame implements ActionListener {
         galleryPanel.setBackground(BACKGROUND1);
         galleryPanel.add(gallery);
 
-        JPanel searchPanel = new JPanel();
+        /*JPanel searchPanel = new JPanel();
         search = new JTextField(15);
         search.setPreferredSize(new Dimension(0, 25));
         search.setFont(btn);
@@ -100,7 +100,7 @@ public class Welcome extends JFrame implements ActionListener {
         group.add(courseBtn);
         group.add(trainerBtn);
         itemBox.add(courseBtn);
-        itemBox.add(trainerBtn);
+        itemBox.add(trainerBtn);*/
 
         JPanel videoPanel = new JPanel();
         videoBtn = new JButton();
@@ -149,10 +149,13 @@ public class Welcome extends JFrame implements ActionListener {
 
         vBox.add(menuBox);
         vBox.add(galleryPanel);
-        vBox.add(searchPanel);
-        vBox.add(itemBox);
+        vBox.add(Box.createVerticalStrut(10));
+        //vBox.add(searchPanel);
+        //vBox.add(itemBox);
         vBox.add(videoPanel);
+        vBox.add(Box.createVerticalStrut(10));
         vBox.add(livePanel);
+        vBox.add(Box.createVerticalStrut(10));
         vBox.add(membershipPanel);
 
         jFrame.add(vBox);
@@ -185,7 +188,7 @@ public class Welcome extends JFrame implements ActionListener {
             System.out.println("gallery");
         }
 
-        if(e.getSource() == searchBtn) {
+        /*if(e.getSource() == searchBtn) {
             String text = search.getText();
             if(text.equals("") || (!courseBtn.isSelected() && !trainerBtn.isSelected())) {
                 System.out.println("No enter!");
@@ -196,7 +199,7 @@ public class Welcome extends JFrame implements ActionListener {
                 if(trainerBtn.isSelected())
                     System.out.println("trainbtn " + text);
             }
-        }
+        }*/
 
         if(e.getSource() == videoBtn) {
             jFrame.setVisible(false);
