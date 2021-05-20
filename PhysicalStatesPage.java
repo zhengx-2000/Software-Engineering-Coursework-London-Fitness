@@ -53,6 +53,13 @@ public class PhysicalStatesPage {
 
 			/* Add an physicalStatesBox that holds all boxes */
 			Box physicalStatesBox = Box.createVerticalBox();
+
+			/* Add Title box */
+			Box titleBox = Box.createHorizontalBox();
+			JLabel titleLabel = new JLabel("        Please update your physical states                ");
+			titleLabel.setFont(font1);
+			titleBox.add(titleLabel);
+			titleBox.add(Box.createHorizontalStrut(1));
 			
 			/* Add Height box */
 			Box heightBox = Box.createHorizontalBox();
@@ -60,7 +67,7 @@ public class PhysicalStatesPage {
 			heightLabel.setFont(font1);
 			heightField = new JTextField(25);
 			heightBox.add(heightLabel);
-			heightBox.add(Box.createHorizontalStrut(50));
+			heightBox.add(Box.createHorizontalStrut(1));
 			heightBox.add(heightField);
 
 			/* Add Weight box */
@@ -69,7 +76,7 @@ public class PhysicalStatesPage {
 			weightLabel.setFont(font1);
 			weightField = new JTextField(25);
 			weightBox.add(weightLabel);
-			weightBox.add(Box.createHorizontalStrut(50));
+			weightBox.add(Box.createHorizontalStrut(1));
 			weightBox.add(weightField);
 
 			/* Add Age box */
@@ -78,7 +85,7 @@ public class PhysicalStatesPage {
 			ageLabel.setFont(font1);
 			ageField = new JTextField(25);
 			ageBox.add(ageLabel);
-			ageBox.add(Box.createHorizontalStrut(50));
+			ageBox.add(Box.createHorizontalStrut(1));
 			ageBox.add(ageField);
 
 			/* Add Button box */
@@ -96,13 +103,15 @@ public class PhysicalStatesPage {
 			buttonBox.add(Box.createHorizontalStrut(1));
 
 			/* Add all boxes into physicalStates box */
-			physicalStatesBox.add(Box.createVerticalStrut(35));
+			physicalStatesBox.add(Box.createVerticalStrut(40));
+			physicalStatesBox.add(titleBox);
+			physicalStatesBox.add(Box.createVerticalStrut(40));
 			physicalStatesBox.add(heightBox);
-			physicalStatesBox.add(Box.createVerticalStrut(35));
+			physicalStatesBox.add(Box.createVerticalStrut(40));
 			physicalStatesBox.add(weightBox);
-			physicalStatesBox.add(Box.createVerticalStrut(35));
+			physicalStatesBox.add(Box.createVerticalStrut(40));
 			physicalStatesBox.add(ageBox);
-			physicalStatesBox.add(Box.createVerticalStrut(35));
+			physicalStatesBox.add(Box.createVerticalStrut(40));
 			physicalStatesBox.add(buttonBox);
 
 			/* Add physicalStates box into Physical States page */

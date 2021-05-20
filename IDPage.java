@@ -8,7 +8,7 @@ import java.io.*;
  * A GUI for the ID page
  * @author Taowu Zhang
  * @version 4.0
- * @since 5/20/2021
+ * @since 5/21/2021
  */
 
 public class IDPage{
@@ -124,6 +124,15 @@ public void Identity(){
 					weight = dataParts3[5];
 					remark = dataParts3[6];
                 	break;
+            	}else{
+                		userId = "";
+                		trainingTime = "You haven't";
+                		trainerName = "made an appointment.";
+                		trainingAim = "";
+                		height = "";
+						weight = "";
+						remark = "";
+						break;
             	}
             }
 		}
@@ -305,34 +314,51 @@ public void Identity(){
 		Box myAppointmentInfoBox = Box.createVerticalBox();
 		JLabel myAppointmentLabel = new JLabel("My Appointment                                 ");
 		myAppointmentLabel.setFont(font1);
-		JLabel trainingTimeLabel = new JLabel("Training Time: "+trainingTime);
-		trainingTimeLabel.setFont(font1);
-		JLabel trainningNameLabel = new JLabel("Trainning Name: "+trainerName);
-		trainningNameLabel.setFont(font1);
-		JLabel trainningAimLabel = new JLabel("Trainning Aim: "+trainingAim);
-		trainningAimLabel.setFont(font1);
-		JLabel heightAimLabel = new JLabel("Height Aim: "+height);
-		heightAimLabel.setFont(font1);
-		JLabel weightAimLabel = new JLabel("Weight Aim: "+weight);
-		weightAimLabel.setFont(font1);
-		JLabel remarkLabel = new JLabel("Remark: "+remark);
-		remarkLabel.setFont(font1);
 
-		myAppointmentMainBox.add(myAppointmentLabel);
-		myAppointmentInfoBox.add(trainingTimeLabel);
-		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
-		myAppointmentInfoBox.add(trainningNameLabel);
-		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
-		myAppointmentInfoBox.add(trainningAimLabel);
-		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
-		myAppointmentInfoBox.add(heightAimLabel);
-		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
-		myAppointmentInfoBox.add(weightAimLabel);
-		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
-		myAppointmentInfoBox.add(remarkLabel);
-		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
-		myAppointmentBox.add(myAppointmentMainBox);
-		myAppointmentBox.add(myAppointmentInfoBox);
+		if (trainingTime == "You haven't") {
+			JLabel trainingTimeLabel = new JLabel(trainingTime);
+			trainingTimeLabel.setFont(font1);
+			JLabel trainingNameLabel = new JLabel(trainerName);
+			trainingNameLabel.setFont(font1);
+
+			myAppointmentMainBox.add(myAppointmentLabel);
+			myAppointmentInfoBox.add(trainingTimeLabel);
+			myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+			myAppointmentInfoBox.add(trainingNameLabel);
+			myAppointmentInfoBox.add(Box.createVerticalStrut(40));
+			myAppointmentBox.add(myAppointmentMainBox);
+			myAppointmentBox.add(myAppointmentInfoBox);
+		}else{
+			JLabel trainingTimeLabel = new JLabel("Training Time: "+trainingTime);
+			trainingTimeLabel.setFont(font1);
+			JLabel trainingNameLabel = new JLabel("Trainning Name: "+trainerName);
+			trainingNameLabel.setFont(font1);
+			JLabel trainningAimLabel = new JLabel("Trainning Aim: "+trainingAim);
+			trainningAimLabel.setFont(font1);
+			JLabel heightAimLabel = new JLabel("Height Aim: "+height);
+			heightAimLabel.setFont(font1);
+			JLabel weightAimLabel = new JLabel("Weight Aim: "+weight);
+			weightAimLabel.setFont(font1);
+			JLabel remarkLabel = new JLabel("Remark: "+remark);
+			remarkLabel.setFont(font1);
+
+			myAppointmentMainBox.add(myAppointmentLabel);
+			myAppointmentInfoBox.add(trainingTimeLabel);
+			myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+			myAppointmentInfoBox.add(trainingNameLabel);
+			myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+			myAppointmentInfoBox.add(trainningAimLabel);
+			myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+			myAppointmentInfoBox.add(heightAimLabel);
+			myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+			myAppointmentInfoBox.add(weightAimLabel);
+			myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+			myAppointmentInfoBox.add(remarkLabel);
+			myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+			myAppointmentBox.add(myAppointmentMainBox);
+			myAppointmentBox.add(myAppointmentInfoBox);
+		}
+
 		
 		myAppointmentMainBox.add(Box.createVerticalStrut(170));
 		myAppointmentInfoBox.add(Box.createVerticalStrut(40));
