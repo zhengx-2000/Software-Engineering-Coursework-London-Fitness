@@ -169,7 +169,7 @@ public class Welcome extends JFrame implements ActionListener{
 
         if(e.getSource() == videoBtn) {
             jFrame.setVisible(false);
-            new digitalWorkOutVideosPage();
+            new panDuan();
         }
 
         if(e.getSource() == liveBtn) {

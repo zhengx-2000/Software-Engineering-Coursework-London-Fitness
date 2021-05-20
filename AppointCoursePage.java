@@ -27,7 +27,8 @@ public class AppointCoursePage {
 	//Time栏目
 	Box timeBox = Box.createHorizontalBox();
 	JLabel timeLabel = new JLabel("Time:    ");		
-	JTextField timeField = new JTextField(15);
+	//JTextField timeField = new JTextField(15);
+	JComboBox<String> timeComboBox = new JComboBox<String>();
     //Aim栏目 JComboBox
 	Box aimBox = Box.createHorizontalBox();
     JLabel aimLabel = new JLabel("Aim:       ");
@@ -97,11 +98,17 @@ public class AppointCoursePage {
 			//Time栏目
 			timeLabel.setFont(font1);
 			//timeField.setBorder(labelBorder);
-			timeField.setFont(font1);
+			//timeField.setFont(font1);
+			timeComboBox.setFont(font1);
+			timeComboBox.addItem("Please choose a time period ...");
+			timeComboBox.addItem("8-12");
+			timeComboBox.addItem("13-17");
+			timeComboBox.addItem("18-21");
 			timeBox.add(Box.createHorizontalStrut(80));
 			timeBox.add(timeLabel);
 			timeBox.add(Box.createHorizontalStrut(20));
-			timeBox.add(timeField);
+			//timeBox.add(timeField);
+			timeBox.add(timeComboBox);
 			timeBox.add(Box.createHorizontalStrut(80));
 
 			//Aim栏目 JComboBox
@@ -123,7 +130,7 @@ public class AppointCoursePage {
             //height.setBorder(labelBorder);
 			heightComboBox.setFont(font1);
 			heightComboBox.addItem("Please choose...");
-            heightComboBox.addItem("<1.5 M");
+            heightComboBox.addItem("<1.5M");
             heightComboBox.addItem("1.5-1.6M");
 			heightComboBox.addItem("1.6-1.7M");
 			heightComboBox.addItem("1.7-1.8M");
@@ -239,24 +246,35 @@ public class AppointCoursePage {
 			JButton button = (JButton) e.getSource();
 			//String name = button.getName();
 			//String fileName = "appoinrment.txt";
-			String userId = "yyy";
+			GetID CurrentID = new GetID();			
+			String userId = CurrentID.getID();
 			String trainerName = (String) trainer.getSelectedItem();//选择的类型名字
-			String trainingTime = (String) timeField.getText();//选择的时间
+			//String trainingTime = (String) timeField.getText();//选择的时间
+			String trainingTime = (String)timeComboBox.getSelectedItem();//选择的时间
 			String aimContent = (String) aim.getSelectedItem();//选择的目标
 			String height = (String) heightComboBox.getSelectedItem();//选择的身高
 			String weight = (String) weightComboBox.getSelectedItem();//选择的体重
-			String remark = (String) remarkField.getText();//评论
+			String remark = (String) remarkField.getText();
+			int remarkLength = remarkField.getText().length();//获得评论
 
 			ArrayList<String> AppointmentList = new ArrayList<String>();;	
 	//userId trainingTime trainerName trainingAim height weight remark
 	//yyy sss trainer1 lose weight 1.7-1.8M 80kg-90kg xxxx 
 			if (button.equals(submitBtn)) {
-				if (userId!=""&&remark!=""&&trainingTime!=""&&trainerName!="Please choose..."&&height!="Please choose..."&&weight!="Please choose..."){
-					System.out.println(userId+trainerName+aimContent+height+weight+remark);
+				if (userId!=""&&remarkLength!=0&&trainingTime!=""&&trainerName!="Please choose..."&&height!="Please choose..."&&weight!="Please choose...")
+				{
+					//System.out.println(userId+trainerName+aimContent+height+weight+remark);
 					AppointmentList.add(userId);
 					AppointmentList.add(trainingTime);
 					AppointmentList.add(trainerName);
-					AppointmentList.add(aimContent);
+					if(aimContent=="lose weight")
+					{
+						AppointmentList.add("lose_weight");
+					}
+					if(aimContent=="Shape and Fitness")
+					{
+						AppointmentList.add("Shape_and_Fitness");
+					}
 					AppointmentList.add(height);
 					AppointmentList.add(weight);
 					AppointmentList.add(remark);
@@ -265,7 +283,9 @@ public class AppointCoursePage {
 					jf.setVisible(false);
 				}
 				else{
-					JOptionPane.showMessageDialog(jf,"Must fill all the infomation");
+					Object[] options ={ "OK" };  
+					JOptionPane.showOptionDialog(jf,"Must fill all information","Message",JOptionPane.INFORMATION_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+					//JOptionPane.showMessageDialog(jf,"Must fill all the infomation");
 				}
 			}
 

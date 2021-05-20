@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -6,80 +7,142 @@ import java.io.*;
 /**
  * A GUI for the ID page
  * @author Taowu Zhang
- * @version 2.0.1
- * @since 4/22/2021
+ * @version 4.0
+ * @since 5/20/2021
  */
 
 public class IDPage{
 	
-	private final JFrame jf = new JFrame("IDPage");
+	private final JFrame jf = new JFrame("ID Page");
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
 
-	//String 	ID;
+	String identity;
 	String id;
-	String iden;
+	String iden1;
 	String pw;
 	String gen;
 	String phone;
 	String em;
 	String vip;
 
+	String iden2;
+	String hei;
+	String wei;
+	String age;
+
+	String userId;
+	String trainingTime;
+	String trainerName;
+	String trainingAim;
+	String height;
+	String weight;
+	String remark;
+
 
 public void Identity(){
 	try {
+		/* Get user's ID */
+		GetID getid = new GetID();
+		identity=getid.getID();
+
+		/* Font used in the GUI */
+		Font font1 = new Font("Georgia", Font.BOLD, 13);
 
 		/**
 		 *  Read the personal information in SignUpLog.txt
 		 *  Including ID, gender, password, cell phone, email, VIP status
 		 *  Store the matching information in the corresponding String
 		 */
-		BufferedReader reader = new BufferedReader(new FileReader("./file/SignUpLog.txt"));
-		String line = reader.readLine();
-		//To read a line of personal information, separated by space into different parts
-		String[] dataParts = line.split(" ");
-		id = dataParts[0];
-		//The transfer id is in the first line.
-		if (id.equals("aaa")) {
-			iden = dataParts[0];
-			gen = dataParts[1];
-			pw = dataParts[2];
-			phone = dataParts[3];
-			em = dataParts[4];
-			vip = dataParts[6];
+		BufferedReader reader1 = new BufferedReader(new FileReader("file/SignUpLog.txt"));
+		String line1 = reader1.readLine();
+		/* To read a line of personal information, separated by space into different parts */
+		String[] dataParts1 = line1.split(" ");
+		id = dataParts1[0];
+		/* The transfer id is in the first line. */
+		if (id.equals(identity)) {
+			iden1 = dataParts1[0];
+			gen = dataParts1[1];
+			pw = dataParts1[2];
+			phone = dataParts1[3];
+			em = dataParts1[4];
+			vip = dataParts1[5];
 		}else{
-			while (line != null) {
-                line = reader.readLine();
-                dataParts = line.split(" "); 
-                id = dataParts[0];
-        //The transfer id is in the other line
-                if(id.equals("bbb")) {
-                	iden = dataParts[0];
-                	gen = dataParts[1];
-                	pw = dataParts[2];
-                	phone = dataParts[3];
-                	em = dataParts[4];
-                	vip = dataParts[6];
+			while (line1 != null) {
+                line1 = reader1.readLine();
+                dataParts1 = line1.split(" "); 
+                id = dataParts1[0];
+        /* The transfer id is in the other line */
+                if(id.equals(identity)) {
+                	iden1 = dataParts1[0];
+                	gen = dataParts1[1];
+                	pw = dataParts1[2];
+                	phone = dataParts1[3];
+                	em = dataParts1[4];
+                	vip = dataParts1[5];
                 	break;
             	}
             }
 		}
-		reader.close();
+
+		BufferedReader reader2 = new BufferedReader(new FileReader("file/PhysicalStates.txt"));
+		String line2 = reader2.readLine();
+		/* To read a line of physical states information, separated by space into different parts */
+		String[] dataParts2 = line2.split(" ");
+		hei = dataParts2[0];
+		wei = dataParts2[1];
+		age = dataParts2[2];
+
+
+		BufferedReader reader3 = new BufferedReader(new FileReader("file/appointment.txt"));
+		String line3 = reader3.readLine();
+		/* To read a line of live course information, separated by space into different parts */
+		String[] dataParts3 = line3.split(" ");
+		id = dataParts3[0];
+		/* The transfer id is in the first line. */
+		if (id.equals(identity)) {
+			userId = dataParts3[0];
+			trainingTime = dataParts3[1];
+			trainerName = dataParts3[2];
+			trainingAim = dataParts3[3];
+			height = dataParts3[4];
+			weight = dataParts3[5];
+			remark = dataParts3[6];
+
+		}else{
+			while (line3 != null) {
+                line3 = reader3.readLine();
+                dataParts3 = line3.split(" "); 
+                id = dataParts3[0];
+        /* The transfer id is in the other line */
+                if(id.equals(identity)) {
+                	userId = dataParts3[0];
+                	trainingTime = dataParts3[1];
+                	trainerName = dataParts3[2];
+                	trainingAim = dataParts3[3];
+                	height = dataParts3[4];
+					weight = dataParts3[5];
+					remark = dataParts3[6];
+                	break;
+            	}
+            }
+		}
+
 
 		/**
 		 * Set the base of the page
 		 */
 
-		//Background Color Settings
+		/* Background Color Settings */
 		jf.getContentPane().setBackground(new Color(250,240,215));
-		//Gets the page size
+		/* Gets the page size */
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int sw = screenSize.width;
 		int sh = screenSize.height;
-		//Center the page
+		/* Center the page */
 		jf.setBounds((sw - WIDTH) / 2, (sh - HEIGHT) / 2, WIDTH, HEIGHT);
 		jf.setResizable(false);
-		//Change the layout to FlowLayout, otherwise the components in the window will resize according to the window size
+		/* Change the layout to FlowLayout, otherwise the components in the window will resize according to the window size */
 		jf.setLayout(new FlowLayout());
 		
 
@@ -87,12 +150,12 @@ public void Identity(){
 		 * Put the Box in the Page
 		 */
 
-		//Add an IDentityBox that holds all boxes
+		/* Add an IDentityBox that holds all boxes */
 		Box identityBox = Box.createVerticalBox();	
 		
-		//Add Identity box
+		/* Add Identity box */
 		Box identityMostBox = Box.createHorizontalBox();
-		//Add Identity image box
+		/* Add Identity image box */
 		Box identityImageBox = Box.createVerticalBox();
 		switch(gen){
 			case "0":{
@@ -120,100 +183,181 @@ public void Identity(){
 				break;
 			}
 		}	
-		//Add Identity info box
+		/* Add Identity info box */
 		Box identityInfoBox = Box.createVerticalBox();
-		JLabel identityLabel = new JLabel("ID:"+iden);
-		JLabel passwordLabel = new JLabel("PassWord:"+pw);
-		JLabel phoneLabel = new JLabel("Phone:"+phone);
-		JLabel e_mailLabel = new JLabel("E-mail:"+em);
-		JLabel vipLabel = new JLabel("VIP:"+vip);
+		JLabel identityLabel = new JLabel("ID: "+iden1);
+		identityLabel.setFont(font1);
+		JLabel passwordLabel = new JLabel("Password: "+pw);
+		passwordLabel.setFont(font1);
+		JLabel phoneLabel = new JLabel("Phone: "+phone);
+		phoneLabel.setFont(font1);
+		JLabel e_mailLabel = new JLabel("E-mail: "+em);
+		e_mailLabel.setFont(font1);
+		JLabel vipLabel = new JLabel("VIP: "+vip);
+		vipLabel.setFont(font1);
 		identityInfoBox.add(identityLabel);
-		identityInfoBox.add(Box.createVerticalStrut(10));
+		identityInfoBox.add(Box.createVerticalStrut(8));
 		identityInfoBox.add(passwordLabel);
-		identityInfoBox.add(Box.createVerticalStrut(10));
+		identityInfoBox.add(Box.createVerticalStrut(8));
 		switch(gen){
 			case "0":{
 				JLabel genderLabel = new JLabel("Gender: Unknown");
+				genderLabel.setFont(font1);
 				identityInfoBox.add(genderLabel);
-				identityInfoBox.add(Box.createVerticalStrut(10));
+				identityInfoBox.add(Box.createVerticalStrut(8));
 				break;
 			}
 			case "1":{
 				JLabel genderLabel = new JLabel("Gender: Male");
+				genderLabel.setFont(font1);
 				identityInfoBox.add(genderLabel);
-				identityInfoBox.add(Box.createVerticalStrut(10));
+				identityInfoBox.add(Box.createVerticalStrut(8));
 				break;
 			}
 			case "2":{
 				JLabel genderLabel = new JLabel("Gender: Female");
+				genderLabel.setFont(font1);
 				identityInfoBox.add(genderLabel);
-				identityInfoBox.add(Box.createVerticalStrut(10));
+				identityInfoBox.add(Box.createVerticalStrut(8));
 				break;
 			}
 		}
 		identityInfoBox.add(phoneLabel);
-		identityInfoBox.add(Box.createVerticalStrut(10));
+		identityInfoBox.add(Box.createVerticalStrut(8));
 		identityInfoBox.add(e_mailLabel);
-		identityInfoBox.add(Box.createVerticalStrut(10));
+		identityInfoBox.add(Box.createVerticalStrut(8));
 		identityInfoBox.add(vipLabel);
-		identityInfoBox.add(Box.createVerticalStrut(10));	
+		identityInfoBox.add(Box.createVerticalStrut(8));
 		identityMostBox.add(identityImageBox);
-		identityInfoBox.add(Box.createHorizontalStrut(15));
 		identityMostBox.add(identityInfoBox);
-		identityInfoBox.add(Box.createHorizontalStrut(15));
+		
+		identityImageBox.add(Box.createVerticalStrut(30));
+		identityMostBox.add(Box.createHorizontalStrut(1));
 			
-		//Add Physical State box
-		Box physicalStateBox = Box.createHorizontalBox();
-		physicalState ps = new physicalState(" ","170","80","23");
-		JLabel physicalStateLabel = new JLabel("Physical States                "+ps);
-		physicalStateBox.add(physicalStateLabel);
-		physicalStateBox.add(Box.createHorizontalStrut(10));
+		/* Add Physical State box 1 */
+		Box physicalStateBox1 = Box.createVerticalBox();
+		Box physicalStateMainBox = Box.createHorizontalBox();
 
-		//Add My Appointment box
-		Box myAppointmentBox = Box.createHorizontalBox();
-		JLabel myAppointmentLabel = new JLabel("Live Course                                     ");
+		JLabel physicalStateLabel = new JLabel("Physical States                                                                  ");
+		physicalStateLabel.setFont(font1);
+		JButton alterPhysicalStates = new JButton("Change");
+		alterPhysicalStates.setFont(font1);
+		alterPhysicalStates.setName("alterPhysicalStates");
+		alterPhysicalStates.addActionListener(new MyActionListener());
+
+		physicalStateMainBox.add(physicalStateLabel);
+		physicalStateMainBox.add(alterPhysicalStates);
+		physicalStateBox1.add(physicalStateMainBox);
+
+		physicalStateMainBox.add(Box.createHorizontalStrut(1));
+		physicalStateBox1.add(Box.createVerticalStrut(10));
+
+		/* Add Physical State box 2 */
+		Box physicalStateBox2 = Box.createHorizontalBox();
+		Box physicalStateBlankBox = Box.createVerticalBox();
+		Box physicalStateInfoBox = Box.createVerticalBox();
+
+		JLabel physicalStateBlankLabel = new JLabel("                                  ");
+		JLabel physicalStateInfoHeightLabel = new JLabel("Height: "+hei+"cm");
+		physicalStateInfoHeightLabel.setFont(font1);
+		JLabel physicalStateInfoWeightLabel = new JLabel("Weight: "+wei+"kg");
+		physicalStateInfoWeightLabel.setFont(font1);
+		JLabel physicalStateInfoAgeLabel = new JLabel("Age: "+age+" years old");
+		physicalStateInfoAgeLabel.setFont(font1);
+
+		physicalStateBlankBox.add(physicalStateBlankLabel);
+		physicalStateInfoBox.add(physicalStateInfoHeightLabel);
+		physicalStateInfoBox.add(Box.createVerticalStrut(8));
+		physicalStateInfoBox.add(physicalStateInfoWeightLabel);
+		physicalStateInfoBox.add(Box.createVerticalStrut(8));
+		physicalStateInfoBox.add(physicalStateInfoAgeLabel);
+		physicalStateInfoBox.add(Box.createVerticalStrut(8));
+		physicalStateBox2.add(physicalStateBlankBox);
+		physicalStateBox2.add(physicalStateInfoBox);
+
+		physicalStateInfoBox.add(Box.createVerticalStrut(20));
+		physicalStateBlankBox.add(Box.createVerticalStrut(20));
+		physicalStateBox2.add(Box.createHorizontalStrut(1));
+
+
+		/* Add Live Course box */
+		Box liveCourseBox = Box.createVerticalBox();
+		Box liveCourseMainBox = Box.createHorizontalBox();
+
+		JLabel liveCourseLabel = new JLabel("Live Course                                                     ");
+		liveCourseLabel.setFont(font1);
 		JButton goToLiveButton = new JButton("Go to live course");
+		goToLiveButton.setFont(font1);
 		goToLiveButton.setName("goToLiveButton");
 		goToLiveButton.addActionListener(new MyActionListener());
-		myAppointmentBox.add(myAppointmentLabel);
-		myAppointmentBox.add(goToLiveButton);
-		myAppointmentBox.add(Box.createHorizontalStrut(10));
 
-		//Add Live Course box
-		Box liveCourseBox = Box.createHorizontalBox();
-		JLabel liveCourseLabel = new JLabel("My Appointment                                                                    ");
-		liveCourseBox.add(liveCourseLabel);
-		liveCourseBox.add(Box.createHorizontalStrut(10));
+		liveCourseMainBox.add(liveCourseLabel);
+		liveCourseMainBox.add(goToLiveButton);
+		liveCourseBox.add(liveCourseMainBox);
 
-		//Add My Consumption box
-		Box myConsumptionBox = Box.createHorizontalBox();
-		JLabel myConsumptionLabel = new JLabel("My Consumption                                                                  ");
-		myConsumptionBox.add(myConsumptionLabel);
-		myConsumptionBox.add(Box.createHorizontalStrut(10));
+		liveCourseMainBox.add(Box.createHorizontalStrut(1));
+		liveCourseBox.add(Box.createVerticalStrut(20));
 
-		//Add Back Button box
+
+		/* Add My Appointment box */
+		Box myAppointmentBox = Box.createHorizontalBox();
+		Box myAppointmentMainBox = Box.createVerticalBox();
+		Box myAppointmentInfoBox = Box.createVerticalBox();
+		JLabel myAppointmentLabel = new JLabel("My Appointment                                 ");
+		myAppointmentLabel.setFont(font1);
+		JLabel trainingTimeLabel = new JLabel("Training Time: "+trainingTime);
+		trainingTimeLabel.setFont(font1);
+		JLabel trainningNameLabel = new JLabel("Trainning Name: "+trainerName);
+		trainningNameLabel.setFont(font1);
+		JLabel trainningAimLabel = new JLabel("Trainning Aim: "+trainingAim);
+		trainningAimLabel.setFont(font1);
+		JLabel heightAimLabel = new JLabel("Height Aim: "+height);
+		heightAimLabel.setFont(font1);
+		JLabel weightAimLabel = new JLabel("Weight Aim: "+weight);
+		weightAimLabel.setFont(font1);
+		JLabel remarkLabel = new JLabel("Remark: "+remark);
+		remarkLabel.setFont(font1);
+
+		myAppointmentMainBox.add(myAppointmentLabel);
+		myAppointmentInfoBox.add(trainingTimeLabel);
+		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+		myAppointmentInfoBox.add(trainningNameLabel);
+		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+		myAppointmentInfoBox.add(trainningAimLabel);
+		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+		myAppointmentInfoBox.add(heightAimLabel);
+		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+		myAppointmentInfoBox.add(weightAimLabel);
+		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+		myAppointmentInfoBox.add(remarkLabel);
+		myAppointmentInfoBox.add(Box.createVerticalStrut(8));
+		myAppointmentBox.add(myAppointmentMainBox);
+		myAppointmentBox.add(myAppointmentInfoBox);
+		
+		myAppointmentMainBox.add(Box.createVerticalStrut(170));
+		myAppointmentInfoBox.add(Box.createVerticalStrut(40));
+		myAppointmentBox.add(Box.createHorizontalStrut(1));
+
+
+		/* Add Back Button box */
 		Box buttonBox = Box.createHorizontalBox();
 		JButton backButton = new JButton("Back");
+		backButton.setFont(font1);
 		backButton.setName("backButton");
 		backButton.addActionListener(new MyActionListener());
 		buttonBox.add(backButton);
-		buttonBox.add(Box.createHorizontalStrut(35));
+		buttonBox.add(Box.createHorizontalStrut(1));
 
-		//Add all boxes into identitybox
-		identityBox.add(Box.createVerticalStrut(35));
+		/* Add all boxes into identitybox */
 		identityBox.add(identityMostBox);
-		identityBox.add(Box.createVerticalStrut(35));
-		identityBox.add(physicalStateBox);
-		identityBox.add(Box.createVerticalStrut(35));
-		identityBox.add(myAppointmentBox);
-		identityBox.add(Box.createVerticalStrut(35));
+		identityBox.add(physicalStateBox1);
+		identityBox.add(physicalStateBox2);
 		identityBox.add(liveCourseBox);
-		identityBox.add(Box.createVerticalStrut(35));
-		identityBox.add(myConsumptionBox);
-		identityBox.add(Box.createVerticalStrut(35));
+		identityBox.add(myAppointmentBox);
 		identityBox.add(buttonBox);
+		identityBox.add(Box.createVerticalStrut(20));
 
-		//Add identitybox into ID page
+		/* Add identitybox into ID page */
 		jf.add(identityBox);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setVisible(true);
@@ -222,9 +366,7 @@ public void Identity(){
 		}
 }
 
-/*public void getId(String id){
- 		this.ID=id;
-}*/
+
  
 /**
  * Actions involved in the page.
@@ -244,6 +386,11 @@ private class MyActionListener implements ActionListener {
 			case "backButton":{
 				jf.setVisible(false);
 				new Welcome();
+				break;
+			}
+			case "alterPhysicalStates":{
+				jf.setVisible(false);
+				new PhysicalStatesPage();
 				break;
 			}
 			default:

@@ -128,7 +128,7 @@ public class paymentGUI {
 					JOptionPane.showMessageDialog(paymentPage,"Payment Sucessfully!");
 				break;
 				case "backButn":
-					location.backPage(3);
+					location.backPage(4);
 				break;
 				default:
 					break;

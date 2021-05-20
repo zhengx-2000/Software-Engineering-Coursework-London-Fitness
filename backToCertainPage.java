@@ -1,6 +1,17 @@
 
 public class backToCertainPage{
-    public int sourcePage;
+    
+    int sourcePage;
+
+    public void setSourcePage (int pageNum){
+        sourcePage = pageNum;
+    }
+
+    public int getSourcePage (){
+        int num = sourcePage;
+        return num;
+    }
+
     public void backPage(int sourcePage){
         switch (sourcePage){
             case 1:
@@ -10,7 +21,10 @@ public class backToCertainPage{
                 new membershipMatch();
             break;
             case 3:
-                new AppointCoursePage();
+                new LivePersonalTrainingPage();
+            break;
+            case 4:
+                new Welcome();
             break;
         }
     }

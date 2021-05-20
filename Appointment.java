@@ -9,6 +9,8 @@ public class Appointment {
 	private static String trainerName;
 	private static String trainingAim;
 
+	backToCertainPage location = new backToCertainPage();
+
 	//private Calendar cal = Calendar.getInstance();
 	//private java.text.SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 	//private String cdate = sdf.format(cal.getTime());
