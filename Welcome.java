@@ -7,10 +7,10 @@ import java.awt.event.*;
 /**
  * A simple GUI for the welcome page(main page)
  * @author Xiao Zheng
- * @version 3.1
- * @since 5/7/2021
+ * @version 3.2
+ * @since 5/20/2021
  */
-public class Welcome extends JFrame implements ActionListener {
+public class Welcome extends JFrame implements ActionListener{
     private JFrame jFrame;
     private JButton gallery, videoBtn, liveBtn, membershipBtn;
     //private JRadioButton courseBtn, trainerBtn;
@@ -44,17 +44,20 @@ public class Welcome extends JFrame implements ActionListener {
         accountItem.setFont(btn);
         accountItem.setBackground(BACKGROUND1);
         accountItem.addActionListener(this);
+        accountItem.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         membershipItem = new JMenuItem("Membership");
         membershipItem.setName("membership");
         membershipItem.setFont(btn);
         membershipItem.setBackground(BACKGROUND1);
         membershipItem.addActionListener(this);
+        membershipItem.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         helpItem = new JMenuItem("Help");
         helpItem.setName("help");
         helpItem.setFont(btn);
         helpItem.setHorizontalAlignment(SwingConstants.RIGHT);
         helpItem.setBackground(BACKGROUND1);
         helpItem.addActionListener(this);
+        helpItem.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         menuBar.add(accountItem);
         menuBar.add(membershipItem);
         menuBox.add(menuBar);
@@ -88,6 +91,7 @@ public class Welcome extends JFrame implements ActionListener {
         videoBtn.setContentAreaFilled(false);
         videoBtn.setBorderPainted(false);
         videoBtn.addActionListener(this);
+        videoBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         videoPanel.setBackground(BACKGROUND1);
         videoPanel.setBorder(BorderFactory.createTitledBorder("Digital Workout Video"));
         videoPanel.add(videoBtn);
@@ -103,6 +107,7 @@ public class Welcome extends JFrame implements ActionListener {
         liveBtn.setContentAreaFilled(false);
         liveBtn.setBorderPainted(false);
         liveBtn.addActionListener(this);
+        liveBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         livePanel.setBackground(BACKGROUND1);
         livePanel.setBorder(BorderFactory.createTitledBorder("Live Personal Training"));
         livePanel.add(liveBtn);
@@ -118,6 +123,7 @@ public class Welcome extends JFrame implements ActionListener {
         membershipBtn.setContentAreaFilled(false);
         membershipBtn.setBorderPainted(false);
         membershipBtn.addActionListener(this);
+        membershipBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         membershipPanel.setBackground(BACKGROUND1);
         membershipPanel.setBorder(BorderFactory.createTitledBorder("Membership Management"));
         membershipPanel.add(membershipBtn);
