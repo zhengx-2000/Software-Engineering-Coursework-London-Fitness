@@ -8,8 +8,14 @@ import java.awt.event.ActionListener;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
 
- 
+ /**
+ * the GUI of payment function
+ * @author Jingyuan Tang
+ * @version 3.2
+ * @since 5/20/2021
+ */
 public class paymentGUI {
+	public int sourcePage;
 	private final JFrame paymentPage = new JFrame("Payment Page");
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
@@ -17,6 +23,7 @@ public class paymentGUI {
 	Font myFont2 = new Font("Georgia", Font.BOLD, 12);
  
 	public void init(int i) {
+		sourcePage = i;
 		try {
 			paymentPage.getContentPane().setBackground(new Color(250,240,215));
 			//获取登录界面
@@ -128,7 +135,8 @@ public class paymentGUI {
 					JOptionPane.showMessageDialog(paymentPage,"Payment Sucessfully!");
 				break;
 				case "backButn":
-					location.backPage(4);
+					location.backPage(sourcePage);
+					paymentPage.setVisible(false);
 				break;
 				default:
 					break;
@@ -137,6 +145,6 @@ public class paymentGUI {
 	}
  
 	public static void main(String[] args) {
-		new paymentGUI().init(0);
+		new paymentGUI().init(4);
 	}
 }

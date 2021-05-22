@@ -543,7 +543,7 @@ public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener
 			// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!此处改为tjy的充值
 			// new liveCoursePage();
 
-			new paymentGUI().init(0);
+			new paymentGUI().init(1);
 
 		} else if (eventSource.equals(nwButton2)){
 

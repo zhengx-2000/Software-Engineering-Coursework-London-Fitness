@@ -17,7 +17,7 @@ public class Welcome extends JFrame implements ActionListener{
     private JMenuItem accountItem, membershipItem, helpItem;
     private final int WIDTH = 475;
 	private final int HEIGHT = 625;
-    private final Color BACKGROUND = new Color(242, 215, 146);
+    //private final Color BACKGROUND = new Color(242, 215, 146);
     private final Color BACKGROUND1 = new Color(250, 240, 215);
 
     /**

@@ -1,7 +1,14 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * the GUI of membership selection
+ * @author Jingyuan Tang
+ * @version 3.2
+ * @since 5/20/2021
+ */
 
 public class membershipGUI {
 	private final JFrame MembershipPage = new JFrame("Membership Page");
@@ -36,42 +43,47 @@ public class membershipGUI {
 			JLabel note = new JLabel("Interests of Members");
 			note.setFont(myFont1);
 			reminderBox.add(note);
+
 			//Monthly栏目		
 			Box MonthlyBox = Box.createHorizontalBox();
-			JPanel monthMember = new JPanel(new GridLayout(0,2));
+			//JPanel monthMember = new JPanel(new GridLayout(0,2));
+			JPanel monthMember = new JPanel();
 			JLabel month = new JLabel ("Monthly Membership: ");
 			month.setFont(myFont2);
-			monthMember.setBackground(new Color(250,240,215));
 			monthMember.add(month);
-
-			/*JLabel monthIcon = new JLabel();
-			ImageIcon monthP = new ImageIcon(new ImageIcon("image/monthly.JPEG").getImage().getScaledInstance(140, 90, Image.SCALE_SMOOTH));
-			monthIcon.setIcon(monthP);
-			monthMember.add(monthIcon);*/
-
+			//add image
+			JLabel monthlyPhoto = new JLabel();
+	        ImageIcon Icon1 = new ImageIcon(new ImageIcon("image/month.png").getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
+	        monthlyPhoto.setIcon(Icon1);
+			//
 			JButton monthBut = new JButton("I want this");
-			monthBut.setFont(myFont2);
-			monthBut.setBackground(new Color(116,96,77));
+			monthBut.setBackground(new Color(242,215,146));
+			monthMember.setBackground(new Color(250,240,215));
 			monthBut.setForeground(Color.white);
+			monthBut.setFont(myFont2);
+			monthMember.add(monthlyPhoto);
 			monthMember.add(monthBut);
-			//monthBut.setSize(50, 20);
-
 			monthBut.setName("monthBut");
 			MonthlyBox.add(monthMember);
 			monthBut.addActionListener(new newWindow());
 
 			//quarterly栏目
 			Box quarterlyBox = Box.createHorizontalBox();
-			JPanel quarterMember = new JPanel(new GridLayout(0,2));
+			JPanel quarterMember = new JPanel();
 			JLabel quarter = new JLabel ("Quarterly Membership: ");
 			quarter.setFont(myFont2);
 			quarterMember.add(quarter);
+			//add image
+			JLabel quarterlyPhoto = new JLabel();
+	        ImageIcon Icon2 = new ImageIcon(new ImageIcon("image/quarter.png").getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
+	        quarterlyPhoto.setIcon(Icon2);
 			JButton quarterBut = new JButton("I want this");
-			quarterBut.setBackground(new Color(81,59,39));
+			quarterBut.setBackground(new Color(242,215,146));
 			quarterMember.setBackground(new Color(250,240,215));
 			quarterBut.setForeground(Color.white);
 			
 			quarterBut.setFont(myFont2);
+			quarterMember.add(quarterlyPhoto);
 			quarterMember.add(quarterBut);
 			quarterBut.setName("quarterBut");
 			quarterlyBox.add(quarterMember);
@@ -79,15 +91,21 @@ public class membershipGUI {
 
 	        //yearly栏目
 			Box yearlyBox = Box.createHorizontalBox();
-			JPanel yearMember = new JPanel(new GridLayout(0,2));
+			JPanel yearMember = new JPanel();
 			JLabel year = new JLabel ("Yearly Membership: ");
 			year.setFont(myFont2);
 			yearMember.add(year);
 			yearMember.setBackground(new Color(250,240,215));
+			//add image
+			JLabel yearlyPhoto = new JLabel();
+	        ImageIcon Icon3 = new ImageIcon(new ImageIcon("image/year.png").getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
+	        yearlyPhoto.setIcon(Icon3);
+			//
 			JButton yearBut = new JButton("I want this");
-			yearBut.setBackground(new Color(116,96,77));
+			yearBut.setBackground(new Color(242,215,146));
 			yearBut.setForeground(Color.white);
 			yearBut.setFont(myFont2);
+			yearMember.add(yearlyPhoto);
 			yearMember.add(yearBut);
 			yearBut.setName("yearBut");
 			yearMember.add(yearBut);
@@ -98,20 +116,20 @@ public class membershipGUI {
 			//添加button和监听事件
 			JButton homeBtn = new JButton("Back");//游客状态返回主界面
 			homeBtn.setFont(myFont2);
-			homeBtn.setBackground(new Color(255,206,95));
+			homeBtn.setBackground(new Color(245,195,102));
 			homeBtn.setForeground(Color.white);
-			homeBtn.setName("homeBtn");
+			homeBtn.setName("back");
 			homeBtn.addActionListener(new newWindow());
 
 			vBox.add(Box.createVerticalStrut(15));
 			vBox.add(reminderBox);
-			vBox.add(Box.createVerticalStrut(40));
+			vBox.add(Box.createVerticalStrut(30));
 			vBox.add(MonthlyBox);
-			vBox.add(Box.createVerticalStrut(80));
+			vBox.add(Box.createVerticalStrut(60));
 			vBox.add(quarterlyBox);
-			vBox.add(Box.createVerticalStrut(80));
+			vBox.add(Box.createVerticalStrut(60));
 			vBox.add(yearlyBox);
-			vBox.add(Box.createVerticalStrut(100));
+			vBox.add(Box.createVerticalStrut(80));
 			vBox.add(homeBtn);
 			MembershipPage.add(vBox);
 			MembershipPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -131,31 +149,20 @@ public class membershipGUI {
 					new paymentGUI().init(2);
 					MembershipPage.setVisible(false);
 					memberMatch.match(2,"eee");
-
-					//JOptionPane.showMessageDialog(jf, "主界面");
-					//以游客状态去主界面
 					break;
 				case "quarterBut":
-					new paymentGUI().init(3);
+					new paymentGUI().init(2);
 					MembershipPage.setVisible(false);
 					memberMatch.match(3,"01");
-
-					//JOptionPane.showMessageDialog(jf, "主界面");
-					//以游客状态去主界面
 					break;
 				case "yearBut":
-					new paymentGUI().init(4);
 					MembershipPage.setVisible(false);
+					new paymentGUI().init(2);
 					memberMatch.match(4,"01");
-
-					//JOptionPane.showMessageDialog(jf, "主界面");
-					//以游客状态去主界面
 					break;
-				case "homeBtn":
+				case"back":
 					MembershipPage.setVisible(false);
 					new Welcome();
-					break;
-				default:
 					break;
 			}
 		}

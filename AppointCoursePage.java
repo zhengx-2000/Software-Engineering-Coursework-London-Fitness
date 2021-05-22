@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class AppointCoursePage {
 
+	//设置源页面代码
+	public int sourcePage = 3;
 	private String id;
 	private final JFrame jf = new JFrame("Appoint Course Page");
 	final int WIDTH = 475;
@@ -279,7 +281,7 @@ public class AppointCoursePage {
 					AppointmentList.add(weight);
 					AppointmentList.add(remark);
 					new Control_WriteIntoFile(AppointmentList);
-					new paymentGUI().init(1); 
+					new paymentGUI().init(3); 
 					jf.setVisible(false);
 				}
 				else{

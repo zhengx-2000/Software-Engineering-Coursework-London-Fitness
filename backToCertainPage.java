@@ -1,24 +1,20 @@
-
+/**
+ * A control class that provide the method back to the pages where it comes from
+ * @author Jingyuan Tang
+ * @version 3.2
+ * @since 5/20/2021
+ */
 public class backToCertainPage{
     
     int sourcePage;
 
-    public void setSourcePage (int pageNum){
-        sourcePage = pageNum;
-    }
-
-    public int getSourcePage (){
-        int num = sourcePage;
-        return num;
-    }
-
     public void backPage(int sourcePage){
         switch (sourcePage){
             case 1:
-                new digitalWorkOutVideosPage();
+                new digitalWorkOutVideosPage_0();
             break;
             case 2:
-                new membershipMatch();
+                new membershipGUI().init();
             break;
             case 3:
                 new LivePersonalTrainingPage();
