@@ -1,14 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.border.EmptyBorder;
 
 /**
  * Title        :liveCoursePage.java
  * Description  : A simple GUI for the Live Course Page
  * @author      : Yijue Zhang
- * @date        :20/5/2020
+ * @since       :20/5/2020
  */
-
 public class liveCoursePage extends JFrame implements ActionListener {
 
 	Font btn = new Font("Georgia", Font.BOLD, 25);
@@ -40,12 +40,18 @@ public class liveCoursePage extends JFrame implements ActionListener {
 
 		JPanel panel2 = new JPanel();
 		button1.addActionListener(this); // adds an actionListener to the button
+		button1.setFocusPainted(false); 
+		button1.setBackground(new Color(242,215,146));
+		button1.setBorder(new EmptyBorder(5,17,5,17));
 		panel2.add(button1); // creates a panel to put button on
 		panel2.setBounds(125, 525, 75, 75); // sets the location of the pane4
 		panel2.setBackground(new Color(250,240,215));
 
 		JPanel panel3 = new JPanel();
 		button2.addActionListener(this); // adds an actionListener to the button
+		button2.setBackground(new Color(242,215,146));
+		button2.setBorder(new EmptyBorder(5,17,5,17));
+		
 		panel3.add(button2); // creates a panel to put button on
 		panel3.setBounds(275, 525, 75, 75);
 		panel3.setBackground(new Color(250,240,215));

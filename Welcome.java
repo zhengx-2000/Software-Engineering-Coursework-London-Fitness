@@ -155,7 +155,7 @@ public class Welcome extends JFrame implements ActionListener{
 
         if(e.getSource() == membershipItem) {
             jFrame.setVisible(false);
-            new membershipGUI().init();
+            new membershipGUI().init(4);
         }
 
         if(e.getSource() == helpItem) {
@@ -179,7 +179,7 @@ public class Welcome extends JFrame implements ActionListener{
 
         if(e.getSource() == membershipBtn) {
             jFrame.setVisible(false);
-            new membershipGUI().init();
+            new membershipGUI().init(4);
         }
     }
 

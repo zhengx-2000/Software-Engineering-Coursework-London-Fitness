@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -8,7 +9,7 @@ import java.io.IOException;
  * Title        :digitalWorkOutVideosPage.java
  * Description  : A simple GUI for the Digital Workout Videos Page one
  * @author      : Yijue Zhang
- * @date        :20/5/2020
+ * @since       :20/5/2020
  */
 
 public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
@@ -48,6 +49,15 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 		this.getContentPane().setBackground(new Color(250,240,215));
 		this.setLayout(null);
 
+		button1.setBackground(new Color(242,215,146));
+		button1.setBorder(new EmptyBorder(5,17,5,17));
+		button2.setBackground(new Color(242,215,146));
+		button2.setBorder(new EmptyBorder(5,17,5,17));
+		button3.setBackground(new Color(242,215,146));
+		button3.setBorder(new EmptyBorder(5,17,5,17));
+		button4.setBackground(new Color(242,215,146));
+		button4.setBorder(new EmptyBorder(5,17,5,17));
+
 		JPanel panel1 = new JPanel();
 		label1.setFont(btn);
 		panel1.add(label1); // creates a panel to put label1 on
@@ -82,6 +92,10 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 		panel4.setBounds(0, 475, 475, 50); // sets the location of the pane4
 		panel4.setBackground(new Color(250,240,215));
 
+		ImageIcon icon = new ImageIcon("./image/display.jpg");
+		JLabel labelp0 = new JLabel(); // creates label
+		labelp0.setIcon(icon);
+		panel5.add(labelp0); 
 		panel5.setBounds(0, 165, 475, 300);
 		panel5.setBackground(new Color(250,240,215));
 
@@ -90,6 +104,7 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 		this.add(panel2);
 		this.add(panel3);
 		this.add(panel4);
+		this.add(panel5);
 
 		this.setTitle("Digital WorkOut Videos Page"); // sets the title of the frame
 

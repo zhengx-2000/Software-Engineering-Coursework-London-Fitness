@@ -1,13 +1,8 @@
-
-//import javax.annotation.Resources;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.InputStream;
-import javax.imageio.ImageIO;
-
+import javax.swing.border.EmptyBorder;
  /**
  * the GUI of payment function
  * @author Jingyuan Tang
@@ -88,16 +83,18 @@ public class paymentGUI {
 			Box btnBox = Box.createHorizontalBox();
 			//添加button和监听事件
 			JButton pay = new JButton("OK");
-			pay.setBackground(new Color(255,206,95));
+			pay.setBackground(new Color(242,215,146));
 			pay.setForeground(Color.white);
 			pay.setName("payTheBill");//登录状态返回主界面
 			pay.setFont(myFont2);
 			pay.addActionListener(new newWindow());
+			pay.setBorder(new EmptyBorder(5, 17, 5, 17));
 			JButton backButn = new JButton("Back");//游客状态返回主界面
 			backButn.setFont(myFont2);
-			backButn.setBackground(new Color(255,206,95));
+			backButn.setBackground(new Color(242,215,146));
 			backButn.setName("backButn");
 			backButn.setForeground(Color.white);
+			backButn.setBorder(new EmptyBorder(5, 17, 5, 17));
 			backButn.addActionListener(new newWindow());
 			btnBox.add(pay);
 			btnBox.add(Box.createHorizontalStrut(60));
@@ -132,10 +129,15 @@ public class paymentGUI {
 			String name = button.getName();
 			switch (name) {
 				case "payTheBill":
-					JOptionPane.showMessageDialog(paymentPage,"Payment Sucessfully!");
+					Object[] options = { "OK" };
+							JOptionPane.showOptionDialog(null, "Successfully !", "Message",
+							JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+							new backToCertainPage().backPage(sourcePage);
+							paymentPage.setVisible(false);
 				break;
 				case "backButn":
 					location.backPage(sourcePage);
+					new backToCertainPage().backPage(sourcePage);
 					paymentPage.setVisible(false);
 				break;
 				default:

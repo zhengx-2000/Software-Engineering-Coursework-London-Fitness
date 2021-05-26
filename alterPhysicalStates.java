@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.io.IOException;
 
 /**
- * A control class for altering the Physical States page
+ * A control class for altering the Physical States
  * @author Taowu Zhang
- * @version 4.0
- * @since 5/20/2021
+ * @version 5.0
+ * @since 5/25/2021
  */
 
 public class alterPhysicalStates{

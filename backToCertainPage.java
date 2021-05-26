@@ -14,7 +14,7 @@ public class backToCertainPage{
                 new digitalWorkOutVideosPage_0();
             break;
             case 2:
-                new membershipGUI().init();
+                new membershipGUI().init(2);
             break;
             case 3:
                 new LivePersonalTrainingPage();

@@ -3,12 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import javax.swing.border.EmptyBorder;
 
 /**
  * A GUI for the Help page
  * @author Taowu Zhang
- * @version 4.0
- * @since 5/20/2021
+ * @version 5.0
+ * @since 5/25/2021
  */
 
 public class HelpPage {
@@ -53,37 +54,37 @@ public class HelpPage {
 			commonQuestionBox.add(Box.createHorizontalStrut(10));
 			/* Add Question 1 box */
 			Box question1Box = Box.createHorizontalBox();
-			JLabel question1Label = new JLabel("Q1：         Why can't I watch medium and advanced videos?");
+			JLabel question1Label = new JLabel("Q1:         Why can't I watch medium and advanced videos?");
 			question1Label.setFont(font1);
 			question1Box.add(question1Label);
 			question1Box.add(Box.createHorizontalStrut(10));
 			/* Add Answer 1 box */		
 			Box answer1Box = Box.createHorizontalBox();
-			JLabel answer1Label = new JLabel("A1：   You need to subscribe to the membership you need.");
+			JLabel answer1Label = new JLabel("A1:        You need to subscribe to the membership you need.");
 			answer1Label.setFont(font1);
 			answer1Box.add(answer1Label);
 			answer1Box.add(Box.createHorizontalStrut(10));
 			/* Add Question 2 box */
 			Box question2Box = Box.createHorizontalBox();
-			JLabel question2Label = new JLabel("Q2：                                                    How should I make payment?");
+			JLabel question2Label = new JLabel("Q2:                                                    How should I make payment?");
 			question2Label.setFont(font1);
 			question2Box.add(question2Label);
 			question2Box.add(Box.createHorizontalStrut(10));
 			/* Add Answer 2 box */
 			Box answer2Box = Box.createHorizontalBox();
-			JLabel answer2Label = new JLabel("A2：                                                  You can pay by Visa or Paypal.");
+			JLabel answer2Label = new JLabel("A2:                                                  You can pay by Visa or Paypal.");
 			answer2Label.setFont(font1);
 			answer2Box.add(answer2Label);
 			answer2Box.add(Box.createHorizontalStrut(10));
 			/* Add Question 2 box */
 			Box question3Box = Box.createHorizontalBox();
-			JLabel question3Label = new JLabel("Q3：                                               How do I log out of my account?");
+			JLabel question3Label = new JLabel("Q3:                                               How do I log out of my account?");
 			question3Label.setFont(font1);
 			question3Box.add(question3Label);
 			question3Box.add(Box.createHorizontalStrut(10));
 			/* Add Answer 3 box */
 			Box answer3Box = Box.createHorizontalBox();
-			JLabel answer3Label = new JLabel("A3：              You can log out by closing the system program.");
+			JLabel answer3Label = new JLabel("A3:              You can log out by closing the system program.");
 			answer3Label.setFont(font1);
 			answer3Box.add(answer3Label);
 			answer3Box.add(Box.createHorizontalStrut(10));
@@ -113,6 +114,8 @@ public class HelpPage {
 			JLabel submitLabel = new JLabel("                                                                                       ");
 			JButton submitButton = new JButton("Submit");
 			submitButton.setFont(font1);
+			submitButton.setBackground(new Color(242,215,146));
+			submitButton.setBorder(new EmptyBorder(5,17,5,17));
 			submitButton.setName("submitButton");
 			submitButton.addActionListener(new MyActionListener());
 			submitBox.add(submitLabel);
@@ -124,6 +127,8 @@ public class HelpPage {
 			backButton.setFont(font1);
 			backButton.setName("backButton");
 			backButton.addActionListener(new MyActionListener());
+			backButton.setBackground(new Color(242,215,146));
+			backButton.setBorder(new EmptyBorder(5,17,5,17));
 			buttonBox.add(backButton);
 			buttonBox.add(Box.createHorizontalStrut(1));
 

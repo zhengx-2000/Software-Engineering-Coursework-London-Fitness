@@ -15,3 +15,8 @@ yyy 112 trainer2 lose weight 1.6-1.7M 40kg-50kg 3
 yyy www trainer2 lose weight 1.6-1.7M 60kg-70kg 1 
 yyy 222 trainer1 Shape and Fitness <1.5 M 50kg-60kg 1 
 yyy 44 trainer2 Shape and Fitness <1.5 M 40kg-50kg 44 
+aaa 8-12 trainer2 Shape_and_Fitness 1.6-1.7M 50kg-60kg 111 
+aaa 13-17 trainer1 Shape_and_Fitness 1.5-1.6M 60kg-70kg 111 
+aaa 18-21 trainer2 lose_weight 1.5-1.6M 40kg-50kg 000 
+aaa 13-17 trainer1 lose_weight 1.6-1.7M 50kg-60kg 111 
+aaa 8-12 trainer2 lose_weight 1.5-1.6M <40kg 111 

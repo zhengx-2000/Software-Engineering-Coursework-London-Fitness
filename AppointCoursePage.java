@@ -4,6 +4,7 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.border.EmptyBorder;
 
 public class AppointCoursePage {
 
@@ -57,7 +58,7 @@ public class AppointCoursePage {
 	//button栏目
 	Box btnBox = Box.createHorizontalBox();
 	JButton submitBtn = new JButton("Submit");
-
+	
 	//返回上一界面的button
 	JButton homeBtn = new JButton("Back");
 	
@@ -201,12 +202,16 @@ public class AppointCoursePage {
 			submitBtn.setFont(font1);
 			submitBtn.setName("submitBtn");//提交选择的教练信息
 			submitBtn.addActionListener(new MyActionListener());
+			submitBtn.setBackground(new Color(242, 215, 146));
+			submitBtn.setBorder(new EmptyBorder(5, 17, 5, 17));
 			
 			//返回上一界面的button
 			homeBtn.setBackground(color);
 			homeBtn.setFont(font1);
 			homeBtn.setName("homeBtn");
 			homeBtn.addActionListener(new MyActionListener());
+			homeBtn.setBackground(new Color(242,215,146));
+			homeBtn.setBorder(new EmptyBorder(5,17,5,17));
 			btnBox.add(submitBtn);
 			btnBox.add(Box.createHorizontalStrut(80));
 			btnBox.add(homeBtn);
@@ -281,7 +286,7 @@ public class AppointCoursePage {
 					AppointmentList.add(weight);
 					AppointmentList.add(remark);
 					new Control_WriteIntoFile(AppointmentList);
-					new paymentGUI().init(3); 
+					new membershipGUI().init(3); 
 					jf.setVisible(false);
 				}
 				else{

@@ -7,18 +7,20 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import javax.swing.border.EmptyBorder;
+
 
 /**
- * A GUI for altering the Physical States page
+ * A GUI for altering the Personal information page
  * @author Taowu Zhang
- * @version 4.0
- * @since 5/20/2021
+ * @version 5.0
+ * @since 5/25/2021
  */
 
 
 
 public class PhysicalStatesPage {
-	private final JFrame jf = new JFrame("Physical States Page");
+	private final JFrame jf = new JFrame("Personal Information Page");
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
 
@@ -29,8 +31,19 @@ public class PhysicalStatesPage {
 	JTextField weightField = new JTextField();
 	JTextField ageField = new JTextField();
 
+	JComboBox<String> genderComBox = new JComboBox<String>();
+	JTextField passwordField = new JTextField();
+	JTextField phoneField = new JTextField();
+	JTextField e_mailField = new JTextField();
+
+	String identity;
+
 	public PhysicalStatesPage() {
 		try {
+			/* Get user's ID */
+			GetID getid = new GetID();
+			identity=getid.getID();
+
 			/* Font used in the GUI */
 			Font font1 = new Font("Georgia", Font.BOLD, 13);
 
@@ -56,10 +69,49 @@ public class PhysicalStatesPage {
 
 			/* Add Title box */
 			Box titleBox = Box.createHorizontalBox();
-			JLabel titleLabel = new JLabel("        Please update your physical states                ");
+			JLabel titleLabel = new JLabel("        Please update your personal information                ");
 			titleLabel.setFont(font1);
 			titleBox.add(titleLabel);
 			titleBox.add(Box.createHorizontalStrut(1));
+
+			/* Add Gender box */
+			Box genderBox = Box.createHorizontalBox();
+			JLabel genderLabel = new JLabel("Gender:       ");
+			genderLabel.setFont(font1);
+			genderComBox.addItem("Unknown");
+			genderComBox.addItem("Male");
+			genderComBox.addItem("Female");
+			genderComBox.setFont(font1);
+			genderBox.add(genderLabel);
+			genderBox.add(Box.createHorizontalStrut(1));
+			genderBox.add(genderComBox);
+
+			/* Add Password box */
+			Box passwordBox = Box.createHorizontalBox();
+			JLabel passwordLabel = new JLabel("Password:  ");
+			passwordLabel.setFont(font1);
+			passwordField = new JTextField(25);
+			passwordBox.add(passwordLabel);
+			passwordBox.add(Box.createHorizontalStrut(1));
+			passwordBox.add(passwordField);
+
+			/* Add Phone box */
+			Box phoneBox = Box.createHorizontalBox();
+			JLabel phoneLabel = new JLabel("Phone:           ");
+			phoneLabel.setFont(font1);
+			phoneField = new JTextField(25);
+			phoneBox.add(phoneLabel);
+			phoneBox.add(Box.createHorizontalStrut(1));
+			phoneBox.add(phoneField);
+
+			/* Add E-mail box */
+			Box emailBox = Box.createHorizontalBox();
+			JLabel emailLabel = new JLabel("E-mail:          ");
+			emailLabel.setFont(font1);
+			e_mailField = new JTextField(25);
+			emailBox.add(emailLabel);
+			emailBox.add(Box.createHorizontalStrut(1));
+			emailBox.add(e_mailField);
 			
 			/* Add Height box */
 			Box heightBox = Box.createHorizontalBox();
@@ -93,10 +145,14 @@ public class PhysicalStatesPage {
 			backbutton.setFont(font1);
 			backbutton.setName("backbutton");
 			backbutton.addActionListener(new MyActionListener());
+			backbutton.setBackground(new Color(242,215,146));
+			backbutton.setBorder(new EmptyBorder(5,17,5,17));
 			JLabel blankLabel = new JLabel("                ");
 			savebutton.setFont(font1);
 			savebutton.setName("savebutton");
 			savebutton.addActionListener(new MyActionListener());
+			savebutton.setBackground(new Color(242,215,146));
+			savebutton.setBorder(new EmptyBorder(5,17,5,17));
 			buttonBox.add(backbutton);
 			buttonBox.add(blankLabel);
 			buttonBox.add(savebutton);
@@ -105,6 +161,14 @@ public class PhysicalStatesPage {
 			/* Add all boxes into physicalStates box */
 			physicalStatesBox.add(Box.createVerticalStrut(40));
 			physicalStatesBox.add(titleBox);
+			physicalStatesBox.add(Box.createVerticalStrut(40));
+			physicalStatesBox.add(genderBox);
+			physicalStatesBox.add(Box.createVerticalStrut(40));
+			physicalStatesBox.add(passwordBox);
+			physicalStatesBox.add(Box.createVerticalStrut(40));
+			physicalStatesBox.add(phoneBox);
+			physicalStatesBox.add(Box.createVerticalStrut(40));
+			physicalStatesBox.add(emailBox);
 			physicalStatesBox.add(Box.createVerticalStrut(40));
 			physicalStatesBox.add(heightBox);
 			physicalStatesBox.add(Box.createVerticalStrut(40));
@@ -133,12 +197,18 @@ private class MyActionListener implements ActionListener {
 		String hei = heightField.getText();
 		String wei = weightField.getText();
 		String age = ageField.getText();
+		String gen =(String) genderComBox.getSelectedItem();
+		String psw = passwordField.getText();
+		String pho = phoneField.getText();
+		String eml = e_mailField.getText();
 
-		/* Determine whether the height, weight and age entered in the format are correct */
+		/* Determine whether the height, weight, age, gender, password, phone and e-mail entered in the format are correct */
 		if (button.equals(savebutton)){
 			ArrayList<String> physicalStatesList = new ArrayList<String>();
-			if (hei.equals("")||wei.equals("")||age.equals("")||isNotNumeric(hei)||isNotNumeric(wei)||isNotNumeric(age)) {
-				JOptionPane.showMessageDialog(jf,"Error, You must fill it right!");
+			ArrayList<String> personalInformationList = new ArrayList<String>();
+
+			if (hei.equals("")||wei.equals("")||age.equals("")||psw.equals("")||pho.equals("")||eml.equals("")||isNotNumeric(hei)||isNotNumeric(wei)||isNotNumeric(age)) {
+				JOptionPane.showMessageDialog(jf,"Error, You must fill it through !");
 			}else{	
 				if (Integer.parseInt(hei)<0||Integer.parseInt(hei)>300) {
 					JOptionPane.showMessageDialog(jf,"You have incorrectly entered the height.");
@@ -149,13 +219,39 @@ private class MyActionListener implements ActionListener {
 						if (Integer.parseInt(age)<0||Integer.parseInt(age)>150) {
 							JOptionPane.showMessageDialog(jf,"You have incorrectly entered the age.");
 						}else{
-							physicalStatesList.add(hei);
-							physicalStatesList.add(wei);
-							physicalStatesList.add(age);
-							JOptionPane.showMessageDialog(jf, "Save Successfully!");
-							new alterPhysicalStates(physicalStatesList);
-							new IDPage().Identity();
-							jf.setVisible(false);
+							if (psw.length()<3||psw.length()>15) {
+								JOptionPane.showMessageDialog(jf,"Please enter a 3-15 character password.");
+							}else{
+								if (pho.length()<4||pho.length()>15) {
+									JOptionPane.showMessageDialog(jf,"Please enter a 4-15 character phone number.");
+								}else{
+									if (eml.contains("@")&&eml.contains(".")) {
+										physicalStatesList.add(hei);
+										physicalStatesList.add(wei);
+										physicalStatesList.add(age);
+										personalInformationList.add(identity);
+										if (gen == "Unknown") {
+											personalInformationList.add("0");
+										}
+										if (gen == "Male") {
+											personalInformationList.add("1");
+										}
+										if (gen == "Female") {
+											personalInformationList.add("2");
+										}
+										personalInformationList.add(psw);
+										personalInformationList.add(pho);
+										personalInformationList.add(eml);
+										JOptionPane.showMessageDialog(jf, "Save Successfully!");
+										new alterPhysicalStates(physicalStatesList);
+										new alterPersonalInformation(personalInformationList);
+										new IDPage().Identity();
+										jf.setVisible(false);
+									}else{
+										JOptionPane.showMessageDialog(jf,"Please enter the correct email format.(with @ .)");
+									}
+								}
+							}
 						}
 					}
 				}					

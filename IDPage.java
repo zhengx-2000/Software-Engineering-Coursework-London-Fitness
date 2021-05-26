@@ -3,12 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import javax.swing.border.EmptyBorder;
 
 /**
  * A GUI for the ID page
  * @author Taowu Zhang
- * @version 4.0
- * @since 5/21/2021
+ * @version 5.0
+ * @since 5/25/2021
  */
 
 public class IDPage{
@@ -94,6 +95,9 @@ public void Identity(){
 		age = dataParts2[2];
 
 
+		CountLine countline = new CountLine();
+		long index = countline.readLine("file/appointment.txt");
+
 		BufferedReader reader3 = new BufferedReader(new FileReader("file/appointment.txt"));
 		String line3 = reader3.readLine();
 		/* To read a line of live course information, separated by space into different parts */
@@ -108,10 +112,10 @@ public void Identity(){
 			height = dataParts3[4];
 			weight = dataParts3[5];
 			remark = dataParts3[6];
-
 		}else{
-			while (line3 != null) {
-                line3 = reader3.readLine();
+			int count=1;
+			for (;count<=(int)index-1; count++) {
+				line3 = reader3.readLine();
                 dataParts3 = line3.split(" "); 
                 id = dataParts3[0];
         /* The transfer id is in the other line */
@@ -124,19 +128,19 @@ public void Identity(){
 					weight = dataParts3[5];
 					remark = dataParts3[6];
                 	break;
-            	}else{
-                		userId = "";
-                		trainingTime = "You haven't";
-                		trainerName = "made an appointment.";
-                		trainingAim = "";
-                		height = "";
-						weight = "";
-						remark = "";
-						break;
             	}
-            }
-		}
+			}
+			if (userId==null) {
+				userId = "";
+                trainingTime = "You haven't";
+              	trainerName = "made an appointment.";
+                trainingAim = "";
+                height = "";
+				weight = "";
+				remark = "";
+			}
 
+		}
 
 		/**
 		 * Set the base of the page
@@ -168,8 +172,8 @@ public void Identity(){
 		Box identityImageBox = Box.createVerticalBox();
 		switch(gen){
 			case "0":{
-				ImageIcon imageIcon =new ImageIcon("image/photo.png");
-				JLabel imageGender =new JLabel();
+				ImageIcon imageIcon =new ImageIcon("image/unknown.jpg");
+				JLabel imageGender =new JLabel("  ");
 				imageGender.setIcon(imageIcon);
 				identityImageBox.add(imageGender);
 				identityImageBox.add(Box.createHorizontalStrut(10));
@@ -177,7 +181,7 @@ public void Identity(){
 			}
 			case "1":{
 				ImageIcon imageIcon =new ImageIcon("image/boy.jpeg");
-				JLabel imageGender =new JLabel();
+				JLabel imageGender =new JLabel("  ");
 				imageGender.setIcon(imageIcon);
 				identityImageBox.add(imageGender);
 				identityImageBox.add(Box.createHorizontalStrut(10));
@@ -185,7 +189,7 @@ public void Identity(){
 			}
 			case "2":{
 				ImageIcon imageIcon =new ImageIcon("image/girl.jpeg");
-				JLabel imageGender =new JLabel();
+				JLabel imageGender =new JLabel("  ");
 				imageGender.setIcon(imageIcon);
 				identityImageBox.add(imageGender);
 				identityImageBox.add(Box.createHorizontalStrut(10));
@@ -196,14 +200,13 @@ public void Identity(){
 		Box identityInfoBox = Box.createVerticalBox();
 		JLabel identityLabel = new JLabel("ID: "+iden1);
 		identityLabel.setFont(font1);
-		JLabel passwordLabel = new JLabel("Password: "+pw);
+		JLabel passwordLabel = new JLabel("Password: "+pw.substring(0,1)+"***"+pw.substring(pw.length()-1,pw.length()));
 		passwordLabel.setFont(font1);
 		JLabel phoneLabel = new JLabel("Phone: "+phone);
 		phoneLabel.setFont(font1);
 		JLabel e_mailLabel = new JLabel("E-mail: "+em);
 		e_mailLabel.setFont(font1);
-		JLabel vipLabel = new JLabel("VIP: "+vip);
-		vipLabel.setFont(font1);
+		
 		identityInfoBox.add(identityLabel);
 		identityInfoBox.add(Box.createVerticalStrut(8));
 		identityInfoBox.add(passwordLabel);
@@ -235,8 +238,43 @@ public void Identity(){
 		identityInfoBox.add(Box.createVerticalStrut(8));
 		identityInfoBox.add(e_mailLabel);
 		identityInfoBox.add(Box.createVerticalStrut(8));
-		identityInfoBox.add(vipLabel);
-		identityInfoBox.add(Box.createVerticalStrut(8));
+		switch(vip){
+			case "0":{
+				JLabel vipLabel = new JLabel("VIP: Not upgraded to a member");
+				vipLabel.setFont(font1);
+				identityInfoBox.add(vipLabel);
+				identityInfoBox.add(Box.createVerticalStrut(8));
+				break;
+			}
+			case "1":{
+				JLabel vipLabel = new JLabel("VIP: Not upgraded to a member");
+				vipLabel.setFont(font1);
+				identityInfoBox.add(vipLabel);
+				identityInfoBox.add(Box.createVerticalStrut(8));
+				break;
+			}
+			case "2":{
+				JLabel vipLabel = new JLabel("VIP: Monthly Membership");
+				vipLabel.setFont(font1);
+				identityInfoBox.add(vipLabel);
+				identityInfoBox.add(Box.createVerticalStrut(8));
+				break;
+			}
+			case "3":{
+				JLabel vipLabel = new JLabel("VIP: Quarterly Membership");
+				vipLabel.setFont(font1);
+				identityInfoBox.add(vipLabel);
+				identityInfoBox.add(Box.createVerticalStrut(8));
+				break;
+			}
+			case "4":{
+				JLabel vipLabel = new JLabel("VIP: Yearly Membership");
+				vipLabel.setFont(font1);
+				identityInfoBox.add(vipLabel);
+				identityInfoBox.add(Box.createVerticalStrut(8));
+				break;
+			}
+		}
 		identityMostBox.add(identityImageBox);
 		identityMostBox.add(identityInfoBox);
 		
@@ -253,6 +291,8 @@ public void Identity(){
 		alterPhysicalStates.setFont(font1);
 		alterPhysicalStates.setName("alterPhysicalStates");
 		alterPhysicalStates.addActionListener(new MyActionListener());
+		alterPhysicalStates.setBackground(new Color(242,215,146));
+		alterPhysicalStates.setBorder(new EmptyBorder(5,17,5,17));
 
 		physicalStateMainBox.add(physicalStateLabel);
 		physicalStateMainBox.add(alterPhysicalStates);
@@ -299,6 +339,8 @@ public void Identity(){
 		goToLiveButton.setFont(font1);
 		goToLiveButton.setName("goToLiveButton");
 		goToLiveButton.addActionListener(new MyActionListener());
+		goToLiveButton.setBackground(new Color(242,215,146));
+		goToLiveButton.setBorder(new EmptyBorder(5,17,5,17));
 
 		liveCourseMainBox.add(liveCourseLabel);
 		liveCourseMainBox.add(goToLiveButton);
@@ -312,7 +354,7 @@ public void Identity(){
 		Box myAppointmentBox = Box.createHorizontalBox();
 		Box myAppointmentMainBox = Box.createVerticalBox();
 		Box myAppointmentInfoBox = Box.createVerticalBox();
-		JLabel myAppointmentLabel = new JLabel("My Appointment                                 ");
+		JLabel myAppointmentLabel = new JLabel("My Appointment                    ");
 		myAppointmentLabel.setFont(font1);
 
 		if (trainingTime == "You haven't") {
@@ -371,6 +413,8 @@ public void Identity(){
 		backButton.setFont(font1);
 		backButton.setName("backButton");
 		backButton.addActionListener(new MyActionListener());
+		backButton.setBackground(new Color(242,215,146));
+		backButton.setBorder(new EmptyBorder(5,17,5,17));
 		buttonBox.add(backButton);
 		buttonBox.add(Box.createHorizontalStrut(1));
 

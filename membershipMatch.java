@@ -1,14 +1,10 @@
 import java.io.*;
 
 public class membershipMatch {
-
 	String id;
-
     public void match (int membershipType, String userID){
         try{
-
             //String oldLines = reader.readLine();
-            
             switch(membershipType){
                 case 1:{
                     PrintWriter pw1=null;

@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.border.EmptyBorder;
 
 public class LivePersonalTrainingPage {
     private static final int LEFT = 0;
@@ -88,14 +89,15 @@ public class LivePersonalTrainingPage {
 			searchBtn.setFont(font1);
 			searchBtn.setBackground(color);
 			searchBtn.addActionListener(new MyActionListener()); 
+			searchBtn.setBorder(new EmptyBorder(5, 17, 5, 17));
 			//searchPanel平面有aim标题，可选择的comboBox，和搜索按钮
             searchPanel.add(AimLabel);
-            searchPanel.add(Box.createHorizontalStrut(40));
+            searchPanel.add(Box.createHorizontalStrut(20));
             searchPanel.add(aimComboBox);     
             searchPanel.add(Box.createHorizontalStrut(20));
 			searchPanel.add(searchBtn);
 			searchBox.add(searchPanel);
-			searchBox.add(Box.createHorizontalStrut(50));
+			searchBox.add(Box.createHorizontalStrut(20));
      
 			//trainer1栏目	
 			//trainerPanel1声明和背景字体设置
@@ -174,19 +176,17 @@ public class LivePersonalTrainingPage {
 			backBtn.addActionListener(new MyActionListener());
 			backBox.add(backBtn);
 			backBox.add(Box.createHorizontalStrut(80));
+			backBtn.setBorder(new EmptyBorder(5, 17, 5, 17));
 
            	//将组件加入容器
             vBox.add(Box.createVerticalStrut(20));
             vBox.add(searchBox);			
             vBox.add(Box.createVerticalStrut(20));
 			vBox.add(trainerBox1);
-            vBox.add(Box.createVerticalStrut(20));
 			vBox.add(trainerBox2);
-            vBox.add(Box.createVerticalStrut(20));
 			vBox.add(trainerBox3);
-            vBox.add(Box.createVerticalStrut(20));
 			vBox.add(menuBox);                    
-            vBox.add(Box.createVerticalStrut(30));
+            vBox.add(Box.createVerticalStrut(10));
             vBox.add(backBox);
             jf.add(vBox);
 
