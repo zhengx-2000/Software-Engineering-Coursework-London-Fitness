@@ -1,3 +1,9 @@
+	/**
+	 *	Title		:	SaveID.java
+	 *	Description	:	This class is used to save the ID of the user sign in currently.
+	 *	@author		:	Yuheng Li
+	 *	@date		:	13/4/2021
+	 **/
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,37 +13,40 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 public class SaveID {
-
+/**
+ * write in the ID.
+ * @param the ID of the log in user. 
+ * @return no.
+ **/
 	public void write2file(String cbuf) {
-		File file = null;//���ȶ����ļ���
-		OutputStream os = null;//�����ֽ���
-		OutputStreamWriter osw = null;//OutputStreamWriter���ֽ���ͨ���ַ�����������
-		BufferedWriter bw = null;//���建����
+		File file = null;
+		OutputStream os = null;
+		OutputStreamWriter osw = null;
+		BufferedWriter bw = null;
 		
 		
 		try {
-			file = new File("./file/ID.txt"); //�½��ļ�����
-			//���ļ�ϵͳ�е�ĳ���ļ��л�ȡ�ֽ�
-			os = new FileOutputStream(file, false);//true��append��Ϊ��������������ԭ�ļ�ĩ��׷�ӡ�
-			//���ֽ���ת�����ַ���
+			file = new File("./file/ID.txt"); 
+			
+			os = new FileOutputStream(file, false);
+			
 			osw = new OutputStreamWriter(os);
-			//�ѽ��յ����ַ������뻺��������߶�д�ٶȡ�
+			
 			bw = new BufferedWriter(osw);
-			//���ַ�����������ʽд���ļ�
+			
 			bw.write(cbuf);
 		} catch (FileNotFoundException e) {
-			System.out.println("�Ҳ���ָ���ļ�");
+			System.out.println("Can't find the file");
 		} catch (IOException e) {
-			System.out.println("д���ļ�����");
+			System.out.println("Can't open the file");
 		} finally {
 				try {
-					//�ر��ļ��ŵ�finally����۶�ȡ�Ƿ�ɹ�����Ҫ�����رա�
-					//�رյ�˳����󿪵��ȹرգ�ջ���Ƚ����ԭ����
+					
 					bw.close();
 					osw.close();
 					os.close();
 					} catch (IOException e) {
-						System.out.println("�ļ����޷��ر�");
+						System.out.println("Can't open the file");
 					}
 			}	
 	}

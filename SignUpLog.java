@@ -1,3 +1,9 @@
+	/**
+	 *	Title		:	SignUpLog.java
+	 *	Description	:	This class is used to write the log up info into a file.
+	 *	@author		:	Yuheng Li
+	 *	@date		:	13/4/2021
+	 **/
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,36 +13,39 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 public class SignUpLog {
-
+/**
+ * write the info.
+ * @param the user's info. 
+ * @return no.
+ **/
 	public void write2file(String cbuf) {
-		File file = null;//���ȶ����ļ���
-		OutputStream os = null;//�����ֽ���
-		OutputStreamWriter osw = null;//OutputStreamWriter���ֽ���ͨ���ַ�����������
-		BufferedWriter bw = null;//���建����
+		File file = null;
+		OutputStream os = null;
+		OutputStreamWriter osw = null;
+		BufferedWriter bw = null;
 		
 		try {
-			file = new File("./file/SignUpLog.txt"); //�½��ļ�����
-			//���ļ�ϵͳ�е�ĳ���ļ��л�ȡ�ֽ�
-			os = new FileOutputStream(file, true);//true��append��Ϊ��������������ԭ�ļ�ĩ��׷�ӡ�
-			//���ֽ���ת�����ַ���
+			file = new File("./file/SignUpLog.txt"); 
+			
+			os = new FileOutputStream(file, true);
+			
 			osw = new OutputStreamWriter(os);
-			//�ѽ��յ����ַ������뻺��������߶�д�ٶȡ�
+			
 			bw = new BufferedWriter(osw);
-			//���ַ�����������ʽд���ļ�
+			
 			bw.write(cbuf);
 		} catch (FileNotFoundException e) {
-			System.out.println("�Ҳ���ָ���ļ�");
+			System.out.println("Don't find file");
 		} catch (IOException e) {
-			System.out.println("д���ļ�����");
+			System.out.println("Can't open file");
 		} finally {
 				try {
-					//�ر��ļ��ŵ�finally����۶�ȡ�Ƿ�ɹ�����Ҫ�����رա�
-					//�رյ�˳����󿪵��ȹرգ�ջ���Ƚ����ԭ����
+					
 					bw.close();
 					osw.close();
 					os.close();
 					} catch (IOException e) {
-						System.out.println("�ļ����޷��ر�");
+						System.out.println("error");
 					}
 			}	
 	}

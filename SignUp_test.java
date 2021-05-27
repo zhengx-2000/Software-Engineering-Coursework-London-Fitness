@@ -1,3 +1,9 @@
+/**
+ * Title        : SignUp_test.java
+ * Description  : This class is used to test the user input in sign up page.
+ * @author      : Yuheng Li
+ * @date        : 20/5/2021
+ */
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;

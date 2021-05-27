@@ -1,3 +1,9 @@
+	/**
+	 *	Title		:	SignUp.java
+	 *	Description	:	This class is used for user to log up.
+	 *	@author		:	Yuheng Li
+	 *	@date		:	12/4/2021
+	 **/
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,26 +23,27 @@ public class SignUp {
 	ImageIcon logoIcon;
 	JLabel photo;
 	int sex;
-//	String ID="" ;
-//	String PassWord="";
-//	String PassWordCon="" ;
-//	String Phone="";
-//	String Email="";
+
+	/**
+	     * This function is used to build the structure of the sign up page.
+	     * @param no. 
+	     * @return no.
+	     **/
 	public void init() {
 		
 		try {
 			jf.getContentPane().setBackground(new Color(250,240,215));
-			//��ȡ���Խ���
+
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			int sw = screenSize.width;
 			int sh = screenSize.height;
-			//���ý��������ʾ
+
 			jf.setBounds((sw - WIDTH) / 2, (sh - HEIGHT) / 2, WIDTH, HEIGHT);
 			jf.setResizable(false);
 			jf.setLayout(new FlowLayout());
 			Box vBox = Box.createVerticalBox();
 			
-			//photo��Ŀ
+			/*photo panel*/
 			Box photoBox = Box.createHorizontalBox();
 			photo = new JLabel();
 	        logoIcon = new ImageIcon(new ImageIcon("image/secret.png").getImage().getScaledInstance(110, 100, Image.SCALE_SMOOTH));
@@ -45,7 +52,7 @@ public class SignUp {
 			photoBox.add(photo);
 			photoBox.add(Box.createHorizontalStrut(100));
 			
-			//sex��Ŀ
+			/*sex panel*/
 			Box sBox = Box.createHorizontalBox();
 			JRadioButton jrb1=new JRadioButton("Female  ");
 			jrb1.setFont(btn);
@@ -73,7 +80,8 @@ public class SignUp {
 			jrb1.addActionListener(new jrb1ActionListener());
 			jrb2.addActionListener(new jrb2ActionListener());
 			jrb3.addActionListener(new jrb3ActionListener());
-			//ID
+			
+			/* ID input textbox panel*/
 			Box uBox = Box.createHorizontalBox();
 			JLabel uLabel = new JLabel("ID:");
 			uField = new JTextField(15);
@@ -84,7 +92,7 @@ public class SignUp {
 			uBox.add(Box.createHorizontalStrut(130));
 			uBox.add(uField);
 			
-			//PassWord
+			/*PassWord input textbox panel*/
 			Box pBox = Box.createHorizontalBox();
 			JLabel pLabel = new JLabel("PassWord: ");
 			pLabel.setFont(btn);
@@ -95,7 +103,7 @@ public class SignUp {
 			pBox.add(Box.createHorizontalStrut(74));
 			pBox.add(pField);
 			
-			//PassWord Confirm
+			/*PassWord Confirm input textbox panel*/
 			Box pcBox = Box.createHorizontalBox();
 			JLabel pcLabel = new JLabel("PassWord Confirm:     ");
 			pcLabel.setFont(btn);
@@ -106,7 +114,7 @@ public class SignUp {
 			pcBox.add(pcField);
 			
 			
-			//Phone
+			/*Phone input textbox panel*/
 			Box phBox = Box.createHorizontalBox();
 			JLabel phLabel = new JLabel("Phone: ");
 			phLabel.setFont(btn);
@@ -117,7 +125,7 @@ public class SignUp {
 			phBox.add(Box.createHorizontalStrut(100));
 			phBox.add(phField);
 			
-			//Email
+			/*Email input textbox panel*/
 			Box emBox = Box.createHorizontalBox();
 			JLabel emLabel = new JLabel("Email: ");
 			emLabel.setFont(btn);
@@ -128,18 +136,18 @@ public class SignUp {
 			emBox.add(Box.createHorizontalStrut(105));
 			emBox.add(emField);
 			
-			//button
+			/*button panel*/
 			Box btnBox = Box.createHorizontalBox();
 			JButton loginBtn = new JButton("OK");
 			loginBtn.setBackground(new Color(242,215,146));
 			loginBtn.setBorder(new EmptyBorder(5, 17, 5, 17));
-			// loginBtn.setBorder();
+			
 			loginBtn.setFont(btn);
 			loginBtn.setName("loginBtn");
 			loginBtn.addActionListener(new MyActionListener());
 			btnBox.add(loginBtn);
 
-			
+			/*Page choose panel*/
 			Box menuBox = Box.createHorizontalBox();
 			JMenuBar jmb=new JMenuBar();
 			JMenuItem jm1=new JMenuItem("Sign In");	
@@ -159,7 +167,6 @@ public class SignUp {
 			menuBox.add(jmb);
 			menuBox.add(Box.createHorizontalStrut(125));
 	
-
 			vBox.add(Box.createVerticalStrut(30));
 			vBox.add(photoBox);
 			vBox.add(Box.createVerticalStrut(20));
@@ -223,8 +230,8 @@ public class SignUp {
 						}else{				
 							try {
 								
-								String Phone = phField.getText();//��ȡ�ı���������
-								String Email = emField.getText();//��ȡ�ı���������
+								String Phone = phField.getText();
+								String Email = emField.getText();
 								System.out.print("One customer signs up.");		
 								SignUpLog  t = new SignUpLog();
 								t.write2file(ID+" "+sex+" "+PassWord+" "+Phone+" "+Email+" "+0+"\n");
@@ -235,7 +242,7 @@ public class SignUp {
 						}
 					
 				}
-			//FileWriter out;
+			
 			
 		}
 	}
@@ -243,7 +250,7 @@ public class SignUp {
 	private class jrb1ActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//FileWriter out;
+			
 			try {
 				sex=1;
 				logoIcon = new ImageIcon(new ImageIcon("image/girl.png").getImage().getScaledInstance(110, 100, Image.SCALE_SMOOTH));
@@ -256,7 +263,7 @@ public class SignUp {
 	private class jrb2ActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//FileWriter out;
+			
 			try {
 				sex=2;
 				logoIcon = new ImageIcon(new ImageIcon("image/boy.png").getImage().getScaledInstance(110, 100, Image.SCALE_SMOOTH));
@@ -269,7 +276,7 @@ public class SignUp {
 	private class jrb3ActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//FileWriter out;
+			
 			try {
 				sex=3;
 				logoIcon = new ImageIcon(new ImageIcon("image/secret.png").getImage().getScaledInstance(110, 100, Image.SCALE_SMOOTH));
@@ -280,6 +287,7 @@ public class SignUp {
 		}
 	}
  
+
 	public static void main(String[] args) {
 		new SignUp().init();
 	}

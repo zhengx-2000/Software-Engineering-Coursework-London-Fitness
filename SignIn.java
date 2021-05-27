@@ -15,8 +15,8 @@ public class SignIn {
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
 	Font btn = new Font("Georgia", Font.BOLD, 13);
-	JTextField uField = new JTextField();/* ID input textbox panel*/
-	JTextField pField = new JTextField();/* Passport input textbox panel*/
+	JTextField uField = new JTextField();/*The ID input textbox panel*/
+	JTextField pField = new JTextField();/* Passport input textbox panel*/
 	public	int state=0;/*state 0=>no VIP;1=> month VIP;2=> season VIP;3=> year VIP*/
 	String I;
 	String P;
