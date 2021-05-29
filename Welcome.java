@@ -93,7 +93,7 @@ public class Welcome extends JFrame implements ActionListener{
         videoBtn.addActionListener(this);
         videoBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         videoPanel.setBackground(BACKGROUND1);
-        videoPanel.setBorder(BorderFactory.createTitledBorder("Digital Workout Video"));
+        videoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(BACKGROUND1), "Digital Workout Video"));
         videoPanel.add(videoBtn);
 
         JPanel livePanel = new JPanel();
@@ -109,7 +109,7 @@ public class Welcome extends JFrame implements ActionListener{
         liveBtn.addActionListener(this);
         liveBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         livePanel.setBackground(BACKGROUND1);
-        livePanel.setBorder(BorderFactory.createTitledBorder("Live Personal Training"));
+        livePanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(BACKGROUND1), "Live Personal Training"));
         livePanel.add(liveBtn);
 
         JPanel membershipPanel = new JPanel();
@@ -125,7 +125,7 @@ public class Welcome extends JFrame implements ActionListener{
         membershipBtn.addActionListener(this);
         membershipBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         membershipPanel.setBackground(BACKGROUND1);
-        membershipPanel.setBorder(BorderFactory.createTitledBorder("Membership Management"));
+        membershipPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(BACKGROUND1), "Membership Management"));
         membershipPanel.add(membershipBtn);
 
         vBox.add(menuBox);
