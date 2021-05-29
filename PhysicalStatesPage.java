@@ -207,23 +207,29 @@ private class MyActionListener implements ActionListener {
 			ArrayList<String> physicalStatesList = new ArrayList<String>();
 			ArrayList<String> personalInformationList = new ArrayList<String>();
 
-			if (hei.equals("")||wei.equals("")||age.equals("")||psw.equals("")||pho.equals("")||eml.equals("")||isNotNumeric(hei)||isNotNumeric(wei)||isNotNumeric(age)) {
-				JOptionPane.showMessageDialog(jf,"Error, You must fill it through !");
+			if (hei.equals("")||wei.equals("")||age.equals("")||psw.equals("")||pho.equals("")||eml.equals("")||isNotNumeric(hei)||isNotNumeric(wei)||isNotNumeric(age)||isNotNumeric(pho)) {
+				Object[] options1 = {"OK"};
+				JOptionPane.showOptionDialog(null,"Please fill in properly and completely!","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options1,options1[0]);
 			}else{	
-				if (Integer.parseInt(hei)<0||Integer.parseInt(hei)>300) {
-					JOptionPane.showMessageDialog(jf,"You have incorrectly entered the height.");
+				if ((Integer.parseInt(hei)<0||Integer.parseInt(hei)>300)) {
+					Object[] options2 = {"OK"};
+					JOptionPane.showOptionDialog(null,"You have incorrectly entered the height.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options2,options2[0]);
 				}else{
 					if (Integer.parseInt(wei)<0||Integer.parseInt(wei)>600) {
-						JOptionPane.showMessageDialog(jf,"You have incorrectly entered the weight.");
+						Object[] options3 = {"OK"};
+						JOptionPane.showOptionDialog(null,"You have incorrectly entered the weight.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options3,options3[0]);
 					}else{
 						if (Integer.parseInt(age)<0||Integer.parseInt(age)>150) {
-							JOptionPane.showMessageDialog(jf,"You have incorrectly entered the age.");
+							Object[] options4 = {"OK"};
+							JOptionPane.showOptionDialog(null,"You have incorrectly entered the age.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options4,options4[0]);
 						}else{
 							if (psw.length()<3||psw.length()>15) {
-								JOptionPane.showMessageDialog(jf,"Please enter a 3-15 character password.");
+								Object[] options5 = {"OK"};
+								JOptionPane.showOptionDialog(null,"Please enter a 3-15 character password.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options5,options5[0]);
 							}else{
 								if (pho.length()<4||pho.length()>15) {
-									JOptionPane.showMessageDialog(jf,"Please enter a 4-15 character phone number.");
+									Object[] options6 = {"OK"};
+									JOptionPane.showOptionDialog(null,"Please enter a 4-15 digit phone number.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options6,options6[0]);
 								}else{
 									if (eml.contains("@")&&eml.contains(".")) {
 										physicalStatesList.add(hei);
@@ -242,13 +248,15 @@ private class MyActionListener implements ActionListener {
 										personalInformationList.add(psw);
 										personalInformationList.add(pho);
 										personalInformationList.add(eml);
-										JOptionPane.showMessageDialog(jf, "Save Successfully!");
+										Object[] options7 = {"OK"};
+										JOptionPane.showOptionDialog(null,"Save Successfully!","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options7,options7[0]);
 										new alterPhysicalStates(physicalStatesList);
 										new alterPersonalInformation(personalInformationList);
 										new IDPage().Identity();
 										jf.setVisible(false);
 									}else{
-										JOptionPane.showMessageDialog(jf,"Please enter the correct email format.(with @ .)");
+										Object[] options8 = {"OK"};
+										JOptionPane.showOptionDialog(null,"Please enter the correct email format.(with @ .)","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options8,options8[0]);
 									}
 								}
 							}

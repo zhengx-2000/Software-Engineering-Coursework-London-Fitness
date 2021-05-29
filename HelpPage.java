@@ -174,7 +174,8 @@ public class HelpPage {
 			String name = button.getName();
 			switch (name) {
 				case "submitButton":
-					JOptionPane.showMessageDialog(jf,"Submit Sucessfully!");
+					Object[] options = {"OK"};
+					JOptionPane.showOptionDialog(null,"Submit Sucessfully!","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options,options[0]);
 					break;
 				case "backButton":
 				{
