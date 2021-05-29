@@ -220,7 +220,10 @@ public class SignUp {
 				int h=uId.Check();
 				
 				if(h!=0){
-					JOptionPane.showMessageDialog(jf, "ID exits.");
+					Object[] options = { "OK" };
+					JOptionPane.showOptionDialog(null, "ID exits.", "Message",
+					JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+					
 				}else{
 						
 						String PassWord = pField.getText();
@@ -235,7 +238,10 @@ public class SignUp {
 								System.out.print("One customer signs up.");		
 								SignUpLog  t = new SignUpLog();
 								t.write2file(ID+" "+sex+" "+PassWord+" "+Phone+" "+Email+" "+0+"\n");
-								JOptionPane.showMessageDialog(jf, "Sign Up Successfully!");
+								Object[] options = { "OK" };
+								JOptionPane.showOptionDialog(null, "Sign Up Successfully!", "Message",
+								JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+								
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
