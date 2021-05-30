@@ -1,14 +1,27 @@
+
 import java.io.*;
 import java.util.ArrayList;
-import java.io.IOException;
+
+/**
+ * Title 		: Control_WriteIntoFile.java
+ * Description	: This class is an control class which is used to write users's appointment information into the file appointment.txt.
+ * @author		: Mengqi Chen
+ * @date      	: 25/5/2021
+ */
+
 public class Control_WriteIntoFile {
 
+    /* Specifies the file name. */
     String fileName = "./file/appointment.txt";
+
+    /*
+	 * The constructor is to write users's appointment information into the file appointment.txt. 
+     * The users's appointment information is stored in the appointmentList which is the passed parameter
+	 */
     public Control_WriteIntoFile (ArrayList<String> appointmentList){
-        
         try {
             File file=new File(fileName);
-            BufferedWriter bufw=new BufferedWriter(new FileWriter(file,true));   //创建FileWriter类对象//创建BufferedWriter对象
+            BufferedWriter bufw=new BufferedWriter(new FileWriter(file,true));
             for(int i=0;i<appointmentList.size();i++) {
                 String line = appointmentList.get(i);
                 bufw.write(line);
@@ -19,18 +32,6 @@ public class Control_WriteIntoFile {
             bufw.close();
         } catch (Exception e) {
             e.printStackTrace();
-        } /*finally {
-            if (bufw != null) {
-                try {
-                    bufw.close();
-                } catch (IOException e1) {
-                }
-            }
-        } */
-
-        //userId 
-    }
-	public static void main(String[]args) throws IOException {
-	     
+        } 
     }
 }

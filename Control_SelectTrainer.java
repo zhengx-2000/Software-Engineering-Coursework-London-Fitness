@@ -1,10 +1,25 @@
+
 import java.util.ArrayList;
 
-public class Control_SelectTrainer {
+/**
+ * Title : Control_SelectTrainer.java 
+ * Description: This class is an control class which is used to select the trainers who are wanted by user.
+ * 
+ * @author : Mengqi Chen
+ * @author : Xiao Zheng
+ * @date : 25/5/2021
+ */
 
-    private ArrayList<Entity_Trainer> trainerSelectList = new ArrayList<Entity_Trainer>();//包含被删选后的教练信息
+public class Control_SelectTrainer {
     
-    //构造器，从GUI传入类型名字
+    /* An array to store the selected trainers' information. */
+    private ArrayList<Entity_Trainer> trainerSelectList = new ArrayList<Entity_Trainer>();
+    
+    /*
+	 * The constructor is to select the trainers who are wanted by user
+     * selectItem is the Range of user selection
+     * trainerList is a arrayList which stores all the information of trainers.
+	 */
     public Control_SelectTrainer(String selectItem, ArrayList<Entity_Trainer> trainerList) {
         for(Entity_Trainer i : trainerList) {
             if(i.getAimType1().equals(selectItem)||i.getAimType2().equals(selectItem)) {
@@ -13,6 +28,10 @@ public class Control_SelectTrainer {
         }
     }
 
+    /**
+	 * Get a arrayList which has class Entity_Trainer as elements and stores the information of trainers who are wanted by user.
+	 * @return trainerSelectList
+	 */
     ArrayList<Entity_Trainer> getTrainerSelectList() {
         return trainerSelectList;
     }
