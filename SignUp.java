@@ -1,15 +1,15 @@
-	/**
-	 *	Title		:	SignUp.java
-	 *	Description	:	This class is used for user to log up.
-	 *	@author		:	Yuheng Li
-	 *	@date		:	12/4/2021
-	 **/
 import javax.swing.*;
+import java.awt.event.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.EmptyBorder;
- 
+/**
+ *	Title		:	SignUp.java
+ *	Description	:	This class is used for user to log up.
+ *	@author		:	Yuheng Li
+ *	@since		:	12/4/2021
+ **/
 public class SignUp {
 	private final JFrame jf = new JFrame("Sign Up Page");
 	Font btn = new Font("Georgia", Font.BOLD, 13);
@@ -22,13 +22,17 @@ public class SignUp {
 	JTextField emField=new JTextField();
 	ImageIcon logoIcon;
 	JLabel photo;
-	int sex;
+	int sex=0;
+	int ans=0;
+	String ID ;
+	String PassWord;
+	String PassWordCon;
+	String Phone ;
+	String Email ;
 
 	/**
-	     * This function is used to build the structure of the sign up page.
-	     * @param no. 
-	     * @return no.
-	     **/
+	 * This function is used to build the structure of the sign up page.
+	 **/
 	public void init() {
 		
 		try {
@@ -81,7 +85,7 @@ public class SignUp {
 			jrb2.addActionListener(new jrb2ActionListener());
 			jrb3.addActionListener(new jrb3ActionListener());
 			
-			/* ID input textbox panel*/
+			/* ID input textbox panel*/
 			Box uBox = Box.createHorizontalBox();
 			JLabel uLabel = new JLabel("ID:");
 			uField = new JTextField(15);
@@ -92,7 +96,7 @@ public class SignUp {
 			uBox.add(Box.createHorizontalStrut(130));
 			uBox.add(uField);
 			
-			/*PassWord input textbox panel*/
+			/*PassWord input textbox panel*/
 			Box pBox = Box.createHorizontalBox();
 			JLabel pLabel = new JLabel("PassWord: ");
 			pLabel.setFont(btn);
@@ -103,7 +107,7 @@ public class SignUp {
 			pBox.add(Box.createHorizontalStrut(74));
 			pBox.add(pField);
 			
-			/*PassWord Confirm input textbox panel*/
+			/*PassWord Confirm input textbox panel*/
 			Box pcBox = Box.createHorizontalBox();
 			JLabel pcLabel = new JLabel("PassWord Confirm:     ");
 			pcLabel.setFont(btn);
@@ -114,7 +118,7 @@ public class SignUp {
 			pcBox.add(pcField);
 			
 			
-			/*Phone input textbox panel*/
+			/*Phone input textbox panel*/
 			Box phBox = Box.createHorizontalBox();
 			JLabel phLabel = new JLabel("Phone: ");
 			phLabel.setFont(btn);
@@ -125,7 +129,7 @@ public class SignUp {
 			phBox.add(Box.createHorizontalStrut(100));
 			phBox.add(phField);
 			
-			/*Email input textbox panel*/
+			/*Email input textbox panel*/
 			Box emBox = Box.createHorizontalBox();
 			JLabel emLabel = new JLabel("Email: ");
 			emLabel.setFont(btn);
@@ -147,7 +151,7 @@ public class SignUp {
 			loginBtn.addActionListener(new MyActionListener());
 			btnBox.add(loginBtn);
 
-			/*Page choose panel*/
+			/*Page choose panel*/
 			Box menuBox = Box.createHorizontalBox();
 			JMenuBar jmb=new JMenuBar();
 			JMenuItem jm1=new JMenuItem("Sign In");	
@@ -192,8 +196,10 @@ public class SignUp {
 			e.printStackTrace();
 		}
 	}
-	
 
+	/**
+	 * Action Listener for sign in and sign up button
+	 */
 	public class ViewAction implements ActionListener {
 		public void actionPerformed(ActionEvent event){
 			JMenuItem jmenu=(JMenuItem)event.getSource();
@@ -210,48 +216,78 @@ public class SignUp {
 				}
 		}
 	}
- 
+
+	/**
+	 * A setter method
+	 * @param u ID
+	 * @param p Password
+	 * @param pc Password Con
+	 * @param ph Phone
+	 * @param em Email
+	 */
+	public void setInfo(String u, String p, String pc, String ph, String em) {
+		this.ID = u;
+		this.PassWord = p;
+		this.PassWordCon = pc;
+		this.Phone = ph;
+		this.Email = em;
+	}
 	
 	private class MyActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String ID = uField.getText();
-				UniqueID uId=new UniqueID(ID);
-				int h=uId.Check();
+			System.out.print("hhhhhh");
+			ID = uField.getText();
+			PassWord = pField.getText();
+			PassWordCon = pcField.getText();
+			Phone = phField.getText();
+			Email = emField.getText();
+			
+			UniqueID uId=new UniqueID(ID);
+			int h=uId.Check();
 				
-				if(h!=0){
-					Object[] options = { "OK" };
-					JOptionPane.showOptionDialog(null, "ID exits.", "Message",
-					JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-					
-				}else{
-						
-						String PassWord = pField.getText();
-						String PassWordCon = pcField.getText();
-						if(!PassWord.equals(PassWordCon)){
-							pcField.setText("NOT same as the password!");
-						}else{				
-							try {
-								
-								String Phone = phField.getText();
-								String Email = emField.getText();
-								System.out.print("One customer signs up.");		
-								SignUpLog  t = new SignUpLog();
-								t.write2file(ID+" "+sex+" "+PassWord+" "+Phone+" "+Email+" "+0+"\n");
-								Object[] options = { "OK" };
-								JOptionPane.showOptionDialog(null, "Sign Up Successfully!", "Message",
-								JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-								
-							} catch (Exception e1) {
-								e1.printStackTrace();
+				if (sex==0||ID.equals("")||PassWord.equals("")||PassWordCon.equals("")||Phone.equals("")||Email.equals("")) {
+					Object[] options1 = {"OK"};
+					JOptionPane.showOptionDialog(null,"Please fill in properly and completely!","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options1,options1[0]);
+				}else{	
+					if (h!=0) {
+						Object[] options = { "OK" };
+						JOptionPane.showOptionDialog(null, "ID exits.", "Message",
+						JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+					}else{
+						if (PassWord.length()<3||PassWord.length()>15) {
+							Object[] options5 = {"OK"};
+							JOptionPane.showOptionDialog(null,"Please enter a 3-15 character password.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options5,options5[0]);
+						}else{
+							if(!PassWord.equals(PassWordCon)){
+								pcField.setText("NOT same as the password!");
+							}else{
+								System.out.print("1: "+ans);
+								if (Phone.length()<4||Phone.length()>15) {
+									Object[] options6 = {"OK"};
+									JOptionPane.showOptionDialog(null,"Please enter a 4-15 digit phone number.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options6,options6[0]);
+								}else {
+									if (Email.contains("@")&&Email.contains(".")) {
+										System.out.print("One customer signs up.");		
+										SignUpLog  t = new SignUpLog();
+										t.write2file(ID+" "+sex+" "+PassWord+" "+Phone+" "+Email+" "+0+"\n");
+										Object[] options = { "OK" };
+										JOptionPane.showOptionDialog(null, "Sign Up Successfully!", "Message",
+										JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+										ans=1;
+										System.out.print("2: "+ans);
+									}else{
+											Object[] options8 = {"OK"};
+											JOptionPane.showOptionDialog(null,"Please enter the correct email format.(with @ .)","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options8,options8[0]);
+										}
+									}
+								}
 							}
 						}
-					
-				}
-			
-			
-		}
-	}
+					}
+				}					
+			}
+
 
 	private class jrb1ActionListener implements ActionListener {
 		@Override
@@ -292,8 +328,20 @@ public class SignUp {
 			}
 		}
 	}
- 
 
+	/**
+	 * A getter method
+	 * @return the answer type
+	 */
+	public int getAns() {
+		//System.out.print("3: "+ans);
+		return this.ans;
+	}
+
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
 	public static void main(String[] args) {
 		new SignUp().init();
 	}

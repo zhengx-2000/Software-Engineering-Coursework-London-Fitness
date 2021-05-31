@@ -1,15 +1,12 @@
-/**
- * Title        : SignIn_test_TDD.java
- * Description  : This class is used to test the user input in sign in page.
- * @author      : Yuheng Li
- * @date        : 20/5/2021
- */
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
-
-
+/**
+ *Title :SignIn_test_TDD.java
+ *Description :This class is used to test the user input in sign in page.
+ *@author :Yuheng Li
+ *@since :20/5/2021
+ */
 class SignIn_test {
 
 	@Test

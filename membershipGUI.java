@@ -11,6 +11,10 @@ import javax.swing.border.EmptyBorder;
  */
 
 public class membershipGUI {
+
+	/**
+	 * Some global variables
+	 */
 	public int sourcePage;
 	private final JFrame MembershipPage = new JFrame("Membership Page");
 	final int WIDTH = 475;
@@ -21,23 +25,27 @@ public class membershipGUI {
 	membershipState mState = new membershipState();
 	String id = new GetID().getID();
 
+	/**
+	 * basic initialization method
+	 * @param i the id of the source page
+	 */
 	public void init(int i) {
 		sourcePage = i;
 		try {
-			//获取登录界面
+			//Get login interface
 			MembershipPage.getContentPane().setBackground(new Color(250,240,215));
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			int sw = screenSize.width;
 			int sh = screenSize.height;
-			//设置界面居中显示
+			//Center display of setting interface
 			MembershipPage.setBounds((sw - WIDTH) / 2, (sh - HEIGHT) / 2, WIDTH, HEIGHT);
 			MembershipPage.setResizable(false);
-			//修改为FlowLayout布局，否则窗口中的组件会根据窗口大小变化尺寸
+			//Change to flowlayout, otherwise components in the window will change size according to the window size
 			MembershipPage.setLayout(new FlowLayout());
-			//添加组件
+			//add component
 			Box vBox = Box.createVerticalBox();
 			
-			//标题栏
+			//Title Bar
 			Box reminderBox =Box.createHorizontalBox();
 			JLabel note = new JLabel("Interests of Members");
 			note.setFont(myFont1);
@@ -49,7 +57,7 @@ public class membershipGUI {
 			JLabel myID = new JLabel("id:");
 			JLabel displayID = new JLabel(id);
 			JLabel myState = new JLabel("Current State:");
-			int s = mState.state();
+			String s = mState.state();
 			JLabel displayState = new JLabel(""+s);
 			myID.setFont(myFont2);
 			displayID.setFont(myFont2);
@@ -63,7 +71,7 @@ public class membershipGUI {
 			userInfor.setSize(475, 20);
 			userInfor.setBackground(new Color(250,234,183));
 
-			//Monthly栏目		
+			//Monthly bar		
 			Box MonthlyBox = Box.createHorizontalBox();
 			JPanel monthMember = new JPanel(new GridLayout(0,3));
 			//JPanel monthMember = new JPanel();
@@ -100,7 +108,7 @@ public class membershipGUI {
 			MonthlyBox.add(monthMember);
 			monthBut.addActionListener(new newWindow());
 
-			//quarterly栏目
+			//quarterly bar
 			Box quarterlyBox = Box.createHorizontalBox();
 			JPanel quarterMember = new JPanel(new GridLayout(0,3));
 			JLabel quarter = new JLabel ("Quarterly Membership: ");
@@ -134,7 +142,7 @@ public class membershipGUI {
 			quarterlyBox.add(quarterMember);
 			quarterBut.addActionListener(new newWindow());
 
-	        //yearly栏目
+	        //yearly bar
 			Box yearlyBox = Box.createHorizontalBox();
 			JPanel yearMember = new JPanel(new GridLayout(0,3));
 			JLabel year = new JLabel ("Yearly Membership: ");
@@ -169,8 +177,8 @@ public class membershipGUI {
 			yearBut.addActionListener(new newWindow());
 			
 			
-			//添加button和监听事件
-			JButton homeBtn = new JButton("Back");//游客状态返回主界面
+			//Add button and listen event
+			JButton homeBtn = new JButton("Back");//Tourist status return to the main interface
 			homeBtn.setFont(myFont2);
 			homeBtn.setBackground(new Color(245,195,102));
 			homeBtn.setForeground(Color.white);
@@ -198,7 +206,7 @@ public class membershipGUI {
 		}
 	}
 
-	//自定义监听类
+	//Custom listening class
 	private class newWindow implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			JButton button = (JButton) e.getSource();
@@ -227,6 +235,10 @@ public class membershipGUI {
 		}
 	}
 
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
 	public static void main(String[] args) {
 		new membershipGUI().init(2);
 	}

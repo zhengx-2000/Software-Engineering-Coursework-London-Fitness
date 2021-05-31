@@ -7,18 +7,17 @@ import java.util.ArrayList;
  * 
  * @author : Mengqi Chen
  * @author : Xiao Zheng
- * @date : 25/5/2021
+ * @since  : 25/5/2021
  */
-
 public class Control_SelectTrainer {
     
     /* An array to store the selected trainers' information. */
     private ArrayList<Entity_Trainer> trainerSelectList = new ArrayList<Entity_Trainer>();
-    
-    /*
+
+    /**
 	 * The constructor is to select the trainers who are wanted by user
-     * selectItem is the Range of user selection
-     * trainerList is a arrayList which stores all the information of trainers.
+     * @param selectItem is the Range of user selection
+     * @param trainerList is a arrayList which stores all the information of trainers.
 	 */
     public Control_SelectTrainer(String selectItem, ArrayList<Entity_Trainer> trainerList) {
         for(Entity_Trainer i : trainerList) {

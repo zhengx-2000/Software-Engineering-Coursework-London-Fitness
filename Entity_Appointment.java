@@ -4,7 +4,7 @@
  * Description: This class is an entity class of user's Appointment.
  * 
  * @author : Mengqi Chen
- * @date : 25/5/2021
+ * @since : 25/5/2021
  */
 
 public class Entity_Appointment {

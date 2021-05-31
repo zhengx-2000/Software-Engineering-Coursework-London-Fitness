@@ -1,7 +1,21 @@
 import java.io.*;
 
+/**
+ * the method of matching the user selection and membership type
+ * @author Jingyuan Tang
+ * @version 3.4
+ * @since 4/23/2021
+ */
+
 public class membershipMatch {
 	String id;
+
+    /**
+     * Determine what the user has chosen and write the membership type to the file.
+     * @param membershipType an int from membershipGUI and user id in String type
+     * @param userID the current user ID
+     **/
+
     public void match (int membershipType, String userID){
         try{
             //String oldLines = reader.readLine();
@@ -10,7 +24,7 @@ public class membershipMatch {
                     PrintWriter pw1=null;
                     BufferedReader reader = new BufferedReader(new FileReader("./file/SignUpLog.txt"));
                     String line = reader.readLine();
-                    System.out.println("id: "+userID+" ,type: "+membershipType);
+                    //System.out.println("id: "+userID+" ,type: "+membershipType);
                     pw1 = new PrintWriter(new FileWriter("./file/SignUpLog.txt"),true);
 		                while (line != null) {
 			                String[] dataParts = line.split(" "); // since your delimiter is " "
@@ -22,7 +36,7 @@ public class membershipMatch {
                                 pw1.println(bufNewLine);
                                 pw1.flush();
                                 line = reader.readLine();
-                                System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
+                                //System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
 				            }
                             else{
                                 pw1.println(line);
@@ -38,7 +52,7 @@ public class membershipMatch {
                     PrintWriter pw2=null;
                     BufferedReader reader = new BufferedReader(new FileReader("./file/SignUpLog.txt"));
                     String line = reader.readLine();
-                    System.out.println("id: "+userID+" ,type: "+membershipType);
+                    //System.out.println("id: "+userID+" ,type: "+membershipType);
                     pw2 = new PrintWriter(new FileWriter("./file/SignUpLog.txt"),true);
 		                while (line != null) {
 			                String[] dataParts = line.split(" "); // since your delimiter is " "
@@ -50,7 +64,7 @@ public class membershipMatch {
                                 pw2.println(bufNewLine);
                                 pw2.flush();
                                 line = reader.readLine();
-                                System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
+                                //System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
 				            }
                             else{
                                 pw2.println(line);
@@ -67,7 +81,7 @@ public class membershipMatch {
                         PrintWriter pw3=null;
                         BufferedReader reader = new BufferedReader(new FileReader("./file/SignUpLog.txt"));
                         String line = reader.readLine();
-                        System.out.println("id: "+userID+" ,type: "+membershipType);
+                        //System.out.println("id: "+userID+" ,type: "+membershipType);
                         pw3 = new PrintWriter(new FileWriter("./file/SignUpLog.txt"),true);
 		                    while (line != null) {
 			                    String[] dataParts = line.split(" "); // since your delimiter is " "
@@ -79,7 +93,7 @@ public class membershipMatch {
                                     pw3.println(bufNewLine);
                                     pw3.flush();
                                     line = reader.readLine();
-                                    System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
+                                    //System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
 				            }
                                 else{
                                     pw3.println(line);
@@ -96,7 +110,7 @@ public class membershipMatch {
                         PrintWriter pw4=null;
                         BufferedReader reader = new BufferedReader(new FileReader("./file/SignUpLog.txt"));
                         String line = reader.readLine();
-                        System.out.println("id: "+userID+" ,type: "+membershipType);
+                        //System.out.println("id: "+userID+" ,type: "+membershipType);
                         pw4 = new PrintWriter(new FileWriter("./file/SignUpLog.txt"),true);
 		                    while (line != null) {
 			                    String[] dataParts = line.split(" "); // since your delimiter is " "
@@ -108,7 +122,7 @@ public class membershipMatch {
                                     pw4.println(bufNewLine);
                                     pw4.flush();
                                     line = reader.readLine();
-                                    System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
+                                    //System.out.println("id: "+userID+" ,new type: "+dataParts[5]+" ,buf: "+bufNewLine);
 				                }
                                 else{
                                     pw4.println(line);

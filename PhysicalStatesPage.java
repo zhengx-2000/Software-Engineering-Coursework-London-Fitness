@@ -16,9 +16,6 @@ import javax.swing.border.EmptyBorder;
  * @version 5.0
  * @since 5/25/2021
  */
-
-
-
 public class PhysicalStatesPage {
 	private final JFrame jf = new JFrame("Personal Information Page");
 	final int WIDTH = 475;
@@ -38,6 +35,9 @@ public class PhysicalStatesPage {
 
 	String identity;
 
+	/**
+	 * Basic constructor
+	 */
 	public PhysicalStatesPage() {
 		try {
 			/* Get user's ID */
@@ -286,7 +286,10 @@ public boolean isNotNumeric(String str){
 	return false; 
 }
 
- 
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
 	public static void main(String[] args) {
 		new PhysicalStatesPage();
 	}

@@ -12,8 +12,7 @@ import java.io.IOException;
 public class alterPhysicalStates{
 /**
  * this method write physical states information into txt
- * @exception IOException On output error.
- * @see IOException
+ * @param physicalStatesList the physical states of the user
  */
     public alterPhysicalStates(ArrayList<String> physicalStatesList){
         try {
@@ -30,9 +29,7 @@ public class alterPhysicalStates{
             e.printStackTrace();
         } 
     }
-	public static void main(String[]args) throws IOException {
-	     
-    }
+
 }
 
 

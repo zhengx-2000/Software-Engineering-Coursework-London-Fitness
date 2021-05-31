@@ -4,11 +4,11 @@ import java.awt.event.*;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Title        :liveCoursePage.java
- * Description  : A simple GUI for the Live Course Page
- * @author      : Yijue Zhang
- * @since       :20/5/2020
- */
+ *Title:liveCoursePage.java
+ *Description:A simple GUI for the Live Course Page
+ *@author :Yijue Zhang
+ *@since :20/5/2020
+*/
 public class liveCoursePage extends JFrame implements ActionListener {
 
 	Font btn = new Font("Georgia", Font.BOLD, 25);
@@ -104,6 +104,10 @@ public class liveCoursePage extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * A simple test main method
+	 * @param args nothing
+	 */
 	public static void main(String[] args) {
 		new liveCoursePage();
 	}

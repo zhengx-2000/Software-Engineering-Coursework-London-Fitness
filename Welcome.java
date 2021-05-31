@@ -11,9 +11,9 @@ import java.awt.event.*;
  * @since 5/20/2021
  */
 public class Welcome extends JFrame implements ActionListener{
+
     private JFrame jFrame;
     private JButton gallery, videoBtn, liveBtn, membershipBtn;
-    //private JRadioButton courseBtn, trainerBtn;
     private JMenuItem accountItem, membershipItem, helpItem;
     private final int WIDTH = 475;
 	private final int HEIGHT = 625;
@@ -164,7 +164,7 @@ public class Welcome extends JFrame implements ActionListener{
         }
 
         if(e.getSource() == gallery) {
-            System.out.println("gallery");
+            //System.out.println("gallery");
         }
 
         if(e.getSource() == videoBtn) {
@@ -183,6 +183,10 @@ public class Welcome extends JFrame implements ActionListener{
         }
     }
 
+    /**
+     * A test main method.
+     * @param args nothing
+     */
     public static void main(String[] args) {
         new Welcome();
     }

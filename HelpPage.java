@@ -18,6 +18,9 @@ public class HelpPage {
 	final int WIDTH = 475;
 	final int HEIGHT = 625;
 
+	/**
+	 * The initialization function
+	 */
 	public void Help() {
 		try {
 			/* Font used in the GUI */
@@ -189,7 +192,11 @@ public class HelpPage {
 			}
 		}
 	}
- 
+
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
 	public static void main(String[] args) {
 		new HelpPage().Help();
 	}

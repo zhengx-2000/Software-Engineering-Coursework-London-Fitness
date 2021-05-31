@@ -6,12 +6,11 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Title        :digitalWorkOutVideosPage.java
- * Description  : A simple GUI for the Digital Workout Videos Page two
- * @author      : Yijue Zhang
- * @since       :20/5/2020
- */
-
+ *Title:digitalWorkOutVideosPage.java
+ *Description:A simple GUI for the Digital Workout Videos Page two
+ *@author Yijue Zhang
+ *@since 20/5/2020
+ */
 public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener {
 
 	Font btn = new Font("Georgia", Font.BOLD, 25);
@@ -32,7 +31,7 @@ public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener
 
 	JButton nwButton1 = new JButton("Yes");
 	JButton nwButton2 = new JButton("Back");
-	
+
 	JComboBox<String> type = new JComboBox<String>(); // creates comboBox
 	JComboBox<String> complexity = new JComboBox<String>();
 
@@ -70,6 +69,10 @@ public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener
 		// prepare for new window 
 		nwButton1.addActionListener(this); 
 		nwButton2.addActionListener(this);
+		nwButton1.setBackground(new Color(242,215,146));
+		nwButton1.setBorder(new EmptyBorder(5,17,5,17));
+		nwButton2.setBackground(new Color(242,215,146));
+		nwButton2.setBorder(new EmptyBorder(5,17,5,17));
 
 		JPanel panel1 = new JPanel();
 		label1.setFont(btn);
@@ -440,7 +443,6 @@ public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 			}
@@ -451,7 +453,6 @@ public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 			}
@@ -501,7 +502,6 @@ public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 			}
@@ -512,7 +512,6 @@ public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 			}
@@ -557,10 +556,9 @@ public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener
 			this.setVisible(false);
 			jf.setVisible(false);
 
-			// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!此处改为tjy的充值
 			// new liveCoursePage();
 
-			new paymentGUI().init(0);
+			new membershipGUI().init(1);
 
 		} else if (eventSource.equals(nwButton2)){
 
@@ -571,6 +569,10 @@ public class digitalWorkOutVideosPage_0 extends JFrame implements ActionListener
 		}
 	}
 
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
 	public static void main(String[] args) {
 		new digitalWorkOutVideosPage_0(); // create a new object
 	}

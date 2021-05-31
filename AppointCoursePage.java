@@ -10,13 +10,15 @@ import javax.swing.border.EmptyBorder;
  * Title : AppointCoursePage.java 
  * Description : This class is the GUI of the TrainerBooking page.
  * 
- * @author : Mengqi Chen
- * @date : 29/5/2021
+ * @author Mengqi Chen
+ * @since 29/5/2021
  */
 
 public class AppointCoursePage {
 
-	/* Set the basic parameters of the interface. */
+	/**
+	 *  Set the basic parameters of the interface.
+	 */
 	public int sourcePage = 3;
 	private final JFrame jf = new JFrame("Appoint Course Page");
 	final int WIDTH = 475;
@@ -230,8 +232,8 @@ public class AppointCoursePage {
 
 	/**
 	 * Action listener
-	 * Click "Back” botton to return the introduction of trainers page, 
-	 * or click “submit” botton to submit your order information and to the payment page. 
+	 * Click "Back" button to return the introduction of trainers page,
+	 * or click “submit" button to submit your order information and to the payment page.
 	 */
 	private class MyActionListener implements ActionListener {
 		//@Override
@@ -307,6 +309,10 @@ public class AppointCoursePage {
 				}
 		}
 	}
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
 	public static void main(String[] args) {
 		new AppointCoursePage();
 	}

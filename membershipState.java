@@ -9,10 +9,15 @@ import java.io.*;
 
 public class membershipState {
     
-    public int state(){
+     /**
+     * Acquire the membership statement and pass to the membership GUI.
+     * @return the type of VIP the user is
+     **/
+    public String state(){
         String userID = new GetID().getID();
         String id;
         int currentS = 0;
+        String type = "";
         try{
             BufferedReader reader = new BufferedReader(new FileReader("./file/SignUpLog.txt"));
             String line = reader.readLine();
@@ -31,7 +36,21 @@ public class membershipState {
             }catch (IOException e) {
                 e.printStackTrace();
             }
-            return currentS;
+        switch (currentS){
+            case 0:
+            type ="non-member";
+            break;
+            case 2:
+            type = "monthly";
+            break;
+            case 3:
+            type ="quarterly";
+            break;
+            case 4:
+            type = "yearly";
+            break;
+        }
+            return type;
         }
          
 }

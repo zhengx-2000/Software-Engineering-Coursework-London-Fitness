@@ -11,8 +11,8 @@ import java.io.RandomAccessFile;
 public class CountLine {
     /**
      * this method read txt lines
-     * @param path
-     * @return long
+     * @param path the path of the file
+     * @return the number of lines in the file
      */
     public static long readLine(String path) {
         long index = 0;
@@ -27,9 +27,4 @@ public class CountLine {
         }
         return index;
     }
-    
-    public static void main(String[] args) {
-
-    }
-
 }

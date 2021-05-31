@@ -9,18 +9,17 @@ import java.util.ArrayList;
  * Title 		: Control_ReadFromFile.java
  * Description	: This class is an control class which is used to read information from the file trainer.txt.
  * @author		: Mengqi Chen
- * @date      	: 25/5/2021
+ * @since      	: 25/5/2021
  */
-
 public class Control_ReadFromFile {
 
     /* The classes associated with the trainers' information. */
     private ArrayList<Entity_Trainer> trainerList = new ArrayList<Entity_Trainer>();
     private Entity_Trainer trainer; 
 
-    /*
-	 * The constructor is to read file and store information to entity class Entity_Trainer 
-     * and array list ArrayList<Entity_Trainer>
+    /**
+	 * The constructor is to read file and store information to entity class Entity_Trainer and array list ArrayList(Entity_Trainer)
+     * @param fileName The file needed to be read
 	 */
     public Control_ReadFromFile(String fileName){
         /* Read all trainers' information in the file which is passed by the constructor*/

@@ -1,9 +1,3 @@
-	/**
-	 *	Title		:	SignUpLog.java
-	 *	Description	:	This class is used to write the log up info into a file.
-	 *	@author		:	Yuheng Li
-	 *	@date		:	13/4/2021
-	 **/
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,12 +5,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-
+/**
+ *	Title		:	SignUpLog.java
+ *	Description	:	This class is used to write the log up info into a file.
+ *	@author		:	Yuheng Li
+ *	@since		:	13/4/2021
+ **/
 public class SignUpLog {
 /**
- * write the info.
- * @param the user's info. 
- * @return no.
+ * write the info.
+ * @param cbuf the user's info.
  **/
 	public void write2file(String cbuf) {
 		File file = null;

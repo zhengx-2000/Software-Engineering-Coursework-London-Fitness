@@ -40,8 +40,10 @@ public class IDPage{
 	String weight;
 	String remark;
 
-
-public void Identity(){
+	/**
+	 * Basic initialization method.
+	 */
+	public void Identity(){
 	try {
 		/* Get user's ID */
 		GetID getid = new GetID();
@@ -468,8 +470,11 @@ private class MyActionListener implements ActionListener {
 		}
 	}
 }
- 
-public static void main(String[] args) {
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
+	public static void main(String[] args) {
 	new IDPage().Identity();
 }
 

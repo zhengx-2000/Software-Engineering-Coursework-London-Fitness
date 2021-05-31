@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
  * Description : This class is the GUI of the introduction of trainer page.
  * 
  * @author : Mengqi Chen
- * @date : 29/5/2021
+ * @since : 29/5/2021
  */
 
 public class LivePersonalTrainingPage {
@@ -185,7 +185,7 @@ public class LivePersonalTrainingPage {
 	 * Action listener
 	 * You can select the training purpose in "Aim" 
 	 * and click "Search" to see the corresponding trainer introduction.
-	 * Click "Back” botton to return the welcome page. 
+	 * Click "Back" button to return the welcome page.
 	 */
 	private class MyActionListener implements ActionListener {
 		@Override
@@ -220,7 +220,7 @@ public class LivePersonalTrainingPage {
 					trainerTextArea3.setText(initialTextContent);	
                 }	                
             }
-			/* Click "Back” botton to return the welcome page.. */
+			/* Click "Back" button to return the welcome page.. */
 			if (button.equals(backBtn)) {				
 				jf.setVisible(false);				 
 				new Welcome();				
@@ -249,6 +249,10 @@ public class LivePersonalTrainingPage {
 		}
 	}
 
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
     public static void main(String[] args) {
         new LivePersonalTrainingPage();
     }

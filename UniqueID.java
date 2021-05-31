@@ -1,23 +1,27 @@
-	/**
-	 *	Title		:	UniqueID.java
-	 *	Description	:	This class is used to check whether the sign up ID is unique.
-	 *	@author		:	Yuheng Li
-	 *	@date		:	13/4/2021
-	 **/
 import java.io.BufferedReader;
 import java.io.*;
+/**
+ *	Title		:	UniqueID.java
+ *	Description	:	This class is used to check whether the sign up ID is unique.
+ *	@author		:	Yuheng Li
+ *	@since		:	13/4/2021
+ **/
 public class UniqueID {
 
 	String ID;
 	String id;
 	int a=0;
+
+	/**
+	 * A setter method for ID
+	 * @param I ID input
+	 */
 	public UniqueID(String I){
 		this.ID=I;
 	}
 	/**
-	 * check the ID.
-	 * @param no. 
-	 * @return an int to index whether the ID is unique.
+	 * check the ID.
+	 * @return whether the id is unique
 	 **/
 	public int Check(){
 		try{

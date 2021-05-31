@@ -1,47 +1,44 @@
-/**
- * Title        : SignUp_test.java
- * Description  : This class is used to test the user input in sign up page.
- * @author      : Yuheng Li
- * @date        : 20/5/2021
- */
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
+/**
+ * Title         : SignUp_test.java
+ * Description   : This class is used to test the user input in sign up page.
+ * @author       : Yuheng Li
+ * @since        : 20/5/2021
+ */
 class SignUp_test {
 
 	@Test
 	void test() {
-		int unique=0;
-		String PassWord="123";
-		String PassWordCon="123";
-		UniqueID i=new UniqueID("ooo");
-		assertEquals(0,i.Check());		
+		String u="1hwwwi"; 
+		String p="123"; 
+		String pc="123"; 
+		String ph="12123"; 
+		String em="123qq.com";
+		SignUp test=new SignUp();
+		test.setInfo(u, p, pc, ph, em);
+		assertEquals(0,test.getAns());
 		
-		if(PassWord==PassWordCon) unique=1;
-		assertEquals(1,unique);	
+		u="lhl"; 
+		p="123"; 
+		pc="123"; 
+		ph="123"; 
+		em="123@qq.com";
+		SignUp test2=new SignUp();
+		test.setInfo(u, p, pc, ph, em);
+		assertEquals(0,test2.getAns());	
 		
+		u="11"; 
+		p="12232"; 
+		pc="123"; 
+		ph="12"; 
+		em="123";
+		SignUp test1=new SignUp();
+		test.setInfo(u, p, pc, ph, em);
+		assertEquals(0,test1.getAns());		
 		
-		
-		int unique1=0;
-		String PassWord1="123";
-		String PassWordCon1="123";
-		UniqueID i1=new UniqueID("aaa");
-		assertEquals(1,i1.Check());		
-		
-		if(PassWord1==PassWordCon1) unique1=1;
-		assertEquals(1,unique1);	
-		
-		
-		int unique2=0;
-		String PassWord2="123";
-		String PassWordCon2="1234";
-		UniqueID i2=new UniqueID("nnn");
-		assertEquals(0,i2.Check());		
-		
-		if(PassWord2==PassWordCon2) unique2=1;
-		assertEquals(0,unique2);	
-		
+	
 	}
 
 }

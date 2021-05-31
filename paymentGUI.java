@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.EmptyBorder;
+
  /**
  * the GUI of payment function
  * @author Jingyuan Tang
@@ -10,6 +11,9 @@ import javax.swing.border.EmptyBorder;
  * @since 5/20/2021
  */
 public class paymentGUI {
+	 /**
+	  * Some global variables
+	  */
 	public int sourcePage;
 	private final JFrame paymentPage = new JFrame("Payment Page");
 	final int WIDTH = 475;
@@ -17,45 +21,44 @@ public class paymentGUI {
 	Font myFont1 = new Font("Georgia", Font.BOLD, 15);
 	Font myFont2 = new Font("Georgia", Font.BOLD, 12);
  
+	/**
+     * Determine where the page turn back to (the source page).
+     * @param i the source page of type int
+     **/
 	public void init(int i) {
 		sourcePage = i;
 		try {
 			paymentPage.getContentPane().setBackground(new Color(250,240,215));
-			//获取登录界面
+			//Get login interface
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			int sw = screenSize.width;
 			int sh = screenSize.height;
-			//设置界面居中显示
+			//Center display of setting interface
 			paymentPage.setBounds((sw - WIDTH) / 2, (sh - HEIGHT) / 2, WIDTH, HEIGHT);
 			paymentPage.setResizable(false);
-			//获取resources路径下的文件
-//			InputStream stream = Resources.class.getResourceAsStream("/img/login.png");
-			//JFrame设置icon
-//			jf.setIconImage(ImageIO.read(stream));
-			//修改为FlowLayout布局，否则窗口中的组件会根据窗口大小变化尺寸
 			paymentPage.setLayout(new FlowLayout());
-			//添加组件
+			//add component
 			Box vBox = Box.createVerticalBox();
-			//标题栏
+			//Title Bar
 			Box reminderBox =Box.createHorizontalBox();
 			JLabel note = new JLabel("Please Choose Payment Method");
 			note.setFont(myFont1);
 
 			reminderBox.add(note);
-			//visa栏目		
+			//visa bar		
 			Box visaBox = Box.createHorizontalBox();
 			JRadioButton selection1 = new JRadioButton("visa");
 			selection1.setBackground(new Color(250,240,215));
 			selection1.setFont(myFont2);
 			visaBox.add(selection1);
 
-			//visa photo栏目
+			//visa photo bar
 			Box visaPhotoBox = Box.createHorizontalBox();
 			JLabel visaPhoto = new JLabel();
 	        ImageIcon visaIcon = new ImageIcon(new ImageIcon("image/visa.jpg").getImage().getScaledInstance(220, 130, Image.SCALE_SMOOTH));
 	        visaPhoto.setIcon(visaIcon);
 
-	        //paypal栏目
+	        //paypal bar
 	        Box paypalBox = Box.createHorizontalBox();
 			JRadioButton selection2 = new JRadioButton("PayPal");
 			selection2.setBackground(new Color(250,240,215));
@@ -67,12 +70,12 @@ public class paymentGUI {
 			bg.add(selection1);
 			bg.add(selection2);
 			
-			//paypal photo栏目
+			//paypal photo bar
 			Box paypalPhotoBox = Box.createHorizontalBox();
 			JLabel paypalPhoto = new JLabel();
 	        ImageIcon paypalIcon = new ImageIcon(new ImageIcon("image/PayPal.jpeg").getImage().getScaledInstance(220, 130, Image.SCALE_SMOOTH));
 	        paypalPhoto.setIcon(paypalIcon);
-			//在布局中添加组件，并使用占位符（以下同理）
+			//Add components to the layout and use placeholders (the same applies below)
 			visaPhotoBox.add(visaPhoto);
 			visaPhotoBox.add(Box.createHorizontalStrut(10));
 			paypalPhotoBox.add(paypalPhoto);
@@ -81,15 +84,15 @@ public class paymentGUI {
 			
 			//button栏目
 			Box btnBox = Box.createHorizontalBox();
-			//添加button和监听事件
+			//Add button and listen event
 			JButton pay = new JButton("OK");
 			pay.setBackground(new Color(242,215,146));
 			pay.setForeground(Color.white);
-			pay.setName("payTheBill");//登录状态返回主界面
+			pay.setName("payTheBill");//The login status returns to the main interface
 			pay.setFont(myFont2);
 			pay.addActionListener(new newWindow());
 			pay.setBorder(new EmptyBorder(5, 17, 5, 17));
-			JButton backButn = new JButton("Back");//游客状态返回主界面
+			JButton backButn = new JButton("Back");
 			backButn.setFont(myFont2);
 			backButn.setBackground(new Color(242,215,146));
 			backButn.setName("backButn");
@@ -121,9 +124,8 @@ public class paymentGUI {
 		}
 	}
  
-	//自定义监听类
+	//Custom listening class
 	private class newWindow implements ActionListener {
-		backToCertainPage location = new backToCertainPage();
 		public void actionPerformed(ActionEvent e) {
 			JButton button = (JButton) e.getSource();
 			String name = button.getName();
@@ -136,7 +138,6 @@ public class paymentGUI {
 							paymentPage.setVisible(false);
 				break;
 				case "backButn":
-					location.backPage(sourcePage);
 					new backToCertainPage().backPage(sourcePage);
 					paymentPage.setVisible(false);
 				break;
@@ -145,7 +146,11 @@ public class paymentGUI {
 			}
 		}
 	}
- 
+
+	 /**
+	  * A simple test main method
+	  * @param args nothing
+	  */
 	public static void main(String[] args) {
 		new paymentGUI().init(4);
 	}

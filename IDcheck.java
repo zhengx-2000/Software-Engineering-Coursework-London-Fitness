@@ -1,28 +1,32 @@
+import java.io.BufferedReader;
+import java.io.*;
+
 /**
  *	Title		:	IDcheck.java
  *	Description	:	This class is used to check whether the ID matches the Password .
  *	@author		:	Yuheng Li
- *	@date		:	13/4/2021
+ *	@since		:	13/4/2021
  **/
-import java.io.BufferedReader;
-import java.io.*;
-
-
 public class IDcheck {
 	String ID;
 	String PassWord;
 	String id;
 	String ps;
 	int a=0;
+
+	/**
+	 * A setter method.
+	 * @param I ID
+	 * @param P Password
+	 */
 	public IDcheck(String I,String P){
 		this.ID=I;
 		this.PassWord=P;
 	}
 	
 /**
- * The method to check.
- * @param no. 
- * @return the int to index whether the ID matches the password.
+ *The method to check.
+ *@return the int to index whether the ID matches the password.
  **/
 	public int Check(){
 		try{

@@ -1,15 +1,14 @@
-	/**
-	 *	Title		:	SignIn.java
-	 *	Description	:	This class is used for user to log in.
-	 *	@author		:	Yuheng Li
-	 *	@date		:	12/4/2021
-	 **/
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.EmptyBorder;
+/**
+ *	Title		:	SignIn.java
+ *	Description	:	This class is used for user to log in.
+ *	@author		:	Yuheng Li
+ *	@since 		:	12/4/2021
+ **/
 public class SignIn {
 	private final JFrame jf = new JFrame("Sign In Page");/*The whole panel */
 	final int WIDTH = 475;
@@ -17,15 +16,17 @@ public class SignIn {
 	Font btn = new Font("Georgia", Font.BOLD, 13);
 	JTextField uField = new JTextField();/*The ID input textbox panel*/
 	JTextField pField = new JTextField();/* Passport input textbox panel*/
+
+	/**
+	 * Some global variables
+	 */
 	public	int state=0;/*state 0=>no VIP;1=> month VIP;2=> season VIP;3=> year VIP*/
 	String I;
 	String P;
 	int a;
-	int b;
+
 	/**
 	 *	Set the login panel outlook.
-	 *	@param option no param needed,it is the initial page. 
-	 *	@return Return nothing.
 	 **/
 	public void init() {
 		try {
@@ -124,7 +125,9 @@ public class SignIn {
 		}
 	}
 	
-	/*The ActionListener method for jmenu button*/
+	/**
+	 * The ActionListener method for jmenu button
+	 */
 	public class ViewAction implements ActionListener {
 		public void actionPerformed(ActionEvent event){
 			JMenuItem jmenu=(JMenuItem)event.getSource();
@@ -171,7 +174,6 @@ public class SignIn {
 							JOptionPane.showOptionDialog(null, "Please input right ID&Password !", "Message",
 							JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 						}
-						getAnswer(a);
 					}catch (Exception e1) {
 						e1.printStackTrace();
 					}
@@ -185,12 +187,12 @@ public class SignIn {
 		}
 		
 	}
-	
-	public int getAnswer(int a) {
-		System.out.print("444: "+a);
-		b=a;
-		return a;
-	}
+
+
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
 	public static void main(String[] args) {
 		new SignIn().init();
 	}

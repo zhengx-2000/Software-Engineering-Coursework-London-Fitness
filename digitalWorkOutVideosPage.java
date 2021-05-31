@@ -6,11 +6,11 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Title        :digitalWorkOutVideosPage.java
- * Description  : A simple GUI for the Digital Workout Videos Page one
- * @author      : Yijue Zhang
- * @since       :20/5/2020
- */
+ *Title:digitalWorkOutVideosPage.java
+ *Description:A simple GUI for the Digital Workout Videos Page one
+ *@author Yijue Zhang
+ *@since 20/5/2020
+*/
 
 public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 
@@ -32,7 +32,7 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 
 	String typeContent;
 	String complexityContent;
-
+	
 	JPanel panelp1 = new JPanel();
 	JPanel panel5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
@@ -419,7 +419,7 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
+
 					e2.printStackTrace();
 				}
 
@@ -431,7 +431,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 
@@ -443,7 +442,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 
@@ -455,7 +453,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 				
@@ -469,7 +466,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 
@@ -481,7 +477,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 
@@ -493,7 +488,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 
@@ -505,7 +499,6 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 				try {
 					Runtime.getRuntime().exec("cmd /k start "+file);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 				
@@ -515,6 +508,10 @@ public class digitalWorkOutVideosPage extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * A test main method.
+	 * @param args nothing
+	 */
 	public static void main(String[] args) {
 		new digitalWorkOutVideosPage(); // create a new object
 	}

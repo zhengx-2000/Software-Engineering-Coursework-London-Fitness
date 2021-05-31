@@ -3,8 +3,16 @@ import java.io.*;
 import java.util.*;
 import java.lang.*;
 
+/**
+ * A control class to identify whether the user is an VIP or not.
+ * @author Yijue Zhang
+ * @version 5.0
+ */
 public class panDuan {
 
+	/**
+	 * Constructor
+	 */
 		public panDuan(){
 
 			String ID = new GetID().getID();
@@ -25,32 +33,40 @@ public class panDuan {
 					if (id.equals(ID)) {
 						VIP = dataParts[5];
 						
-						System.out.print(VIP);
+						//System.out.print(VIP);
 
 						if (VIP.equals("0")) {
-							System.out.print("这里1");
-							reader1.close();
+							//System.out.print("这里1");
 							reader.close();
+							reader1.close();
 							new digitalWorkOutVideosPage_0();
+							break;
 						}else{
-							System.out.print("这里2");
-							reader1.close();
+							//System.out.print("这里2");
 							reader.close();
+							reader1.close();
 							new digitalWorkOutVideosPage();
-		
+							break;
 						}
 		
 					}
 		
 				}
-				reader1.close();
-				reader.close();
+				//reader.close();
+				//reader1.close();
 			}catch(Exception e) {
 				System.out.println(e);
 			}
 		
 		}
-		
+
+	/**
+	 * A simple test main method.
+	 * @param args nothing
+	 */
+	public static void main(String[] args) {
+		new panDuan();
+	}
 	
 
 }
