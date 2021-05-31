@@ -24,7 +24,7 @@ Step 2: Open a cmd or powershell terminal and cd to the project folder.
 
 Step 3: Execute **javac SignIn.java** to generate .class file for **SignIn.java**.
 
-Step 4: Execute **java Signin** to run the program.
+Step 4: Execute **java SignIn** to run the program.
 
 ##Project Files Overview
 _./Demo_: Demo Videos for recorded lectures.
