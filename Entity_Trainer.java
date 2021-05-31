@@ -14,7 +14,7 @@
  * @since : 25/5/2021
  */
 public class Entity_Trainer {
-	
+
 	private String trainerName;		// trainer's name
     private String trainerLicense;	// trainer's license
 	private String aimType1;		// The first fitness course that trainer is good at
