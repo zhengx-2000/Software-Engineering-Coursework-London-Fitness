@@ -50,7 +50,7 @@ public class alterPersonalInformation{
             }
             //System.out.print(buff);
             //System.out.print(buff.length());
-            System.out.print(buff.delete(buff.length()-1,buff.length()));
+            //System.out.print(buff.delete(buff.length()-1,buff.length()));
             printwriter=new PrintWriter(new FileWriter("file/SignUpLog.txt"),true);
             printwriter.println(buff);
             printwriter.close();
