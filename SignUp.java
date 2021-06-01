@@ -236,55 +236,14 @@ public class SignUp {
 	private class MyActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.print("hhhhhh");
-			ID = uField.getText();
+			//System.out.print("hhhhhh");
+			/*ID = uField.getText();
 			PassWord = pField.getText();
 			PassWordCon = pcField.getText();
 			Phone = phField.getText();
-			Email = emField.getText();
-			
-			UniqueID uId=new UniqueID(ID);
-			int h=uId.Check();
-				
-				if (sex==0||ID.equals("")||PassWord.equals("")||PassWordCon.equals("")||Phone.equals("")||Email.equals("")) {
-					Object[] options1 = {"OK"};
-					JOptionPane.showOptionDialog(null,"Please fill in properly and completely!","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options1,options1[0]);
-				}else{	
-					if (h!=0) {
-						Object[] options = { "OK" };
-						JOptionPane.showOptionDialog(null, "ID exits.", "Message",
-						JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-					}else{
-						if (PassWord.length()<3||PassWord.length()>15) {
-							Object[] options5 = {"OK"};
-							JOptionPane.showOptionDialog(null,"Please enter a 3-15 character password.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options5,options5[0]);
-						}else{
-							if(!PassWord.equals(PassWordCon)){
-								pcField.setText("NOT same as the password!");
-							}else{
-								System.out.print("1: "+ans);
-								if (Phone.length()<4||Phone.length()>15) {
-									Object[] options6 = {"OK"};
-									JOptionPane.showOptionDialog(null,"Please enter a 4-15 digit phone number.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options6,options6[0]);
-								}else {
-									if (Email.contains("@")&&Email.contains(".")) {
-										System.out.print("One customer signs up.");		
-										SignUpLog  t = new SignUpLog();
-										t.write2file(ID+" "+sex+" "+PassWord+" "+Phone+" "+Email+" "+0+"\n");
-										Object[] options = { "OK" };
-										JOptionPane.showOptionDialog(null, "Sign Up Successfully!", "Message",
-										JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-										ans=1;
-										System.out.print("2: "+ans);
-									}else{
-											Object[] options8 = {"OK"};
-											JOptionPane.showOptionDialog(null,"Please enter the correct email format.(with @ .)","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options8,options8[0]);
-										}
-									}
-								}
-							}
-						}
-					}
+			Email = emField.getText();*/
+			setInfo(uField.getText(), pField.getText(), pcField.getText(), phField.getText(), emField.getText());
+			check();
 				}					
 			}
 
@@ -336,6 +295,53 @@ public class SignUp {
 	public int getAns() {
 		//System.out.print("3: "+ans);
 		return this.ans;
+	}
+
+	/**
+	 * Check the validation
+	 */
+	public void check() {
+		UniqueID uId = new UniqueID(ID);
+		int h = uId.Check();
+		if (sex==0||ID.equals("")||PassWord.equals("")||PassWordCon.equals("")||Phone.equals("")||Email.equals("")) {
+			Object[] options1 = {"OK"};
+			JOptionPane.showOptionDialog(null,"Please fill in properly and completely!","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options1,options1[0]);
+		}else{
+			if (h!=0) {
+				Object[] options = { "OK" };
+				JOptionPane.showOptionDialog(null, "ID exists.", "Message",
+						JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+			}else{
+				if (PassWord.length()<3||PassWord.length()>15) {
+					Object[] options5 = {"OK"};
+					JOptionPane.showOptionDialog(null,"Please enter a 3-15 character password.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options5,options5[0]);
+				}else{
+					if(!PassWord.equals(PassWordCon)){
+						pcField.setText("NOT same as the password!");
+					}else{
+						//System.out.print("1: "+ans);
+						if (Phone.length()<4||Phone.length()>15) {
+							Object[] options6 = {"OK"};
+							JOptionPane.showOptionDialog(null,"Please enter a 4-15 digit phone number.","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options6,options6[0]);
+						}else {
+							if (Email.contains("@")&&Email.contains(".")) {
+								//System.out.print("One customer signs up.");
+								SignUpLog  t = new SignUpLog();
+								t.write2file(ID+" "+sex+" "+PassWord+" "+Phone+" "+Email+" "+0+"\n");
+								Object[] options = { "OK" };
+								JOptionPane.showOptionDialog(null, "Sign Up Successfully!", "Message",
+										JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+								ans=1;
+								//System.out.print("2: "+ans);
+							}else{
+								Object[] options8 = {"OK"};
+								JOptionPane.showOptionDialog(null,"Please enter the correct email format.(with @ .)","Message",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options8,options8[0]);
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/**
