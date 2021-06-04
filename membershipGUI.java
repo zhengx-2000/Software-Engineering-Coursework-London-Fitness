@@ -240,6 +240,6 @@ public class membershipGUI {
 	 * @param args nothing
 	 */
 	public static void main(String[] args) {
-		new membershipGUI().init(2);
+		new membershipGUI().init(1);
 	}
 }

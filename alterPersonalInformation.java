@@ -9,10 +9,6 @@ import java.io.IOException;
  * @since 5/25/2021
  */
 public class alterPersonalInformation{
-    /**
-     * Basic constructor.
-     * @param personalInformationList the list of the information
-     */
     public alterPersonalInformation(ArrayList<String> personalInformationList){
         try {
             /* Get user's ID */
@@ -50,14 +46,14 @@ public class alterPersonalInformation{
             }
             //System.out.print(buff);
             //System.out.print(buff.length());
-            //System.out.print(buff.delete(buff.length()-1,buff.length()));
+            buff.delete(buff.length()-1,buff.length());
             printwriter=new PrintWriter(new FileWriter("file/SignUpLog.txt"),true);
             printwriter.println(buff);
+            printwriter.flush();
             printwriter.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         } 
-    }
-
+    }    
 }
